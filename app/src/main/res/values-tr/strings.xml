@@ -200,7 +200,6 @@
     <string name="install_from_fdroid">F-Droid\'den Kur</string>
     <string name="install_from_play_store">Play Store\'dan Kur</string>
     <string name="action_download">İNDİR</string>
-    <string name="action_learn_more">DAHA FAZLASINI ÖĞREN</string>
     <string name="profile_requiring_plugin">Profil %s %s eklentisinin kurulmasını gerektirir ama kurulu değil.</string>
     <string name="missing_plugin">Eksik Eklenti</string>
     <string name="confirm">Doğrula</string>
