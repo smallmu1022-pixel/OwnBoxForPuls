@@ -167,7 +167,7 @@ class WebviewFragment : ToolbarFragment(R.layout.layout_webview), Toolbar.OnMenu
                 try {
                     var list = JSON.parse(localStorage.getItem(listKey) || "[]");
                     if (!Array.isArray(list)) list = [];
-                    var targetUuid = "ownbox-local";
+                    var targetUuid = "onebox-local";
                     var found = false;
                     for (var i = 0; i < list.length; i++) {
                         var item = list[i];
@@ -190,7 +190,7 @@ class WebviewFragment : ToolbarFragment(R.layout.layout_webview), Toolbar.OnMenu
                             secondaryPath: "",
                             password: secret,
                             uuid: targetUuid,
-                            label: "OwnBox 本地内核",
+                            label: "OneBox 本地内核",
                             disableUpgradeCore: true,
                             disableTunMode: false
                         });
@@ -296,13 +296,13 @@ class WebviewFragment : ToolbarFragment(R.layout.layout_webview), Toolbar.OnMenu
                     }
                     if (!found) {
                         endpointList.unshift({
-                            id: "ownbox-local",
+                            id: "onebox-local",
                             url: localUrl,
                             secret: secret
                         });
                     }
                     localStorage.setItem("endpointList", JSON.stringify(endpointList));
-                    localStorage.setItem("selectedEndpoint", JSON.stringify("ownbox-local"));
+                    localStorage.setItem("selectedEndpoint", JSON.stringify("onebox-local"));
                     try { window.dispatchEvent(new Event('storage')); } catch (_) {}
                 } catch (_) {}
 

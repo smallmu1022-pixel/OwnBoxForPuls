@@ -6,7 +6,6 @@
     <string name="version_x">الإصدار (%s)</string>
     <string name="app_version">إصدار</string>
     <string name="oss_licenses">تراخيص مفتوحة المصدر</string>
-    <string name="telegram">قناة تحديث Telegram</string>
     <string name="github">مصدر الرمز</string>
     <string name="app_desc">سلسلة أدوات البروکسی العالمية لنظام Android ، مكتوبة بلغة Kotlin.</string>
     <string name="project">مشروع</string>
@@ -105,7 +104,6 @@
     <string name="show_direct_speed_sum">أظهر سرعة المرور بدون وكيل في الإشعار أيضًا</string>
     <string name="show_direct_speed">عرض السرعة المباشرة</string>
     <string name="show_stop_sum">إذا كنت لا تريد استخدام \"اللوحة السريعة\" كمفتاح التبديل</string>
-    <string name="allow_access_sum">ربط خوادم الإدخال إلى 0.0.0.0</string>
     <string name="show_stop">إظهار زر الإيقاف</string>
     <string name="cag_misc">إعدادات متنوعة</string>
     <string name="speed_interval">الفاصل الزمني لتحديث إشعار السرعة</string>
@@ -115,7 +113,6 @@
     <string name="require_http">تفعيل HTTP الوارد</string>
     <string name="general_settings">إعدادات التطبيقات</string>
     <string name="inbound_settings">إعدادات الواردة</string>
-    <string name="allow_access">السماح بالاتصالات من الشبكة المحلية</string>
     <string name="cag_route">إعدادات الطريق</string>
     <string name="route_asset_updated">محدث</string>
     <string name="route_asset_no_update">لا تحديث</string>
@@ -298,7 +295,6 @@
     <string name="disable">إلغاء</string>
     <string name="enable">مكن</string>
     <string name="follow_system">اتبع النظام</string>
-    <string name="night_mode">وضع الليل</string>
     <string name="lines">%d سطور</string>
     <string name="route_warn">تأكد من قراءة الوثائق قبل إضافة القواعد المخصصة، وإلا فقد لا تتمكن من الاتصال بالإنترنت.</string>
     <string name="license">الرخصة</string>
@@ -415,25 +411,5 @@
     <string name="speed_test_rate_mbps">%1$.2f Mbps</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">Custom Icon</string>
-    <string name="custom_icon_import">Import Icon Pack</string>
-    <string name="custom_icon_reset">Reset to Default</string>
-    <string name="custom_icon_preview_shortcut">Shortcut Icon</string>
-    <string name="custom_icon_shortcut_subtitle">Android does not support modifying the software icon. Please fork and modify if needed!</string>
-    <string name="custom_icon_preview_tile">Quick Settings Tile</string>
-    <string name="custom_icon_apply_pack">Apply This Icon Pack</string>
-    <string name="custom_icon_apply_success">Icon pack applied. Desktop shortcut requested.</string>
-    <string name="custom_icon_pin_shortcut_not_supported">Your launcher does not support pinning shortcuts.</string>
-    <string name="custom_icon_no_pack_to_apply">Please import an icon pack first.</string>
-    <string name="custom_icon_tile_state_active">Active (Tap to toggle)</string>
-    <string name="custom_icon_tile_state_inactive">Inactive (Tap to toggle)</string>
-    <string name="custom_icon_import_success">Icon pack imported successfully</string>
-    <string name="custom_icon_reset_success">Default icons restored</string>
-    <string name="custom_icon_reset_confirm">Are you sure you want to restore default icons?</string>
-    <string name="custom_icon_error_missing">Icon pack must contain: %s</string>
-    <string name="custom_icon_error_dimension">%1$s must be 512x512 pixels (current: %2$dx%3$d)</string>
-    <string name="custom_icon_error_not_png">%s is not a valid PNG image</string>
-    <string name="custom_icon_error_security">Security verification failed: %s</string>
-    <string name="custom_icon_requirement_tip">Icon pack must be a ZIP archive containing 512x512 icon.png and tile.png.</string>
 </resources>
 
