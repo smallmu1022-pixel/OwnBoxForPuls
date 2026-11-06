@@ -455,7 +455,6 @@
     <string name="missing_plugin">Missing Plugin</string>
     <string name="profile_requiring_plugin">Profile %s requires the %s plugin to be installed, but
         it was not found.</string>
-    <string name="action_learn_more">LEARN MORE</string>
     <string name="action_download">DOWNLOAD</string>
     <string name="install_from_play_store">Install from Play Store</string>
     <string name="install_from_fdroid">Install from F-Droid</string>
