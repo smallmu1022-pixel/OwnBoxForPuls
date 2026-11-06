@@ -3,14 +3,12 @@ package io.nekohasekai.sagernet.bg
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SYSTEM_EXEMPTED
 import android.os.Build
 import android.text.format.Formatter
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import io.nekohasekai.sagernet.Action
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.SagerNet
 import io.nekohasekai.sagernet.database.DataStore
@@ -18,7 +16,6 @@ import io.nekohasekai.sagernet.database.ProxyEntity
 import io.nekohasekai.sagernet.database.SagerDatabase
 import io.nekohasekai.sagernet.ktx.app
 import io.nekohasekai.sagernet.ktx.runOnMainDispatcher
-import io.nekohasekai.sagernet.ui.SwitchActivity
 import io.nekohasekai.sagernet.utils.Theme
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -103,6 +100,7 @@ class ServiceNotification(
 
     private val builder = NotificationCompat.Builder(service as Context, channel)
         .setWhen(0)
+        .setShowWhen(false)
         .setTicker(service.getString(R.string.forward_success))
         .setContentTitle(title)
         .setOnlyAlertOnce(true)
@@ -133,32 +131,11 @@ class ServiceNotification(
         }
     }
 
+    // OneBox V1.0.3：通知栏只显示订阅信息与下载速度，不再放操作按钮。
     private suspend fun updateActions() {
         service as Context
         useBuilder {
             it.clearActions()
-
-            val closeAction = NotificationCompat.Action.Builder(
-                R.drawable.ic_service_stopped, service.getText(R.string.stop), PendingIntent.getBroadcast(
-                    service, 0, Intent(Action.CLOSE).setPackage(service.packageName), flags
-                )
-            ).setShowsUserInterface(false).build()
-            it.addAction(closeAction)
-
-            val switchAction = NotificationCompat.Action.Builder(
-                R.drawable.ic_baseline_compare_arrows_24, service.getString(R.string.action_switch), PendingIntent.getActivity(
-                    service, 1, Intent(service, SwitchActivity::class.java), flags
-                )
-            ).setShowsUserInterface(false).build()
-            it.addAction(switchAction)
-
-            val resetUpstreamAction = NotificationCompat.Action.Builder(
-                R.drawable.ic_baseline_refresh_24, service.getString(R.string.action_reset),
-                PendingIntent.getBroadcast(
-                    service, 2, Intent(Action.RESET_UPSTREAM_CONNECTIONS).setPackage(service.packageName), flags
-                )
-            ).setShowsUserInterface(false).build()
-            it.addAction(resetUpstreamAction)
         }
     }
 
