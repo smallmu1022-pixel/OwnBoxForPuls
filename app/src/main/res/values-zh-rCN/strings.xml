@@ -352,7 +352,6 @@
     <string name="confirm">确认</string>
     <string name="missing_plugin">缺少插件</string>
     <string name="profile_requiring_plugin">配置 %s 需要插件 %s, 但找不到.</string>
-    <string name="action_learn_more">了解更多</string>
     <string name="action_download">下载</string>
     <string name="install_from_play_store">从 Play Store 安装</string>
     <string name="install_from_fdroid">从 F-Droid 安装</string>
