@@ -351,9 +351,9 @@
     </style>
     <style name="Widget.SagerNet.DrawerSettingsButton" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.SagerNet.DrawerButton</item>
-        <item name="android:textColor">@color/ownbox_drawer_action_text</item>
-        <item name="iconTint">@color/ownbox_drawer_action_text</item>
-        <item name="backgroundTint">@color/ownbox_drawer_action_fill</item>
+        <item name="android:textColor">@color/onebox_drawer_action_text</item>
+        <item name="iconTint">@color/onebox_drawer_action_text</item>
+        <item name="backgroundTint">@color/onebox_drawer_action_fill</item>
         <item name="strokeWidth">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -912,7 +912,7 @@
     </style>
 
 
-    <style name="Theme.OwnBox.Dialog" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.OneBox.Dialog" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>

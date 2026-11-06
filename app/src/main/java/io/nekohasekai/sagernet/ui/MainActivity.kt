@@ -795,7 +795,7 @@ class MainActivity : ThemedActivity(),
     ) {
         DataStore.serviceState = state
         refreshConfigurationProfileState()
-        io.nekohasekai.sagernet.widget.OwnBoxWidgetProvider.updateWidgets(this)
+        io.nekohasekai.sagernet.widget.OneBoxWidgetProvider.updateWidgets(this)
 
         binding.fab.changeState(state, DataStore.serviceState, animate)
         binding.stats.changeState(state)
