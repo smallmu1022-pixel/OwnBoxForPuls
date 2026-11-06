@@ -334,7 +334,6 @@
     <string name="confirm">확인</string>
     <string name="missing_plugin">플러그인 누락</string>
     <string name="profile_requiring_plugin">프로파일 %s에는 %s 플러그인 설치가 필요하지만 찾을 수 없습니다.</string>
-    <string name="action_learn_more">자세히 보기</string>
     <string name="action_download">다운로드</string>
     <string name="install_from_play_store">Play 스토어에서 설치</string>
     <string name="install_from_fdroid">F-Droid에서 설치</string>
