@@ -61,7 +61,6 @@
         android:hasFragileUserData="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -173,26 +172,6 @@
                 android:resource="@xml/shortcuts" />
         </activity-alias>
         <activity-alias
-            android:name="io.nekohasekai.sagernet.launcher.DarkMode"
-            android:enabled="false"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher_dark"
-            android:roundIcon="@mipmap/ic_launcher_dark_round"
-            android:label="@string/app_name"
-            android:targetActivity="io.nekohasekai.sagernet.ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
-        </activity-alias>
-        <activity-alias
             android:name="io.nekohasekai.sagernet.launcher.OldNekoBoxPlus"
             android:enabled="false"
             android:exported="true"
@@ -217,26 +196,6 @@
             android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_nekobox"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:label="@string/app_name"
-            android:targetActivity="io.nekohasekai.sagernet.ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
-        </activity-alias>
-        <activity-alias
-            android:name="io.nekohasekai.sagernet.launcher.Midnight"
-            android:enabled="false"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher_midnight"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:label="@string/app_name"
             android:targetActivity="io.nekohasekai.sagernet.ui.MainActivity">
@@ -550,7 +509,7 @@
         <receiver
             android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget1x1"
             android:exported="true"
-            android:label="OwnBox 1×1 (水滴微球)">
+            android:label="OneBox 1×1 (水滴微球)">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -562,7 +521,7 @@
         <receiver
             android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget2x2"
             android:exported="true"
-            android:label="OwnBox 2×2 (紧凑状态)">
+            android:label="OneBox 2×2 (紧凑状态)">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -574,7 +533,7 @@
         <receiver
             android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget4x1"
             android:exported="true"
-            android:label="OwnBox 4×1 (胶囊操作栏)">
+            android:label="OneBox 4×1 (胶囊操作栏)">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -586,7 +545,7 @@
         <receiver
             android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget4x2"
             android:exported="true"
-            android:label="OwnBox 4×2 (全景仪表板)">
+            android:label="OneBox 4×2 (全景仪表板)">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -615,13 +574,6 @@
             android:launchMode="singleInstance"
             android:taskAffinity=""
             android:theme="@style/Theme.OwnBox.Dialog" />
-
-
-        <activity
-            android:name="io.nekohasekai.sagernet.ui.LanSharingActivity"
-            android:configChanges="uiMode"
-            android:label="@string/lan_sharing" />
-
-    </application>
+</application>
 
 </manifest>

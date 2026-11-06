@@ -116,7 +116,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var isExpert by configurationStore.boolean(Key.APP_EXPERT)
     var appTheme by configurationStore.int(Key.APP_THEME) { Theme.LIGHT_GRAY }
     val useSystemTheme: Boolean get() = false
-    var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME)
+    var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME) { 2 }
     var appLanguage by configurationStore.string(Key.APP_LANGUAGE) { "" }
     var serviceMode by configurationStore.string(Key.SERVICE_MODE) { Key.MODE_VPN }
 
@@ -131,7 +131,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var dualNetworkAcceleration by configurationStore.boolean(Key.DUAL_NETWORK_ACCELERATION)
     var autoSelectLowestLatency by configurationStore.boolean(Key.AUTO_SELECT_LOWEST_LATENCY)
 
-    var allowAccess by configurationStore.boolean(Key.ALLOW_ACCESS)
+    var allowAccess by configurationStore.boolean(Key.ALLOW_ACCESS) // OneBox V1.0.0: 局域网共享已移除，此开关不再生效；仅保留键位以兼容旧版备份导入写入。
     var speedInterval by configurationStore.stringToInt(Key.SPEED_INTERVAL)
     var showGroupInNotification by configurationStore.boolean("showGroupInNotification")
 
@@ -424,9 +424,9 @@ object DataStore : OnPreferenceDataStoreChangeListener {
         set(value) {
             rawGroupUrlTestUrl = value.trim()
         }
-    var groupUrlTestInterval by profileCacheStore.stringToInt("groupUrlTestInterval") { 300 }
+    var groupUrlTestInterval by profileCacheStore.stringToInt("groupUrlTestInterval") { 600 }
     var groupUrlTestTolerance by profileCacheStore.stringToInt("groupUrlTestTolerance") { 50 }
-    var groupUrlTestIdleTimeout by profileCacheStore.string("groupUrlTestIdleTimeout") { "30m" }
+    var groupUrlTestIdleTimeout by profileCacheStore.string("groupUrlTestIdleTimeout") { "15m" }
     var groupUrlTestInterruptExist by profileCacheStore.boolean("groupUrlTestInterruptExist")
 
     fun isGroupDisabled(groupId: Long): Boolean =
@@ -460,7 +460,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     }
 
     fun groupUrlTestInterval(groupId: Long): Long =
-        configurationStore.getString("group_${groupId}_urlTestInterval", "300")?.toLongOrNull() ?: 300L
+        configurationStore.getString("group_${groupId}_urlTestInterval", "600")?.toLongOrNull() ?: 600L
     fun setGroupUrlTestInterval(groupId: Long, value: Long) {
         configurationStore.putString("group_${groupId}_urlTestInterval", value.toString())
     }
@@ -472,7 +472,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     }
 
     fun groupUrlTestIdleTimeout(groupId: Long): String =
-        configurationStore.getString("group_${groupId}_urlTestIdleTimeout", "30m") ?: "30m"
+        configurationStore.getString("group_${groupId}_urlTestIdleTimeout", "15m") ?: "15m"
     fun setGroupUrlTestIdleTimeout(groupId: Long, value: String) {
         configurationStore.putString("group_${groupId}_urlTestIdleTimeout", value)
     }
