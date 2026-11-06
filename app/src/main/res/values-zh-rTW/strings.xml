@@ -328,7 +328,6 @@
     <string name="confirm">確認</string>
     <string name="missing_plugin">遺失外掛程式</string>
     <string name="profile_requiring_plugin">設定檔 %s 需要外掛程式 %s，但其未被安裝。</string>
-    <string name="action_learn_more">深入瞭解</string>
     <string name="action_download">下載</string>
     <string name="install_from_play_store">從 Play 商店安裝</string>
     <string name="install_from_fdroid">從 F-Droid 安裝</string>

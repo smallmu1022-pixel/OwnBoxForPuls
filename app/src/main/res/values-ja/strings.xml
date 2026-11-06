@@ -340,7 +340,6 @@
     <string name="confirm">確認</string>
     <string name="missing_plugin">プラグインがありません</string>
     <string name="profile_requiring_plugin">プロファイル %s には %s プラグインのインストールが必要ですが、見つかりませんでした。</string>
-    <string name="action_learn_more">詳細</string>
     <string name="action_download">ダウンロード</string>
     <string name="install_from_play_store">Play ストアからインストール</string>
     <string name="install_from_fdroid">F-Droid からインストール</string>
