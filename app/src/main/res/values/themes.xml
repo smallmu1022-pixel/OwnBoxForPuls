@@ -42,6 +42,15 @@
         <!-- 立体卡片提升表面色，默认遵循 MD3 规范使用标准表面色 -->
         <item name="cardElevatedSurfaceColor">@color/md3_surface</item>
 
+        <!-- OneBox 液态玻璃：玻璃面颜色走主题属性；普通主题用 glass_*（深浅随系统自动切换），液态玻璃主题用更透明的 glass_liquid_* -->
+        <item name="glassSurface">@color/glass_surface</item>
+        <item name="glassFillTop">@color/glass_fill_top</item>
+        <item name="glassFillBottom">@color/glass_fill_bottom</item>
+        <item name="glassFillStrongTop">@color/glass_fill_strong_top</item>
+        <item name="glassFillStrongBottom">@color/glass_fill_strong_bottom</item>
+        <item name="glassStroke">@color/glass_stroke</item>
+        <item name="glassHighlight">@color/glass_highlight</item>
+
         <item name="accentOrTextSecondary">?colorAccent</item>
         <item name="accentOrTextPrimary">?colorAccent</item>
         <item name="primaryOrTextSecondary">?colorPrimary</item>
@@ -132,6 +141,15 @@
 
         <!-- 立体卡片提升表面色，默认遵循 MD3 规范使用标准表面色 -->
         <item name="cardElevatedSurfaceColor">@color/md3_surface</item>
+
+        <!-- OneBox 液态玻璃：玻璃面颜色走主题属性；普通主题用 glass_*（深浅随系统自动切换），液态玻璃主题用更透明的 glass_liquid_* -->
+        <item name="glassSurface">@color/glass_surface</item>
+        <item name="glassFillTop">@color/glass_fill_top</item>
+        <item name="glassFillBottom">@color/glass_fill_bottom</item>
+        <item name="glassFillStrongTop">@color/glass_fill_strong_top</item>
+        <item name="glassFillStrongBottom">@color/glass_fill_strong_bottom</item>
+        <item name="glassStroke">@color/glass_stroke</item>
+        <item name="glassHighlight">@color/glass_highlight</item>
 
         <item name="accentOrTextSecondary">?colorAccent</item>
         <item name="accentOrTextPrimary">?colorAccent</item>
@@ -225,7 +243,7 @@
         <item name="cardCornerRadius">@dimen/glass_card_corner_radius</item>
         <item name="strokeColor">@color/card_stroke</item>
         <item name="strokeWidth">@dimen/card_stroke_width</item>
-        <item name="cardBackgroundColor">@color/glass_surface</item>
+        <item name="cardBackgroundColor">?attr/glassSurface</item>
     </style>
 
     <!-- MD3 Immersive AppBar & Toolbar styles -->
@@ -837,6 +855,17 @@
         <item name="primaryOrTextPrimary">?android:textColorPrimary</item>
         <item name="appBarLayoutStyle">@style/Widget.SagerNet.AppBarLayout.LightGray</item>
     </style>
+
+    <!-- OneBox 液态玻璃模式：固定浅色玻璃，不跟随系统深浅变化；玻璃面用更透明的半透明配色 -->
+    <style name="Theme.SagerNet.Glass" parent="Theme.SagerNet.LightGray">
+        <item name="glassSurface">@color/glass_liquid_surface</item>
+        <item name="glassFillTop">@color/glass_liquid_fill_top</item>
+        <item name="glassFillBottom">@color/glass_liquid_fill_bottom</item>
+        <item name="glassFillStrongTop">@color/glass_liquid_fill_strong_top</item>
+        <item name="glassFillStrongBottom">@color/glass_liquid_fill_strong_bottom</item>
+        <item name="glassStroke">@color/glass_liquid_stroke</item>
+        <item name="glassHighlight">@color/glass_liquid_highlight</item>
+    </style>
     <style name="Theme.SagerNet.Dialog.Black" parent="Theme.SagerNet.Dialog">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/color_black_theme_primary_dark</item>
@@ -893,6 +922,17 @@
         <item name="android:textColorSecondary">@color/color_light_gray_text_secondary</item>
         <item name="fabColorBackground">@color/color_light_gray_primary</item>
         <item name="selectedColorPrimary">@color/color_light_gray_primary</item>
+    </style>
+
+    <!-- OneBox 液态玻璃模式（对话框）：固定浅色玻璃，不跟随系统深浅变化；玻璃面用更透明的半透明配色 -->
+    <style name="Theme.SagerNet.Dialog.Glass" parent="Theme.SagerNet.Dialog.LightGray">
+        <item name="glassSurface">@color/glass_liquid_surface</item>
+        <item name="glassFillTop">@color/glass_liquid_fill_top</item>
+        <item name="glassFillBottom">@color/glass_liquid_fill_bottom</item>
+        <item name="glassFillStrongTop">@color/glass_liquid_fill_strong_top</item>
+        <item name="glassFillStrongBottom">@color/glass_liquid_fill_strong_bottom</item>
+        <item name="glassStroke">@color/glass_liquid_stroke</item>
+        <item name="glassHighlight">@color/glass_liquid_highlight</item>
     </style>
 
     <style name="Theme.SagerNet.Monet" parent="Theme.SagerNet" />

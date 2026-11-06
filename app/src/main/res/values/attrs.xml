@@ -12,4 +12,12 @@
     <attr name="whiteOrTextPrimary" format="color" />
     <!-- 立体卡片（路由/分组）的"色调提升表面色"，各主题变体朝自身 primary 染色 -->
     <attr name="cardElevatedSurfaceColor" format="color" />
+    <!-- OneBox 液态玻璃：玻璃面的颜色全部走主题属性，普通主题用 glass_*，液态玻璃主题用更透明的 glass_liquid_* -->
+    <attr name="glassSurface" format="color" />
+    <attr name="glassFillTop" format="color" />
+    <attr name="glassFillBottom" format="color" />
+    <attr name="glassFillStrongTop" format="color" />
+    <attr name="glassFillStrongBottom" format="color" />
+    <attr name="glassStroke" format="color" />
+    <attr name="glassHighlight" format="color" />
 </resources>

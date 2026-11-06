@@ -72,15 +72,23 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
             }
         }
 
-        childFragmentManager.beginTransaction()
-            .replace(R.id.about_fragment_holder, AboutContent())
-            .commitAllowingStateLoss()
+        // 关于内容列表较重（RecyclerView 全量测量 + 插件信息读取），延后一帧再挂载，
+        // 让本页骨架先完成布局、进场动画不掉帧。
+        view.post {
+            if (!isAdded) return@post
+            childFragmentManager.beginTransaction()
+                .replace(R.id.about_fragment_holder, AboutContent())
+                .commitAllowingStateLoss()
+        }
 
         runOnDefaultDispatcher {
             val license = view.context.assets.open("LICENSE").bufferedReader().readText()
+            // Linkify 的正则扫描在后台线程做，避免 LICENSE 全文回填时阻塞主线程。
+            val spannable = SpannableString(license).apply {
+                Linkify.addLinks(this, Linkify.EMAIL_ADDRESSES or Linkify.WEB_URLS)
+            }
             onMainDispatcher {
-                binding.license.text = license
-                Linkify.addLinks(binding.license, Linkify.EMAIL_ADDRESSES or Linkify.WEB_URLS)
+                binding.license.text = spannable
             }
         }
     }
@@ -90,6 +98,9 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
     }
 
     class AboutContent : MaterialAboutFragment() {
+
+        // 插件行是否已包含在本次列表中（缓存未就绪时会跳过，后台加载后按需重建补上）。
+        private var pluginsIncluded = false
 
         val requestIgnoreBatteryOptimizations = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -139,34 +150,38 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                 .setOnClickAction { }
                                 .build())
                         .apply {
-                            PackageCache.awaitLoadSync()
-                            for ((_, pkg) in PackageCache.installedPluginPackages) {
-                                try {
-                                    val pluginId =
-                                        pkg.providers?.get(0)?.loadString(Plugins.METADATA_KEY_ID)
-                                    if (pluginId.isNullOrBlank()) continue
-                                    addItem(
-                                        MaterialAboutActionItem.Builder()
-                                            .icon(R.drawable.ic_baseline_nfc_24)
-                                            .text(
-                                                getString(
-                                                    R.string.version_x,
-                                                    pluginId
-                                                ) + " (${Plugins.displayExeProvider(pkg.packageName)})"
-                                            )
-                                            .subText("v" + pkg.versionName)
-                                            .setOnClickAction {
-                                                startActivity(Intent().apply {
-                                                    action =
-                                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                                    data = Uri.fromParts(
-                                                        "package", pkg.packageName, null
-                                                    )
-                                                })
-                                            }
-                                            .build())
-                                } catch (e: Exception) {
-                                    Logs.w(e)
+                            // 插件缓存未就绪时不阻塞主线程（awaitLoadSync 会做全量包扫描），
+                            // 先跳过插件行，后台加载完成后按需重建本页补上。
+                            if (PackageCache.isLoaded()) {
+                                pluginsIncluded = true
+                                for ((_, pkg) in PackageCache.installedPluginPackages) {
+                                    try {
+                                        val pluginId =
+                                            pkg.providers?.get(0)?.loadString(Plugins.METADATA_KEY_ID)
+                                        if (pluginId.isNullOrBlank()) continue
+                                        addItem(
+                                            MaterialAboutActionItem.Builder()
+                                                .icon(R.drawable.ic_baseline_nfc_24)
+                                                .text(
+                                                    getString(
+                                                        R.string.version_x,
+                                                        pluginId
+                                                    ) + " (${Plugins.displayExeProvider(pkg.packageName)})"
+                                                )
+                                                .subText("v" + pkg.versionName)
+                                                .setOnClickAction {
+                                                    startActivity(Intent().apply {
+                                                        action =
+                                                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                                                        data = Uri.fromParts(
+                                                            "package", pkg.packageName, null
+                                                        )
+                                                    })
+                                                }
+                                                .build())
+                                    } catch (e: Exception) {
+                                        Logs.w(e)
+                                    }
                                 }
                             }
                         }
@@ -241,6 +256,8 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
             view.findViewById<RecyclerView>(R.id.mal_recyclerview)?.apply {
                 isNestedScrollingEnabled = false
                 overScrollMode = View.OVER_SCROLL_NEVER
+                // 列表内容静态，不需要变更动画，关掉可减少布局开销。
+                itemAnimator = null
                 layoutParams = (layoutParams ?: ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -278,6 +295,21 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                 )
                 for (index in 0 until childCount) {
                     applyApplicationCardStyle(getChildAt(index))
+                }
+            }
+
+            // 插件缓存未就绪时，后台加载完成后若有插件则重建本页补上插件行。
+            if (!pluginsIncluded) {
+                runOnDefaultDispatcher {
+                    PackageCache.awaitLoadSync()
+                    val hasPlugins = PackageCache.isLoaded() &&
+                        PackageCache.installedPluginPackages.isNotEmpty()
+                    onMainDispatcher {
+                        if (!this@AboutContent.isAdded || !hasPlugins) return@onMainDispatcher
+                        this@AboutContent.parentFragmentManager.beginTransaction()
+                            .replace(R.id.about_fragment_holder, AboutContent())
+                            .commitAllowingStateLoss()
+                    }
                 }
             }
         }

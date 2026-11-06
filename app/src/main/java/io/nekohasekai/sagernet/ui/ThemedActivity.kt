@@ -132,7 +132,10 @@ abstract class ThemedActivity : AppCompatActivity {
 
         if (newConfig.uiMode != uiMode) {
             uiMode = newConfig.uiMode
-            ActivityCompat.recreate(this)
+            // 液态玻璃模式固定为浅色玻璃，不跟随系统深浅变化，无需重建。
+            if (!Theme.isGlassMode()) {
+                ActivityCompat.recreate(this)
+            }
         }
     }
 

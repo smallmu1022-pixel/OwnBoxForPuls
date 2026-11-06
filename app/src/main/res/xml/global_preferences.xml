@@ -64,7 +64,7 @@
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
             app:defaultValue="0"
             app:entries="@array/night_mode"
-            app:entryValues="@array/int_array_4"
+            app:entryValues="@array/night_mode_values"
             app:icon="@drawable/ic_baseline_wb_sunny_24"
             app:key="nightTheme"
             app:title="@string/night_mode"

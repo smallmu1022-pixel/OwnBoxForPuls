@@ -272,6 +272,7 @@
     <string name="auto">自动</string>
     <string name="night_mode">夜间模式</string>
     <string name="follow_system">跟随系统</string>
+    <string name="liquid_glass">液态玻璃</string>
     <string name="security_settings">TLS 安全设置</string>
     <string name="allow_insecure">允许不安全的连接</string>
     <string name="allow_insecure_sum">禁用证书检查. 启用后该配置安全性相当于明文</string>

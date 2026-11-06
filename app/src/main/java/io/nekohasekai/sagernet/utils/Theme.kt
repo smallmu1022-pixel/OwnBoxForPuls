@@ -90,6 +90,10 @@ object Theme {
     }
 
     fun getTheme(context: Context = app): Int {
+        // 液态玻璃模式：固定浅色玻璃主题，不跟随系统深浅变化，也不跟随 appTheme。
+        if (DataStore.nightTheme == NIGHT_MODE_GLASS) {
+            return R.style.Theme_SagerNet_Glass
+        }
         if (usingNightMode(context)) {
             return R.style.Theme_SagerNet_Black
         }
@@ -107,6 +111,10 @@ object Theme {
     }
 
     fun getDialogTheme(context: Context = app): Int {
+        // 液态玻璃模式：固定浅色玻璃对话框主题，不跟随系统深浅变化，也不跟随 appTheme。
+        if (DataStore.nightTheme == NIGHT_MODE_GLASS) {
+            return R.style.Theme_SagerNet_Dialog_Glass
+        }
         if (usingNightMode(context)) {
             return R.style.Theme_SagerNet_Dialog_Black
         }
@@ -161,9 +169,9 @@ object Theme {
         return (sysUiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
     }
 
-    fun isWhiteTheme(context: Context = app): Boolean = !usingNightMode(context) && DataStore.appTheme == WHITE
-    fun isLightGrayTheme(context: Context = app): Boolean = !usingNightMode(context) && DataStore.appTheme == LIGHT_GRAY
-    fun isBlackTheme(context: Context = app): Boolean = usingNightMode(context) || DataStore.appTheme == BLACK
+    fun isWhiteTheme(context: Context = app): Boolean = !isGlassMode() && !usingNightMode(context) && DataStore.appTheme == WHITE
+    fun isLightGrayTheme(context: Context = app): Boolean = !usingNightMode(context) && (DataStore.appTheme == LIGHT_GRAY || isGlassMode())
+    fun isBlackTheme(context: Context = app): Boolean = !isGlassMode() && (usingNightMode(context) || DataStore.appTheme == BLACK)
 
     fun getPrimaryColor(context: Context): Int {
         if (isWhiteTheme(context)) {
@@ -186,6 +194,11 @@ object Theme {
 
     var currentNightMode = -1
 
+    // OneBox V1.0.3：液态玻璃模式（4），固定浅色玻璃，不跟随系统深浅变化。
+    const val NIGHT_MODE_GLASS = 4
+
+    fun isGlassMode(): Boolean = DataStore.nightTheme == NIGHT_MODE_GLASS
+
     // OneBox V1.0.1: 恢复跟随系统夜间模式（默认 0 = 跟随系统）。
     fun getNightMode(): Int {
         if (currentNightMode == -1) {
@@ -199,6 +212,7 @@ object Theme {
             0 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             1 -> AppCompatDelegate.MODE_NIGHT_YES
             2 -> AppCompatDelegate.MODE_NIGHT_NO
+            NIGHT_MODE_GLASS -> AppCompatDelegate.MODE_NIGHT_NO
             else -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
         }
     }
@@ -207,12 +221,15 @@ object Theme {
         return when (DataStore.nightTheme) {
             1 -> true
             2 -> false
+            NIGHT_MODE_GLASS -> false
             else -> isSystemNight(context)
         }
     }
 
     fun applyNightTheme() {
-        if (DataStore.nightTheme == 0) {
+        if (DataStore.nightTheme == NIGHT_MODE_GLASS) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else if (DataStore.nightTheme == 0) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         } else if (DataStore.nightTheme == 1 || DataStore.appTheme == BLACK) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

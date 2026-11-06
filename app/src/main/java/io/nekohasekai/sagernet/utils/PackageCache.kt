@@ -74,6 +74,9 @@ object PackageCache {
     operator fun get(uid: Int) = uidMap[uid]
     operator fun get(packageName: String) = packageMap[packageName]
 
+    // 是否已完成首次加载（About 页用它判断能否直接读插件列表，避免在主线程阻塞等待）。
+    fun isLoaded(): Boolean = ::packageMap.isInitialized
+
     fun awaitLoadSync() {
         if (::packageMap.isInitialized) {
             return
