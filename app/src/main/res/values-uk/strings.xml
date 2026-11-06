@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">OwnBox</string>
-    <string name="app_name_long" translatable="false">OwnBox for Android</string>
+    <string name="app_name" translatable="false">OneBox</string>
+    <string name="app_name_long" translatable="false">OneBox for Android</string>
     <string name="app_desc">Універсальний набір інструментів проксі для Android, написаний на Kotlin.</string>
     <string name="project">Проєкт</string>
     <string name="github">Вихідний код</string>
-    <string name="telegram">Канал оновлень в Telegram</string>
     <string name="oss_licenses">Ліцензії з відкритим кодом</string>
     <string name="app_version">Версія</string>
     <string name="version_x">Версія (%s)</string>
@@ -60,8 +59,6 @@
     <string name="disable_mixed_inbound_proxy_toast">Вимкнення діє лише в режимі TUN; поточний порт прослуховування: %1$d</string>
     <string name="port_transproxy">Транспроксі-порт</string>
     <string name="cag_route">Налаштування маршруту</string>
-    <string name="allow_access">Дозволити підключення з локальної мережі</string>
-    <string name="allow_access_sum">Прив’язати вхідні сервери до 0.0.0.0</string>
     <string name="inbound_settings">Вхідні налаштування</string>
     <string name="general_settings">Налаштування програми</string>
     <string name="require_http">Увімкнути вхідний протокол HTTP</string>
@@ -301,7 +298,6 @@
     <string name="license">Ліцензія</string>
     <string name="route_warn">Переконайтеся, що ви прочитали документацію перед додаванням власних правил, інакше ви можете не підключитися до Інтернету.</string>
     <string name="lines">%d рядків</string>
-    <string name="night_mode">Нічний режим</string>
     <string name="follow_system">Як у системі</string>
     <string name="enable">Увімкнути</string>
     <string name="disable">Вимкнути</string>
@@ -556,25 +552,5 @@
     <string name="speed_test_rate_mbps">%1$.2f Mbps</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">Користувацькі іконки</string>
-    <string name="custom_icon_import">Імпортувати набір іконок</string>
-    <string name="custom_icon_reset">Скинути за замовчуванням</string>
-    <string name="custom_icon_preview_shortcut">Іконка ярлика</string>
-    <string name="custom_icon_shortcut_subtitle">Платформа Android не підтримує зміну іконки програми. За потреби зробіть fork та змініть самостійно!</string>
-    <string name="custom_icon_preview_tile">Плитка швидких налаштувань</string>
-    <string name="custom_icon_apply_pack">Застосувати цей набір іконок</string>
-    <string name="custom_icon_apply_success">Набір іконок застосовано. Запитано створення ярлика на робочому столі.</string>
-    <string name="custom_icon_pin_shortcut_not_supported">Поточний лаунчер не підтримує закріплення ярликів.</string>
-    <string name="custom_icon_no_pack_to_apply">Спочатку імпортуйте набір іконок.</string>
-    <string name="custom_icon_tile_state_active">Увімкнено (натисніть для перемикання)</string>
-    <string name="custom_icon_tile_state_inactive">Вимкнено (натисніть для перемикання)</string>
-    <string name="custom_icon_import_success">Набір іконок успішно імпортовано</string>
-    <string name="custom_icon_reset_success">Відновлено іконки за замовчуванням</string>
-    <string name="custom_icon_reset_confirm">Ви впевнені, що хочете відновити іконки за замовчуванням?</string>
-    <string name="custom_icon_error_missing">У наборі іконок відсутній обов\'язковий файл: %s</string>
-    <string name="custom_icon_error_dimension">Роздільна здатність %1$s має бути 512x512 пікселів (поточна: %2$dx%3$d)</string>
-    <string name="custom_icon_error_not_png">%s не є коректним зображенням PNG</string>
-    <string name="custom_icon_error_security">Помилка перевірки безпеки: %s</string>
-    <string name="custom_icon_requirement_tip">Набір іконок має бути ZIP-архівом, що містить icon.png та tile.png розміром 512x512.</string>
 </resources>
 
