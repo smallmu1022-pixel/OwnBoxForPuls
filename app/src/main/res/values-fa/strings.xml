@@ -352,7 +352,6 @@
     <string name="confirm">تأیید</string>
     <string name="missing_plugin">افزونه مورد نیاز یافت‌ نشد</string>
     <string name="profile_requiring_plugin">پراکسی %s نیاز به نصب افزونه %s دارد، اما پیدا نشد.</string>
-    <string name="action_learn_more">اطلاعات بیشتر</string>
     <string name="action_download">دانلود</string>
     <string name="install_from_play_store">نصب از فروشگاه Play</string>
     <string name="install_from_fdroid">نصب از F-Droid</string>
