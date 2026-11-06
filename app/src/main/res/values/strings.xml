@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">OwnBox</string>
-    <string name="app_name_long" translatable="false">OwnBox for Android</string>
+    <string name="app_name" translatable="false">OneBox</string>
+    <string name="app_name_long" translatable="false">OneBox for Android</string>
     <string name="app_desc">The universal proxy toolchain for Android, written in Kotlin.</string>
     <string name="project">Project</string>
     <string name="github">Source code</string>
-    <string name="telegram">Telegram update channel</string>
     <string name="oss_licenses">Open source licenses</string>
     <string name="app_version">Version</string>
     <string name="version_x">Version (%s)</string>
@@ -70,60 +69,6 @@
     <string name="disable_mixed_inbound_proxy_toast">Disabling only takes effect in TUN mode; currently listening on port: %1$d</string>
     <string name="port_transproxy">Transproxy Port</string>
     <string name="cag_route">Route Settings</string>
-    <string name="allow_access">Allow Connections from the LAN</string>
-    <string name="allow_access_sum">Bind inbound servers to 0.0.0.0</string>
-    <string name="lan_sharing">LAN Sharing</string>
-    <string name="lan_sharing_disabled_sum">Tap to enable hotspot proxy sharing</string>
-    <string name="lan_sharing_enabled_sum">Sharing enabled: set proxy %1$s:%2$d in Wi-Fi settings</string>
-    <string name="lan_sharing_dialog_off">LAN Sharing is currently disabled.\n\n1. Tap \"Turn On\" to enable.\n2. Enable the phone hotspot.\n3. Connect your device to OwnBox VPN.\n4. On the other device, connect to this hotspot, then set Manual Proxy in Wi-Fi settings:\n   Hostname: %1$s\n   Port: %2$d\n\nNo root required.</string>
-    <string name="lan_sharing_dialog_on">LAN Sharing is currently ON.\n\nOther devices on the hotspot can use:\n   Hostname: %1$s\n   Port: %2$d\n\nSet Manual Proxy in Wi-Fi settings on the other device.\n\nTap \"Turn Off\" to disable sharing.</string>
-    <string name="lan_sharing_turn_on">Turn On</string>
-    <string name="lan_sharing_turn_off">Turn Off</string>
-    <string name="lan_sharing_tools_summary">Share VPN proxy to other devices via Hotspot or local Wi-Fi without root</string>
-    <string name="lan_sharing_active">Proxy Sharing Active</string>
-    <string name="lan_sharing_inactive">Sharing Disabled</string>
-    <string name="lan_sharing_status_sub">Port %1$d · Auth %2$s</string>
-    <string name="lan_sharing_service_category">Sharing Service</string>
-    <string name="lan_sharing_status_running">Running</string>
-    <string name="lan_sharing_status_stopped">Stopped</string>
-    <string name="lan_sharing_switch_title">LAN Sharing</string>
-    <string name="lan_sharing_switch_sub">HTTP / SOCKS Mixed Inbound (0.0.0.0)</string>
-    <string name="lan_sharing_hotspot_ip">Method A: Phone Hotspot</string>
-    <string name="lan_sharing_hotspot_desc">Connect client to this hotspot, enter IP below in proxy host</string>
-    <string name="lan_sharing_hotspot_hint_off">Hotspot not active · Default IP is usually 192.168.43.1</string>
-    <string name="lan_sharing_hotspot_detected">Hotspot Active</string>
-    <string name="lan_sharing_hotspot_not_active">Hotspot Off</string>
-    <string name="lan_sharing_wifi_ip">Method B: Same Wi-Fi</string>
-    <string name="lan_sharing_wifi_desc">Use when both devices connect to the same Wi-Fi router</string>
-    <string name="lan_sharing_wifi_hint_off">Not connected to Wi-Fi. Please connect to same Wi-Fi router</string>
-    <string name="lan_sharing_wifi_detected">Wi-Fi Connected</string>
-    <string name="lan_sharing_wifi_not_connected">Wi-Fi Disconnected</string>
-    <string name="lan_sharing_not_connected">Not connected</string>
-    <string name="lan_sharing_wifi_not_connected_tip">Not connected to Wi-Fi. Please use Method A (Phone Hotspot)</string>
-    <string name="lan_sharing_port_label">Proxy Port</string>
-    <string name="lan_sharing_auth_title">Authentication</string>
-    <string name="lan_sharing_auth_none">No username / password</string>
-    <string name="lan_sharing_auth_enabled">Auth Enabled</string>
-    <string name="lan_sharing_not_detected">Not detected</string>
-    <string name="lan_sharing_devices_category">Active Clients</string>
-    <string name="lan_sharing_no_devices">No devices are currently using proxy</string>
-    <string name="lan_sharing_devices_count">%1$d device(s) active</string>
-    <string name="lan_sharing_no_devices_hint">Configure proxy host and port on the client device. Active connections will appear here in real-time.</string>
-    <string name="lan_sharing_device_hotspot">Hotspot Client</string>
-    <string name="lan_sharing_device_wifi">LAN Client</string>
-    <string name="lan_sharing_device_active">%1$d active connection(s)</string>
-    <string name="lan_sharing_device_idle">Idle (recently active)</string>
-    <string name="lan_sharing_device_recent">Recent: %1$s</string>
-    <string name="lan_sharing_service_restarting">Applying settings and restarting core...</string>
-    <string name="lan_sharing_service_not_connected">VPN core not connected. Connect a node to share.</string>
-    <string name="lan_sharing_menu_tutorial">Tutorial &amp; Guide</string>
-    <string name="lan_sharing_menu_port">Port Settings</string>
-    <string name="lan_sharing_copied_ip">Copied Hostname IP: %1$s (Do not append port!)</string>
-    <string name="lan_sharing_copied_port">Copied Port: %1$d</string>
-    <string name="lan_sharing_restarting_service">Applying LAN sharing settings and restarting core...</string>
-    <string name="lan_sharing_tutorial_title">LAN Sharing Setup Guide</string>
-    <string name="lan_sharing_tutorial_content"><![CDATA[【LAN Sharing Setup Guide】\n\n📌 Why Method A vs Method B?\n• Method A (Phone Hotspot): This phone turns on personal hotspot, client devices connect to this hotspot. This is the most common and reliable method!\n• Method B (Same Wi-Fi): Neither device creates a hotspot; both are connected to the same Wi-Fi router.\n💡 Note: Phones supporting Wi-Fi sharing can have both Wi-Fi and Hotspot active simultaneously. If other devices connect to your hotspot, always use Method A\'s IP!\n\n────────────────\n\n📌 Method 1: Phone Hotspot Sharing (Recommended)\n1. Enable [LAN Sharing] switch in this page.\n2. Turn on personal hotspot on this phone, and connect to OwnBox VPN.\n3. On the client device (Phone, PC, Switch, etc.), connect to this hotspot Wi-Fi.\n4. Open the Wi-Fi settings / Advanced options of that hotspot:\n   ⚠️ CRITICAL NOTE (Avoid Common Mistakes):\n   Keep [IP Settings] on [DHCP]! Do NOT change to Static IP, or connection will fail!\n   ✅ Correct Setting Location:\n   Find [Proxy], and change it from [None] to [Manual]:\n   • Proxy Hostname: enter the Hotspot IP (e.g. 192.168.43.1). Do NOT append :2080 or port number!\n   • Proxy Port: enter 2080 (or your customized port).\n   • Bypass / No proxy: leave blank or keep default.\n5. Save Wi-Fi settings. The client device can now enjoy VPN proxy without root!\n\n────────────────\n\n📌 Method 2: Same Wi-Fi Sharing (e.g. PC or Smart TV on same home Wi-Fi)\n1. Connect both devices to the same Wi-Fi router.\n2. In client device proxy settings:\n   • Hostname: enter the Local Wi-Fi IPv4 address shown in Method B.\n   • Port: enter 2080.\n   Save to use shared proxy.]]></string>
-    <string name="lan_sharing_invalid_port">Please enter a valid port between 1024 and 65535</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_edit">Edit</string>
     <string name="saved">Saved</string>
@@ -412,6 +357,8 @@
     <string name="deduplication">Deduplication</string>
     <string name="ignore_battery_optimizations">Ignore battery optimizations</string>
     <string name="ignore_battery_optimizations_sum">Remove some restrictions</string>
+    <string name="xiaomi_autostart">Autostart &amp; battery (Xiaomi / Redmi)</string>
+    <string name="xiaomi_autostart_sum">On Xiaomi / Redmi phones, allow autostart and set battery to Unrestricted in system settings, otherwise MIUI may kill the service in the background.</string>
     <!-- plugin -->
     <string name="plugin">Plugin</string>
     <string name="plugin_configure">Configure…</string>
@@ -431,7 +378,6 @@
     <string name="route_warn">Make sure you have read the documentation before adding custom rules,
         otherwise you may not be able to connect to the Internet.</string>
     <string name="lines">%d Lines</string>
-    <string name="night_mode">Night Mode</string>
     <string name="language">Language</string>
     <string name="follow_system">Follow System</string>
     <string name="enable">Enable</string>
@@ -851,26 +797,6 @@
     <string name="wireguard_persistent_keepalive">Persistent keepalive interval</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">Custom Icon</string>
-    <string name="custom_icon_import">Import Icon Pack</string>
-    <string name="custom_icon_reset">Reset to Default</string>
-    <string name="custom_icon_preview_shortcut">Shortcut Icon</string>
-    <string name="custom_icon_shortcut_subtitle">Android does not support modifying the software icon. Please fork and modify if needed!</string>
-    <string name="custom_icon_preview_tile">Quick Settings Tile</string>
-    <string name="custom_icon_apply_pack">Apply This Icon Pack</string>
-    <string name="custom_icon_apply_success">Icon pack applied. Desktop shortcut requested.</string>
-    <string name="custom_icon_pin_shortcut_not_supported">Your launcher does not support pinning shortcuts.</string>
-    <string name="custom_icon_no_pack_to_apply">Please import an icon pack first.</string>
-    <string name="custom_icon_tile_state_active">Active (Tap to toggle)</string>
-    <string name="custom_icon_tile_state_inactive">Inactive (Tap to toggle)</string>
-    <string name="custom_icon_import_success">Icon pack imported successfully</string>
-    <string name="custom_icon_reset_success">Default icons restored</string>
-    <string name="custom_icon_reset_confirm">Are you sure you want to restore default icons?</string>
-    <string name="custom_icon_error_missing">Icon pack must contain: %s</string>
-    <string name="custom_icon_error_dimension">%1$s must be 512x512 pixels (current: %2$dx%3$d)</string>
-    <string name="custom_icon_error_not_png">%s is not a valid PNG image</string>
-    <string name="custom_icon_error_security">Security verification failed: %s</string>
-    <string name="custom_icon_requirement_tip">Icon pack must be a ZIP archive containing 512x512 icon.png and tile.png.</string>
     <string name="more">More</string>
     <string name="action_test_profile_speed">Test Node Speed</string>
     <string name="action_qr_code">QR Code</string>
@@ -923,7 +849,7 @@
     <string name="auto_backup_local_sum">Automatically back up profiles daily to local storage</string>
     <string name="subscription_enabled">Subscription enabled</string>
     <string name="subscription_disabled">Subscription disabled</string>
-    <string name="widget_name">OwnBox Quick Switch</string>
+    <string name="widget_name">OneBox Quick Switch</string>
     <string name="ui_settings">User Interface Settings</string>
     <string name="vpn_settings">VPN Settings</string>
     <string name="core_settings">Core Settings</string>
@@ -935,10 +861,8 @@
     <string name="change_icon">Change icon</string>
         <string name="app_icon_dynamic">Dynamic</string>
         <string name="app_icon_light_mode">Light mode</string>
-        <string name="app_icon_dark_mode">Dark mode</string>
-        <string name="app_icon_old_nekobox_plus">Old OwnBox+</string>
-        <string name="app_icon_nekobox" translatable="false">OwnBox</string>
-        <string name="app_icon_midnight">Midnight</string>
+        <string name="app_icon_old_nekobox_plus">Old OneBox+</string>
+        <string name="app_icon_nekobox" translatable="false">OneBox</string>
         <string name="app_icon_heavens">Heavens</string>
         <string name="app_icon_black_white">Black and White</string>
         <string name="app_icon_text">Text</string>
@@ -990,7 +914,6 @@
     <string name="port_test_success">Connected (TCP Handshake OK)</string>
     <string name="port_test_failed">Connection Failed</string>
     <string name="vpn_not_connected_warning">Please connect VPN proxy first</string>
-    <string name="menu_community">Telegram Channel</string>
     <string name="ip_purity_device_net">Device Network</string>
     <string name="ip_purity_device_cellular">📱 Mobile Cellular (4G/5G)</string>
     <string name="ip_purity_device_wifi">📶 Wi-Fi Network</string>
@@ -1054,7 +977,6 @@
     <string name="traffic_unlimited">Unlimited</string>
     <string name="traffic_available">Available: %s</string>
     <string name="traffic_used">Used: %s</string>
-    <string name="menu_documentation">Documentation</string>
     <string name="dashboard_tab_connections">Connections</string>
     <string name="dashboard_tab_rules">Rules</string>
     <string name="dashboard_tab_logs">Logs</string>
