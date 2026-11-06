@@ -124,9 +124,6 @@ class BaseService {
                 Intent.ACTION_USER_PRESENT -> {
                     proxy?.box?.wake()
                     proxy?.looper?.triggerWakeup()
-                    runOnDefaultDispatcher {
-                        proxy?.looper?.postLastSnapshotSpeed()
-                    }
                     val offDuration = if (lastScreenOffTime > 0L) {
                         android.os.SystemClock.elapsedRealtime() - lastScreenOffTime
                     } else 0L
@@ -155,7 +152,6 @@ class BaseService {
             binder.stateChanged(s, msg)
             runCatching { io.nekohasekai.sagernet.widget.OwnBoxWidgetProvider.updateWidgets(SagerNet.application) }
             if (s == State.Stopping || s == State.Stopped || s == State.Idle) {
-                notification?.listenPostSpeed = false
                 if (s == State.Stopped || s == State.Idle) {
                     NotificationManagerCompat.from(SagerNet.application).cancel(ServiceNotification.notificationId)
                     SagerNet.notification.cancel(ServiceNotification.notificationId)
@@ -254,10 +250,9 @@ class BaseService {
             }
         }
 
+        // OneBox V1.0.0: 通知不再按速度刷新，此 AIDL 回调保留接口兼容性，收到速度后不再写通知。
+        @Suppress("UNUSED_PARAMETER")
         override fun postNotificationSpeed(speed: io.nekohasekai.sagernet.aidl.SpeedDisplayData) {
-            launch {
-                data?.notification?.postNotificationSpeedUpdate(speed)
-            }
         }
 
         fun stateChanged(s: State, msg: String?) = launch {
