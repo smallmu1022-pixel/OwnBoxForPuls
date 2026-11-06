@@ -79,6 +79,10 @@
             app:title="@string/language"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreference
+            app:key="showBottomBar"
+            app:title="@string/show_bottom_bar" />
+
     </moe.matsuri.nb4a.ui.ExpandablePreferenceCategory>
 
     <!-- 2. VPN 设置 -->

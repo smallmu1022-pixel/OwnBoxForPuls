@@ -349,6 +349,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">24dp</item>
     </style>
+    <style name="ShapeAppearanceOverlay.SagerNet.DrawerAboutButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
     <style name="Widget.SagerNet.DrawerSettingsButton" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.SagerNet.DrawerButton</item>
         <item name="android:textColor">@color/onebox_drawer_action_text</item>

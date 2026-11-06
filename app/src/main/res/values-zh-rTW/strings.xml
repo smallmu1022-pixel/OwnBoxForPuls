@@ -490,6 +490,7 @@
     <string name="domain_strategy_for_remote">域名策略（遠端）</string>
     <string name="domain_strategy_for_direct">域名策略（直連）</string>
     <string name="domain_strategy_for_server">域名策略（伺服器地址）</string>
+    <string name="show_bottom_bar">顯示底欄</string>
     <string name="utls_fingerprint">uTLS 指紋</string>
     <string name="custom_outbound_json">自定義出站 JSON</string>
     <string name="is_outbound_only">設定的 JSON 是出站</string>

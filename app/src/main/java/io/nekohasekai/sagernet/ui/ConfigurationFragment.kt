@@ -30,7 +30,6 @@ import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.size
-import androidx.core.view.updatePadding
 import io.nekohasekai.sagernet.utils.Theme
 import kotlinx.coroutines.delay
 import androidx.fragment.app.Fragment
@@ -1294,6 +1293,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                     val rxBytes = sample.downloadBitsPerSecond / 8
                     val txBytes = sample.uploadBitsPerSecond / 8
                     runOnMainDispatcher {
+                        (activity as? MainActivity)?.binding?.stats?.updateSpeed(txBytes, rxBytes)
                         try {
                             (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                                 io.nekohasekai.sagernet.aidl.SpeedDisplayData(
@@ -1364,6 +1364,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
             } finally {
                 runOnMainDispatcher {
+                    (activity as? MainActivity)?.binding?.stats?.updateSpeed(0, 0)
                     try {
                         (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                             io.nekohasekai.sagernet.aidl.SpeedDisplayData(0, 0, 0, 0, 0, 0)
@@ -1445,6 +1446,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                     val rxBytes = sample.downloadBitsPerSecond / 8
                     val txBytes = sample.uploadBitsPerSecond / 8
                     runOnMainDispatcher {
+                        (activity as? MainActivity)?.binding?.stats?.updateSpeed(txBytes, rxBytes)
                         try {
                             (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                                 io.nekohasekai.sagernet.aidl.SpeedDisplayData(
@@ -1519,6 +1521,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
             } finally {
                 runOnMainDispatcher {
+                    (activity as? MainActivity)?.binding?.stats?.updateSpeed(0, 0)
                     try {
                         (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                             io.nekohasekai.sagernet.aidl.SpeedDisplayData(0, 0, 0, 0, 0, 0)
@@ -2320,9 +2323,6 @@ class ConfigurationFragment @JvmOverloads constructor(
             ProfileManager.addListener(adapter!!)
             GroupManager.addListener(adapter!!)
             configurationListView.adapter = adapter
-            // OneBox V1.0.1: 底栏已删除，FAB 悬浮在底部中央，列表留出底部空间避免最后一行被遮住。
-            configurationListView.clipToPadding = false
-            configurationListView.updatePadding(bottom = dp2px(96))
             configurationListView.setItemViewCacheSize(20)
             configurationListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -2335,6 +2335,7 @@ class ConfigurationFragment @JvmOverloads constructor(
             if (!select) {
                 undoManager = UndoSnackbarManager(activity as MainActivity, adapter!!)
                 setupItemTouchHelper()
+                setupBottomBarScrollDriver()
             }
             updateSubscriptionInfoCard(view)
         }
@@ -2495,6 +2496,36 @@ class ConfigurationFragment @JvmOverloads constructor(
             }
 
             card.isVisible = true
+        }
+
+
+        private fun setupBottomBarScrollDriver() {
+            val mainActivity = activity as? MainActivity ?: return
+            configurationListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    if (dy != 0) mainActivity.driveBottomBar(dy)
+                }
+            })
+
+            val touchSlop = ViewConfiguration.get(requireContext()).scaledTouchSlop
+            var lastRawY = 0f
+            configurationListView.setOnTouchListener { recyclerView, event ->
+                when (event.actionMasked) {
+                    MotionEvent.ACTION_DOWN -> lastRawY = event.rawY
+                    MotionEvent.ACTION_MOVE -> {
+                        val cannotScroll = !recyclerView.canScrollVertically(-1) &&
+                                !recyclerView.canScrollVertically(1)
+                        if (cannotScroll) {
+                            val fingerDy = event.rawY - lastRawY
+                            if (abs(fingerDy) >= touchSlop) {
+                                mainActivity.driveBottomBar(-fingerDy.toInt())
+                                lastRawY = event.rawY
+                            }
+                        }
+                    }
+                }
+                false
+            }
         }
 
 

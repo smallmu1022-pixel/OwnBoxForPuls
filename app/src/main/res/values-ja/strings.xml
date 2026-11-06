@@ -459,6 +459,7 @@
     <string name="domain_strategy_for_remote">リモートのドメイン戦略</string>
     <string name="domain_strategy_for_direct">ダイレクトのドメイン戦略</string>
     <string name="domain_strategy_for_server">サーバーアドレスのドメイン戦略</string>
+    <string name="show_bottom_bar">SagerNet のようなボトムバーを表示</string>
     <string name="utls_fingerprint">uTLS フィンガープリント</string>
     <string name="custom_outbound_json">カスタムアウトバウンド JSON</string>
     <string name="is_outbound_only">設定した JSON はアウトバウンドです</string>

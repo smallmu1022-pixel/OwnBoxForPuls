@@ -453,6 +453,7 @@
     <string name="domain_strategy_for_remote">원격용 도메인 전략</string>
     <string name="domain_strategy_for_direct">직접용 도메인 전략</string>
     <string name="domain_strategy_for_server">서버 주소용 도메인 전략</string>
+    <string name="show_bottom_bar">SagerNet처럼 하단 바 표시</string>
     <string name="utls_fingerprint">uTLS 지문</string>
     <string name="custom_outbound_json">사용자 지정 아웃바운드 JSON</string>
     <string name="is_outbound_only">설정한 JSON은 아웃바운드입니다</string>

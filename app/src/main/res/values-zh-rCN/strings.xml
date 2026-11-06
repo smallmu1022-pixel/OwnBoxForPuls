@@ -211,6 +211,7 @@
     <string name="kcp_mtu">mKCP MTU</string>
     <string name="kcp_tti">mKCP TTI</string>
     <string name="kcp_cwnd_multiplier">拥塞窗口倍数</string>
+    <string name="show_bottom_bar">显示底栏</string>
     <string name="utls_fingerprint">uTLS 指纹</string>
     <string name="grpc_service_name">gRPC 服务名称</string>
     <string name="alpn">应用层协议协商</string>
