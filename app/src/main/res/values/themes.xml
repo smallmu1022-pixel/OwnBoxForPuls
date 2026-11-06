@@ -66,7 +66,7 @@
         <item name="whiteOrTextPrimary">?android:attr/textColorPrimary</item>
         <item name="colorOnPrimary">@color/white</item>
 
-        <item name="windowAnimationStyle">@style/WindowAnimation.SagerNet</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimation.SagerNet</item>
 
         <item name="windowActionModeOverlay">true</item>
 
@@ -149,7 +149,7 @@
         <item name="tabRippleColor">?colorPrimary</item>
         <item name="whiteOrTextPrimary">?android:attr/textColorPrimary</item>
 
-        <item name="windowAnimationStyle">@style/WindowAnimation.SagerNet</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimation.SagerNet</item>
 
         <item name="windowActionModeOverlay">true</item>
 
@@ -315,7 +315,7 @@
     </style>
 
     <!-- OneBox 液态玻璃：Activity 窗口转场（淡入 + 轻微上滑），保守幅度，不改导航逻辑 -->
-    <style name="WindowAnimation.SagerNet">
+    <style name="WindowAnimation.SagerNet" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/activity_open_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/activity_open_exit</item>
         <item name="android:activityCloseEnterAnimation">@anim/activity_close_enter</item>
