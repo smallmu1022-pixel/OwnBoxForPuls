@@ -370,7 +370,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                         throw IllegalStateException("无法获取版本信息，请检查网络或稍后重试")
                     }
 
-                    val cleanReleaseName = releaseName.replace(Regex("(?i)^Ownbox\\s*"), "")
+                    val cleanReleaseName = releaseName.replace(Regex("(?i)^Onebox\\s*"), "")
                     val haveUpdate = cleanReleaseName.isNotBlank() &&
                             compareVersionNames(cleanReleaseName, currentVersion) > 0
                     runOnMainDispatcher {
