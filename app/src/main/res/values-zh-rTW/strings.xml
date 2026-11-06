@@ -3,7 +3,6 @@
     <string name="app_desc">適用於 Android 的通用代理工具鏈，由 Kotlin 編寫。</string>
     <string name="project">計畫</string>
     <string name="github">原始碼</string>
-    <string name="telegram">Telegram 更新頻道</string>
     <string name="oss_licenses">開放原始碼授權條款</string>
     <string name="app_version">版本</string>
     <string name="logcat">匯出 debug 所需資訊</string>
@@ -48,8 +47,6 @@
     <string name="mixed_inbound_disabled">已停用</string>
     <string name="disable_mixed_inbound_proxy_toast">停用僅在 TUN 模式有效，目前監聽連接埠：%1$d</string>
     <string name="port_local_dns">本地 DNS 連接埠</string>
-    <string name="allow_access">允許來自區域網路的連線</string>
-    <string name="allow_access_sum">繫結傳入伺服器至 0.0.0.0</string>
     <string name="cag_dns">DNS 設定</string>
     <string name="cag_route">路由設定</string>
     <string name="inbound_settings">傳入設定</string>
@@ -275,7 +272,6 @@
     <string name="need_reload">重新載入代理服務以套用修改</string>
     <string name="route_warn">請在新增客製化規則前閱讀文件，否則您可能會無法連線至網際網路。</string>
     <string name="lines">%d 行</string>
-    <string name="night_mode">夜間模式</string>
     <string name="follow_system">跟隨系統</string>
     <string name="enable">啟用</string>
     <string name="disable">停用</string>
@@ -676,26 +672,6 @@
     <string name="speed_test_rate_mbps">%1$.2f Mbps</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">自訂圖示</string>
-    <string name="custom_icon_import">匯入圖示包</string>
-    <string name="custom_icon_reset">恢復預設</string>
-    <string name="custom_icon_preview_shortcut">捷徑圖示</string>
-    <string name="custom_icon_shortcut_subtitle">Android平台不支援修改軟體圖示，若有需要請自行fork後修改！</string>
-    <string name="custom_icon_preview_tile">快速設定圖示</string>
-    <string name="custom_icon_apply_pack">套用此圖示包</string>
-    <string name="custom_icon_apply_success">已套用圖示包並請求建立桌面捷徑。</string>
-    <string name="custom_icon_pin_shortcut_not_supported">目前桌面啟動器不支援建立桌面捷徑。</string>
-    <string name="custom_icon_no_pack_to_apply">請先匯入圖示包。</string>
-    <string name="custom_icon_tile_state_active">開啟狀態（點擊切換）</string>
-    <string name="custom_icon_tile_state_inactive">關閉狀態（點擊切換）</string>
-    <string name="custom_icon_import_success">圖示包匯入成功</string>
-    <string name="custom_icon_reset_success">已恢復預設圖示</string>
-    <string name="custom_icon_reset_confirm">確定要恢復預設圖示嗎？</string>
-    <string name="custom_icon_error_missing">圖示包缺少必要檔案：%s</string>
-    <string name="custom_icon_error_dimension">%1$s 解析度必須為 512x512 像素（目前為：%2$dx%3$d）</string>
-    <string name="custom_icon_error_not_png">%s 不是有效的 PNG 圖片檔案</string>
-    <string name="custom_icon_error_security">安全檢查失敗：%s</string>
-    <string name="custom_icon_requirement_tip">圖示包須為 ZIP 壓縮包，內含 512x512 的 icon.png 與 tile.png。</string>
 <string name="auto_lowest_latency_enabled">已开启自动优选最低延迟节点</string>
     <string name="auto_lowest_latency_disabled">已关闭自动优选最低延迟节点</string>
     <string name="auto_lowest_latency_summary">自动对本组所有节点进行健康探测并始终连接最低延迟最优节点</string>
@@ -736,7 +712,7 @@
     <string name="auto_backup_local_sum">每日自动在应用私有存储中备份节点配置与分流规则</string>
     <string name="subscription_enabled">启用此订阅</string>
     <string name="subscription_disabled">已禁用此订阅</string>
-    <string name="widget_name">OwnBox 快捷开关</string>
+    <string name="widget_name">OneBox 快捷开关</string>
     <string name="ui_settings">使用者介面設定</string>
     <string name="vpn_settings">VPN 設定</string>
     <string name="core_settings">核心設定</string>
@@ -747,7 +723,6 @@
     <string name="widget_toggle">点击切换连接</string>
     <string name="balancer_custom_url_sum">針對此負載均衡節點的獨立探測位址（留空使用全域預設）</string>
     <string name="balancer_interval">觀測間隔 (s)</string>
-    <string name="menu_documentation">教學文檔</string>
     <string name="dashboard_tab_connections">連線</string>
     <string name="dashboard_tab_rules">規則</string>
     <string name="dashboard_tab_logs">日誌</string>

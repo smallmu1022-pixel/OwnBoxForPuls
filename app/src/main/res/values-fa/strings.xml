@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">OwnBox</string>
-    <string name="app_name_long" translatable="false">OwnBox for Android</string>
+    <string name="app_name" translatable="false">OneBox</string>
+    <string name="app_name_long" translatable="false">OneBox for Android</string>
     <string name="app_desc">مجموعه ابزار جامع پراکسی برای اندروید، نوشته‌شده با کاتلین.</string>
     <string name="project">پروژه</string>
     <string name="github">کد منبع</string>
-    <string name="telegram">کانال دریافت نسخه‌های به‌روز در تلگرام</string>
     <string name="oss_licenses">مجوزهای متن‌باز</string>
     <string name="app_version">نسخه برنامه</string>
     <string name="version_x">نسخه (%s)</string>
@@ -60,8 +59,6 @@
     <string name="disable_mixed_inbound_proxy_toast">غیرفعال‌سازی فقط در حالت TUN اعمال می‌شود؛ پورت گوش دادن فعلی: %1$d</string>
     <string name="port_transproxy">پورت Transproxy</string>
     <string name="cag_route">تنظیمات مسیردهی</string>
-    <string name="allow_access">اجازه اتصال از شبکه محلی</string>
-    <string name="allow_access_sum">اجازه اتصال سرورهای ورودی به 0.0.0.0</string>
     <string name="inbound_settings">تنظیمات اتصالات ورودی</string>
     <string name="general_settings">تنظیمات برنامه</string>
     <string name="require_http">فعال‌کردن ورودی HTTP</string>
@@ -302,7 +299,6 @@
     <string name="route_warn">اطمینان حاصل کنید که مستندات فنی را قبل از افزودن قوانین سفارشی مطالعه کرده‌اید،
  در غیر این صورت ممکن است نتوانید به اینترنت وصل شوید.</string>
     <string name="lines">%d خط</string>
-    <string name="night_mode">حالت تاریک</string>
     <string name="follow_system">مانند سیستم</string>
     <string name="enable">فعال</string>
     <string name="disable">غیرفعال</string>
@@ -679,25 +675,5 @@
     <string name="speed_test_rate_mbps">%1$.2f Mbps</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">Custom Icon</string>
-    <string name="custom_icon_import">Import Icon Pack</string>
-    <string name="custom_icon_reset">Reset to Default</string>
-    <string name="custom_icon_preview_shortcut">Shortcut Icon</string>
-    <string name="custom_icon_shortcut_subtitle">Android does not support modifying the software icon. Please fork and modify if needed!</string>
-    <string name="custom_icon_preview_tile">Quick Settings Tile</string>
-    <string name="custom_icon_apply_pack">Apply This Icon Pack</string>
-    <string name="custom_icon_apply_success">Icon pack applied. Desktop shortcut requested.</string>
-    <string name="custom_icon_pin_shortcut_not_supported">Your launcher does not support pinning shortcuts.</string>
-    <string name="custom_icon_no_pack_to_apply">Please import an icon pack first.</string>
-    <string name="custom_icon_tile_state_active">Active (Tap to toggle)</string>
-    <string name="custom_icon_tile_state_inactive">Inactive (Tap to toggle)</string>
-    <string name="custom_icon_import_success">Icon pack imported successfully</string>
-    <string name="custom_icon_reset_success">Default icons restored</string>
-    <string name="custom_icon_reset_confirm">Are you sure you want to restore default icons?</string>
-    <string name="custom_icon_error_missing">Icon pack must contain: %s</string>
-    <string name="custom_icon_error_dimension">%1$s must be 512x512 pixels (current: %2$dx%3$d)</string>
-    <string name="custom_icon_error_not_png">%s is not a valid PNG image</string>
-    <string name="custom_icon_error_security">Security verification failed: %s</string>
-    <string name="custom_icon_requirement_tip">Icon pack must be a ZIP archive containing 512x512 icon.png and tile.png.</string>
 </resources>
 
