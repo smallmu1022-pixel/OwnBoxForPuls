@@ -528,9 +528,6 @@ class MainActivity : ThemedActivity(),
                 showDownloadDialog(pluginEntity)
             }
             .setNeutralButton(android.R.string.cancel, null)
-            .setNeutralButton(R.string.action_learn_more) { _, _ ->
-                launchCustomTab("https://t.me/OwnBoxs")
-            }
             .show()
     }
 
@@ -549,8 +546,11 @@ class MainActivity : ThemedActivity(),
             fdroidIndex = index++
         }
 
-        items.add(getString(R.string.download))
-        val downloadIndex = index
+        var downloadIndex = -1
+        if (pluginEntry.downloadSource.downloadLink.isNotBlank()) {
+            items.add(getString(R.string.download))
+            downloadIndex = index++
+        }
 
         MaterialAlertDialogBuilder(this).setTitle(pluginEntry.name)
             .setItems(items.toTypedArray()) { _, which ->
