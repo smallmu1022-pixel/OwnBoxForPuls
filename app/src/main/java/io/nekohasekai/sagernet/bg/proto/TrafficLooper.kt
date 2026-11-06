@@ -26,18 +26,10 @@ class TrafficLooper
     }
 
     private var job: Job? = null
-    private var lastSpeedSnapshot: SpeedDisplayData? = null
     private var wakeupSignal: CompletableDeferred<Unit>? = null
 
     fun triggerWakeup() {
         wakeupSignal?.complete(Unit)
-    }
-
-    suspend fun postLastSnapshotSpeed() {
-        val speed = lastSpeedSnapshot ?: return
-        data.notification?.apply {
-            if (listenPostSpeed) postNotificationSpeedUpdate(speed)
-        }
     }
     private val idMap = mutableMapOf<Long, TrafficUpdater.TrafficLooperData>() // id to 1 data
     private val tagMap = mutableMapOf<String, TrafficUpdater.TrafficLooperData>() // tag to 1 data
@@ -203,7 +195,6 @@ class TrafficLooper
         // for display
         val itemBypass = TrafficUpdater.TrafficLooperData(tag = TAG_BYPASS)
         var idleSeconds = 0
-        var lastDelayMs = 3000L
 
         while (currentCoroutineContext().isActive) {
             val isForegroundUI = data.binder.callbackIdMap.containsValue(
@@ -362,26 +353,14 @@ class TrafficLooper
             }
             currentCoroutineContext().ensureActive()
 
-            lastSpeedSnapshot = snapshot.speed
-
-            // ServiceNotification: Only post if screen is interactive (saves CPU wakeups while screen is off)
-            data.notification?.apply {
-                if (listenPostSpeed && isInteractive) {
-                    postNotificationSpeedUpdate(snapshot.speed)
-                }
-            }
-
-            // Background low-power battery optimization:
-            // Avoid periodic forced GC which causes CPU page faults and prevents deep sleep.
-            // When screen is off, suspend polling up to 5 minutes to let SoC enter Doze/C-states;
-            // when screen turns on, triggerWakeup() wakes this coroutine immediately.
+            // OneBox V1.0.0 节能策略（只拉长间隔，不改核心逻辑）：
+            // 通知不再按速度刷新，后台轮询只为前台界面与流量统计服务；
+            // 熄屏时进一步拉长，令 SoC 更容易进入 Doze / 深睡状态，亮屏后由 triggerWakeup() 立即唤醒。
             val nextDelay = when {
                 isForegroundUI -> baseDelayMs
-                !isInteractive -> if (DataStore.performancePriorityMode) 60000L else 300000L
-                data.notification?.listenPostSpeed == true -> if (DataStore.performancePriorityMode) 3000L else 6000L
-                else -> if (DataStore.performancePriorityMode) 5000L else 15000L
+                !isInteractive -> if (DataStore.performancePriorityMode) 120000L else 600000L
+                else -> if (DataStore.performancePriorityMode) 10000L else 30000L
             }
-            lastDelayMs = nextDelay
             withTimeoutOrNull(nextDelay) {
                 val deferred = CompletableDeferred<Unit>().also { wakeupSignal = it }
                 try {

@@ -58,8 +58,6 @@
     <string name="require_http">Aktifkan HTTP inbound</string>
     <string name="general_settings">Pengaturan Aplikasi</string>
     <string name="inbound_settings">Pengaturan Inbound</string>
-    <string name="allow_access_sum">Ikat server masuk ke 0.0.0.0</string>
-    <string name="allow_access">Izinkan koneksi dari LAN</string>
     <string name="cag_route">Pengaturan Rute</string>
     <string name="port_transproxy">Port Transproxy</string>
     <string name="service_mode_proxy">Hanya proxy</string>
@@ -101,7 +99,6 @@
     <string name="version_x">Versi (%s)</string>
     <string name="app_version">Versi</string>
     <string name="oss_licenses">Lisensi sumber terbuka</string>
-    <string name="telegram">Channel Telegram</string>
     <string name="github">Kode sumber</string>
     <string name="project">Proyek</string>
     <string name="app_desc">Peranti proxy universal untuk Android, ditulis dalam Kotlin.</string>
@@ -238,25 +235,5 @@
     <string name="speed_test_rate_mbps">%1$.2f Mbps</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">Custom Icon</string>
-    <string name="custom_icon_import">Import Icon Pack</string>
-    <string name="custom_icon_reset">Reset to Default</string>
-    <string name="custom_icon_preview_shortcut">Shortcut Icon</string>
-    <string name="custom_icon_shortcut_subtitle">Android does not support modifying the software icon. Please fork and modify if needed!</string>
-    <string name="custom_icon_preview_tile">Quick Settings Tile</string>
-    <string name="custom_icon_apply_pack">Apply This Icon Pack</string>
-    <string name="custom_icon_apply_success">Icon pack applied. Desktop shortcut requested.</string>
-    <string name="custom_icon_pin_shortcut_not_supported">Your launcher does not support pinning shortcuts.</string>
-    <string name="custom_icon_no_pack_to_apply">Please import an icon pack first.</string>
-    <string name="custom_icon_tile_state_active">Active (Tap to toggle)</string>
-    <string name="custom_icon_tile_state_inactive">Inactive (Tap to toggle)</string>
-    <string name="custom_icon_import_success">Icon pack imported successfully</string>
-    <string name="custom_icon_reset_success">Default icons restored</string>
-    <string name="custom_icon_reset_confirm">Are you sure you want to restore default icons?</string>
-    <string name="custom_icon_error_missing">Icon pack must contain: %s</string>
-    <string name="custom_icon_error_dimension">%1$s must be 512x512 pixels (current: %2$dx%3$d)</string>
-    <string name="custom_icon_error_not_png">%s is not a valid PNG image</string>
-    <string name="custom_icon_error_security">Security verification failed: %s</string>
-    <string name="custom_icon_requirement_tip">Icon pack must be a ZIP archive containing 512x512 icon.png and tile.png.</string>
 </resources>
 

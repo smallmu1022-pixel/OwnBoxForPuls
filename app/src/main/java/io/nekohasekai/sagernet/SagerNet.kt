@@ -165,7 +165,11 @@ class SagerNet : Application(),
         }
         // In low-memory mode, aggressively free Go heap when OS asks us to trim.
         // In high-performance mode, skip this to preserve warm connection pools.
-        if (!DataStore.performancePriorityMode) {
+        // OneBox V1.0.0: 内存紧张到临界时无条件回收（即使性能模式），避免被系统杀进程。
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL) {
+            Libcore.forceGc()
+            System.gc()
+        } else if (!DataStore.performancePriorityMode) {
             Libcore.forceGc()
         }
     }
