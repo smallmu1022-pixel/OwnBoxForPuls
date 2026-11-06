@@ -20,7 +20,7 @@ import io.nekohasekai.sagernet.ui.MainActivity
 import io.nekohasekai.sagernet.ui.NodeSelectDialogActivity
 
 object OneBoxWidgetHelper {
-    const val ACTION_TOGGLE = "com.onebox.app.widget.ACTION_TOGGLE"
+    const val ACTION_TOGGLE = "com.OneBox.app.widget.ACTION_TOGGLE"
 
     @Volatile
     var lastSpeedDisplayData: SpeedDisplayData? = null

@@ -8,7 +8,7 @@ import android.content.Intent
 class OneBoxWidgetProvider : AppWidgetProvider() {
 
     companion object {
-        const val ACTION_TOGGLE = "com.onebox.app.widget.ACTION_TOGGLE"
+        const val ACTION_TOGGLE = "com.OneBox.app.widget.ACTION_TOGGLE"
 
         fun updateWidgets(context: Context) {
             OneBoxWidgetHelper.updateAllWidgets(context)

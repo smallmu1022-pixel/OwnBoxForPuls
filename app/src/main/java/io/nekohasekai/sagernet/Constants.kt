@@ -254,6 +254,6 @@ object Action {
     const val RESTART = "io.nekohasekai.sagernet.RESTART"
 
     // const val SWITCH_WAKE_LOCK = "io.nekohasekai.sagernet.SWITCH_WAKELOCK"
-    const val RESET_UPSTREAM_CONNECTIONS = "com.onebox.app.RESET_UPSTREAM_CONNECTIONS"
-    const val SWITCH_PERFORMANCE_MODE = "com.onebox.app.SWITCH_PERFORMANCE_MODE"
+    const val RESET_UPSTREAM_CONNECTIONS = "com.OneBox.app.RESET_UPSTREAM_CONNECTIONS"
+    const val SWITCH_PERFORMANCE_MODE = "com.OneBox.app.SWITCH_PERFORMANCE_MODE"
 }
