@@ -15,7 +15,6 @@
     <string name="yes">Oui</string>
     <string name="license">Licence</string>
     <string name="follow_system">Selon le système</string>
-    <string name="night_mode">Mode nuit</string>
     <string name="lines">%d lignes</string>
     <string name="random">Aléatoire</string>
     <string name="list">Liste</string>
@@ -67,7 +66,6 @@
     <string name="version_x">Version (%s)</string>
     <string name="app_version">Version</string>
     <string name="oss_licenses">Licences à code source ouvert</string>
-    <string name="telegram">Canal de mise à jour Telegram</string>
     <string name="github">Code source</string>
     <string name="project">Projet</string>
     <string name="app_desc">La chaîne d\'outils proxy universelle pour Android, écrite en Kotlin.</string>
@@ -154,12 +152,10 @@
     <string name="ws_browser_forwarding_sum">Transférer les WebSockets correspondants via le navigateur.</string>
     <string name="require_http">Activer HTTP Entrant</string>
     <string name="show_direct_speed_sum">Afficher également la vitesse du trafic sans proxy dans la notification</string>
-    <string name="allow_access_sum">Lier les serveurs entrants à 0.0.0.0</string>
     <string name="connection_test_available_http">Succès : la négociation HTTP a pris %dms</string>
     <string name="dns_hosts">Réécriture de Domaine</string>
     <string name="password">Mot de passe</string>
     <string name="connection_test_domain_not_found">Domaine non trouvé</string>
-    <string name="allow_access">Autoriser les Connexions depuis le réseau local</string>
     <string name="inbound_settings">Paramètres Entrants</string>
     <string name="speed_interval">Intervalle de mise à jour des notifications de vitesse</string>
     <string name="show_stop">Afficher le bouton d\'arrêt</string>
@@ -339,25 +335,5 @@
     <string name="speed_test_rate_mbps">%1$.2f Mbps</string>
 
     <!-- Custom Icon Pack -->
-    <string name="custom_icon">Icône personnalisée</string>
-    <string name="custom_icon_import">Importer un pack d\'icônes</string>
-    <string name="custom_icon_reset">Rétablir par défaut</string>
-    <string name="custom_icon_preview_shortcut">Icône du raccourci</string>
-    <string name="custom_icon_shortcut_subtitle">La plateforme Android ne permet pas de modifier l\'icône de l\'application. Veuillez forker le projet pour la modifier !</string>
-    <string name="custom_icon_preview_tile">Tuile des paramètres rapides</string>
-    <string name="custom_icon_apply_pack">Appliquer ce pack d\'icônes</string>
-    <string name="custom_icon_apply_success">Pack d\'icônes appliqué. Création du raccourci demandée.</string>
-    <string name="custom_icon_pin_shortcut_not_supported">Le lanceur actuel ne prend pas en charge l\'épinglage de raccourcis.</string>
-    <string name="custom_icon_no_pack_to_apply">Veuillez d\'abord importer un pack d\'icônes.</string>
-    <string name="custom_icon_tile_state_active">Actif (appuyer pour basculer)</string>
-    <string name="custom_icon_tile_state_inactive">Inactif (appuyer pour basculer)</string>
-    <string name="custom_icon_import_success">Pack d\'icônes importé avec succès</string>
-    <string name="custom_icon_reset_success">Icônes par défaut rétablies</string>
-    <string name="custom_icon_reset_confirm">Voulez-vous vraiment rétablir les icônes par défaut ?</string>
-    <string name="custom_icon_error_missing">Fichier requis manquant dans le pack d\'icônes : %s</string>
-    <string name="custom_icon_error_dimension">La résolution de %1$s doit être de 512x512 pixels (actuelle : %2$dx%3$d)</string>
-    <string name="custom_icon_error_not_png">%s n\'est pas une image PNG valide</string>
-    <string name="custom_icon_error_security">Échec de la vérification de sécurité : %s</string>
-    <string name="custom_icon_requirement_tip">Le pack d\'icônes doit être une archive ZIP contenant icon.png et tile.png en 512x512.</string>
 </resources>
 

@@ -74,17 +74,7 @@
             android:title="@string/theme"
             app:icon="@drawable/ic_baseline_color_lens_24"
             app:key="appTheme" />
-
-        <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="0"
-            app:entries="@array/night_mode"
-            app:entryValues="@array/int_array_4"
-            app:icon="@drawable/ic_baseline_wb_sunny_24"
-            app:key="nightTheme"
-            app:title="@string/night_mode"
-            app:useSimpleSummaryProvider="true" />
-
-        <moe.matsuri.nb4a.ui.SimpleMenuPreference
+<moe.matsuri.nb4a.ui.SimpleMenuPreference
             app:defaultValue=""
             app:entries="@array/language_entries"
             app:entryValues="@array/language_values"
@@ -209,13 +199,7 @@
             app:key="httpProxyBypass"
             app:title="@string/http_proxy_bypass"
             app:useSimpleSummaryProvider="true" />
-
-        <Preference
-            app:icon="@drawable/ic_social_share"
-            app:key="lanSharing"
-            app:title="@string/lan_sharing" />
-
-    </moe.matsuri.nb4a.ui.ExpandablePreferenceCategory>
+</moe.matsuri.nb4a.ui.ExpandablePreferenceCategory>
 
     <!-- 4. 核心设置 -->
     <moe.matsuri.nb4a.ui.ExpandablePreferenceCategory

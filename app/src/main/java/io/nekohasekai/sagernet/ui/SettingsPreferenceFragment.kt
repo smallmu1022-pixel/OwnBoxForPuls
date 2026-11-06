@@ -97,15 +97,7 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
             true
         }
 
-        val nightTheme = findPreference<SimpleMenuPreference>(Key.NIGHT_THEME)!!
-        nightTheme.setOnPreferenceChangeListener { _, newTheme ->
-            val mode = (newTheme as String).toInt()
-            DataStore.nightTheme = mode
-            Theme.currentNightMode = mode
-            Theme.applyNightTheme()
-            activity?.recreate()
-            true
-        }
+        // OneBox V1.0.0: 固定浅色模式，夜间模式入口已移除。
         val appLanguage = findPreference<SimpleMenuPreference>(Key.APP_LANGUAGE)!!
         appLanguage.setOnPreferenceChangeListener { _, newValue ->
             AppLocale.apply(newValue as String)
@@ -380,42 +372,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
             }.show()
             true
         }
-
-        // 局域网共享
-        val lanSharingPref = findPreference<Preference>("lanSharing")
-
-        fun getLocalIps(): String {
-            val ips = runCatching {
-                java.net.NetworkInterface.getNetworkInterfaces()?.toList()
-                    ?.filter { !it.isLoopback && it.isUp }
-                    ?.flatMap { it.inetAddresses.toList() }
-                    ?.filter { !it.isLoopbackAddress && it is java.net.Inet4Address }
-                    ?.mapNotNull { it.hostAddress }
-                    ?.distinct()
-            }.getOrNull() ?: emptyList()
-            return when {
-                ips.isEmpty() -> "192.168.43.1"
-                ips.any { it.startsWith("192.168.43.") } -> ips.first { it.startsWith("192.168.43.") }
-                else -> ips.joinToString(" / ")
-            }
-        }
-
-        fun updateLanSharingSummary() {
-            val enabled = DataStore.allowAccess
-            if (enabled) {
-                val localIp = getLocalIps()
-                val port = DataStore.mixedPort
-                lanSharingPref?.summary = getString(R.string.lan_sharing_enabled_sum, localIp, port)
-            } else {
-                lanSharingPref?.summary = getString(R.string.lan_sharing_disabled_sum)
-            }
-        }
-        updateLanSharingSummary()
-
-        lanSharingPref?.setOnPreferenceClickListener {
-            startActivity(Intent(requireContext(), LanSharingActivity::class.java))
-            true
-        }
     }
 
     override fun onResume() {
@@ -426,28 +382,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
         }
         if (::globalCustomConfig.isInitialized) {
             globalCustomConfig.notifyChanged()
-        }
-        val lanSharingPref = findPreference<Preference>("lanSharing")
-        if (lanSharingPref != null) {
-            val enabled = DataStore.allowAccess
-            if (enabled) {
-                val ips = runCatching {
-                    java.net.NetworkInterface.getNetworkInterfaces()?.toList()
-                        ?.filter { !it.isLoopback && it.isUp }
-                        ?.flatMap { it.inetAddresses.toList() }
-                        ?.filter { !it.isLoopbackAddress && it is java.net.Inet4Address }
-                        ?.mapNotNull { it.hostAddress }
-                        ?.distinct()
-                }.getOrNull() ?: emptyList()
-                val localIp = when {
-                    ips.isEmpty() -> "192.168.43.1"
-                    ips.any { it.startsWith("192.168.43.") } -> ips.first { it.startsWith("192.168.43.") }
-                    else -> ips.joinToString(" / ")
-                }
-                lanSharingPref.summary = getString(R.string.lan_sharing_enabled_sum, localIp, DataStore.mixedPort)
-            } else {
-                lanSharingPref.summary = getString(R.string.lan_sharing_disabled_sum)
-            }
         }
     }
 

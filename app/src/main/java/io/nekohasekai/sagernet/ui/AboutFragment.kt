@@ -113,7 +113,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                 .subText(SagerNet.appVersionNameForDisplay)
                                 .setOnClickAction {
                                     requireContext().launchCustomTab(
-                                        "https://github.com/Own716/OwnBoxForAndroid/releases"
+                                        "https://github.com/smallmu1022-pixel/OwnBoxForPuls/releases"
                                     )
                                 }
                                 .build())
@@ -189,6 +189,24 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                             }
                                             .build())
                                 }
+                                // OneBox V1.0.0: 小米 / 红米机型需在系统设置中手动开启自启与电池无限制，
+                                // 否则 MIUI 可能在后台清理代理服务。仅用 AOSP 通用设置页跳转，不调用任何厂商私有接口。
+                                if (Build.MANUFACTURER.equals("Xiaomi", ignoreCase = true)) {
+                                    addItem(
+                                        MaterialAboutActionItem.Builder()
+                                            .icon(R.drawable.ic_baseline_running_with_errors_24)
+                                            .text(R.string.xiaomi_autostart)
+                                            .subText(R.string.xiaomi_autostart_sum)
+                                            .setOnClickAction {
+                                                startActivity(
+                                                    Intent(
+                                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                                        "package:${app.packageName}".toUri()
+                                                    )
+                                                )
+                                            }
+                                            .build())
+                                }
                             }
                         }
                         .build())
@@ -202,17 +220,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                 .text(R.string.github)
                                 .setOnClickAction {
                                     requireContext().launchCustomTab(
-                                        "https://github.com/Own716/OwnBoxForAndroid"
-                                    )
-                                }
-                                .build())
-                        .addItem(
-                            MaterialAboutActionItem.Builder()
-                                .icon(R.drawable.ic_qu_shadowsocks_foreground)
-                                .text(R.string.telegram)
-                                .setOnClickAction {
-                                    requireContext().launchCustomTab(
-                                        "https://t.me/OwnBoxs"
+                                        "https://github.com/smallmu1022-pixel/OwnBoxForPuls"
                                     )
                                 }
                                 .build())
@@ -292,14 +300,14 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
 
                     // 1. 首先尝试 GitHub Releases API
                     val apiUrl = if (isPreview) {
-                        "https://api.github.com/repos/Own716/OwnBoxForAndroid/releases"
+                        "https://api.github.com/repos/smallmu1022-pixel/OwnBoxForPuls/releases"
                     } else {
-                        "https://api.github.com/repos/Own716/OwnBoxForAndroid/releases/latest"
+                        "https://api.github.com/repos/smallmu1022-pixel/OwnBoxForPuls/releases/latest"
                     }
                     try {
                         val response = client.newRequest().apply {
                             setURL(apiUrl)
-                            setUserAgent("OwnBox/${BuildConfig.VERSION_NAME}")
+                            setUserAgent("OneBox/${BuildConfig.VERSION_NAME}")
                             setHeader("Accept", "application/vnd.github.v3+json")
                         }.execute()
                         val responseStr = Util.getStringBox(response.contentString)
@@ -322,16 +330,16 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                     // 2. 若 API 受到 403 限流或网络异常，无缝降级到静态 properties 源 (全球高速 CDN 托管，无 API 速率限制)
                     if (releaseName.isNullOrBlank() || releaseUrl.isNullOrBlank()) {
                         val staticUrls = listOf(
-                            "https://cdn.jsdelivr.net/gh/Own716/OwnBoxForAndroid@main/nb4a.properties",
-                            "https://fastly.jsdelivr.net/gh/Own716/OwnBoxForAndroid@main/nb4a.properties",
-                            "https://raw.githubusercontent.com/Own716/OwnBoxForAndroid/main/nb4a.properties"
+                            "https://cdn.jsdelivr.net/gh/smallmu1022-pixel/OwnBoxForPuls@main/nb4a.properties",
+                            "https://fastly.jsdelivr.net/gh/smallmu1022-pixel/OwnBoxForPuls@main/nb4a.properties",
+                            "https://raw.githubusercontent.com/smallmu1022-pixel/OwnBoxForPuls/main/nb4a.properties"
                         )
                         var propsContent: String? = null
                         for (staticUrl in staticUrls) {
                             try {
                                 val resp = client.newRequest().apply {
                                     setURL(staticUrl)
-                                    setUserAgent("OwnBox/${BuildConfig.VERSION_NAME}")
+                                    setUserAgent("OneBox/${BuildConfig.VERSION_NAME}")
                                 }.execute()
                                 val body = Util.getStringBox(resp.contentString)
                                 if (body.contains("VERSION_NAME=")) {
@@ -353,7 +361,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                             }
                             if (targetVer.isNotBlank()) {
                                 releaseName = "v$targetVer"
-                                releaseUrl = "https://github.com/Own716/OwnBoxForAndroid/releases/tag/v$targetVer"
+                                releaseUrl = "https://github.com/smallmu1022-pixel/OwnBoxForPuls/releases/tag/v$targetVer"
                             }
                         }
                     }
