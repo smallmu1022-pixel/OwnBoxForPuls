@@ -411,7 +411,8 @@ fun buildConfig(
     val nonCustomFinalHosts = hashSetOf<String>()
     val groupCache = HashMap<Long, ProxyGroup?>()
     val isVPN = DataStore.serviceMode == Key.MODE_VPN
-    val bind = if (!forTest && DataStore.allowAccess) "0.0.0.0" else LOCALHOST
+    // OneBox V1.0.0: 局域网共享已移除，入站始终只监听本机，不再绑定 0.0.0.0。
+    val bind = LOCALHOST
     val remoteDns = DataStore.remoteDns.split("\n")
         .mapNotNull { dns -> dns.trim().takeIf { it.isNotBlank() && !it.startsWith("#") } }
     val directDNS = DataStore.directDns.split("\n")
@@ -694,7 +695,7 @@ fun buildConfig(
                     // }
                 }
 
-                if (DataStore.enableClashAPI || DataStore.allowAccess) {
+                if (DataStore.enableClashAPI) {
                     clash_api = ClashAPIOptions().apply {
                         external_controller = "127.0.0.1:9090"
                         external_ui = "../files/yacd"
