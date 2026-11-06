@@ -211,6 +211,7 @@ class AppListActivity : ThemedActivity() {
 
         initProxiedUids()
         binding.list.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.list.setHasFixedSize(true)
         binding.list.itemAnimator = DefaultItemAnimator()
         binding.list.adapter = appsAdapter
 

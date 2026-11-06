@@ -66,8 +66,6 @@
     <string name="cag_misc">Ajustes misceláneos</string> 
     <string name="show_stop">Mostrar botón Detener</string> 
     <string name="show_stop_sum">Si no desea utilizar mosaico como interruptor</string> 
-    <string name="show_direct_speed">Mostrar velocidad directa</string> 
-    <string name="show_direct_speed_sum">Muestra la velocidad del tráfico sin proxy en la notificación también</string> 
     <string name="security_settings">Ajustes de seguridad</string> 
     <string name="allow_insecure">Permitir inseguro</string> 
     <string name="allow_insecure_sum">Desactiva la comprobación de certificados. Cuando está activada, esta configuración es tan segura como el texto sin formato</string> 
@@ -197,7 +195,6 @@
     <string name="add_profile">Añadir perfil</string> 
     <string name="select_profile">Seleccionar perfil</string>
     <string name="proxy_chain">Cadena del proxy</string>
-    <string name="custom_config">Configuración personalizada</string> 
     <string name="balancer">Equilibrador</string> 
     <string name="balancer_settings">Ajustes del equilibrador</string> 
     <string name="balancer_type">Tipo</string> 
@@ -289,8 +286,6 @@
     <string name="v2rayn" translatable="false">V2RayN</string> 
     <string name="available" translatable="false">%dms</string> 
     <string name="unavailable">No disponible</string> 
-    <string name="always_show_address">Mostrar siempre la dirección</string> 
-    <string name="always_show_address_sum">Muestra siempre la dirección del servidor en la tarjeta de configuración</string> 
     <string name="clear_traffic_statistics">Borrar estadísticas de tráfico</string> 
     <string name="connection_test">Prueba de conexión</string> 
     <string name="connection_test_clear_results">Borrar resultados de la prueba</string> 

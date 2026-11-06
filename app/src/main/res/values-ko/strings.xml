@@ -70,8 +70,6 @@
     <string name="cag_misc">기타 설정</string>
     <string name="show_stop">정지 버튼 표시</string>
     <string name="show_stop_sum">빠른 설정 타일을 스위치로 사용하지 않으려는 경우</string>
-    <string name="show_direct_speed">직접 연결 속도 표시</string>
-    <string name="show_direct_speed_sum">프록시를 거치지 않는 트래픽 속도도 알림에 표시</string>
     <string name="security_settings">TLS 보안 설정</string>
     <string name="allow_insecure">안전하지 않은 연결 허용</string>
     <string name="allow_insecure_sum">인증서 확인을 비활성화합니다. 활성화하면 이 구성은 평문만큼만 안전합니다</string>
@@ -214,7 +212,6 @@
     <string name="add_profile">프로파일 추가</string>
     <string name="select_profile">프로파일 선택</string>
     <string name="proxy_chain">프록시 체인</string>
-    <string name="custom_config">사용자 지정 구성</string>
     <string name="balancer">밸런서</string>
     <string name="balancer_settings">밸런서 설정</string>
     <string name="balancer_type">유형</string>
@@ -291,8 +288,6 @@
     <string name="probe_interval">밸런서 관찰 간격</string>
     <string name="standard">표준</string>
     <string name="unavailable">사용 불가</string>
-    <string name="always_show_address">항상 주소 표시</string>
-    <string name="always_show_address_sum">구성 카드에 항상 서버 주소 표시</string>
     <string name="clear_traffic_statistics">트래픽 통계 지우기</string>
     <string name="connection_test">연결 테스트</string>
     <string name="connection_test_clear_results">테스트 결과 지우기</string>
@@ -458,10 +453,8 @@
     <string name="domain_strategy_for_remote">원격용 도메인 전략</string>
     <string name="domain_strategy_for_direct">직접용 도메인 전략</string>
     <string name="domain_strategy_for_server">서버 주소용 도메인 전략</string>
-    <string name="show_bottom_bar">SagerNet처럼 하단 바 표시</string>
     <string name="utls_fingerprint">uTLS 지문</string>
     <string name="custom_outbound_json">사용자 지정 아웃바운드 JSON</string>
-    <string name="custom_config_json">사용자 지정 구성 JSON</string>
     <string name="is_outbound_only">설정한 JSON은 아웃바운드입니다</string>
     <string name="save">저장</string>
     <string name="set_panel_url">패널 URL 설정</string>

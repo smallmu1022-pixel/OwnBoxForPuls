@@ -123,7 +123,7 @@ class NodeSelectDialogActivity : AppCompatActivity() {
 
     private fun finishWithFade() {
         finish()
-        overridePendingTransition(0, android.R.anim.fade_out)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     inner class NodeAdapter(

@@ -33,8 +33,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
 
     private lateinit var isProxyApps: SwitchPreference
 
-    private lateinit var globalCustomConfig: EditConfigPreference
-
     private fun tintPreferenceIcons(group: PreferenceGroup, color: Int) {
         for (i in 0 until group.preferenceCount) {
             val pref = group.getPreference(i)
@@ -97,7 +95,16 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
             true
         }
 
-        // OneBox V1.0.0: 固定浅色模式，夜间模式入口已移除。
+        // OneBox V1.0.1: 恢复夜间模式入口，默认跟随系统（0）。
+        val nightTheme = findPreference<SimpleMenuPreference>(Key.NIGHT_THEME)!!
+        nightTheme.setOnPreferenceChangeListener { _, newTheme ->
+            val mode = (newTheme as String).toInt()
+            DataStore.nightTheme = mode
+            Theme.currentNightMode = mode
+            Theme.applyNightTheme()
+            activity?.recreate()
+            true
+        }
         val appLanguage = findPreference<SimpleMenuPreference>(Key.APP_LANGUAGE)!!
         appLanguage.setOnPreferenceChangeListener { _, newValue ->
             AppLocale.apply(newValue as String)
@@ -114,7 +121,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
         val speedTestTimeout = findPreference<EditTextPreference>(Key.SPEED_TEST_TIMEOUT_MS)!!
         val simpleDownloadURL = findPreference<EditTextPreference>(Key.SIMPLE_DOWNLOAD_URL)!!
 
-        val showDirectSpeed = findPreference<SwitchPreference>(Key.SHOW_DIRECT_SPEED)!!
         val ipv6Mode = findPreference<Preference>(Key.IPV6_MODE)!!
         val trafficSniffing = findPreference<Preference>(Key.TRAFFIC_SNIFFING)!!
 
@@ -130,8 +136,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
 
         val logLevel = findPreference<LongClickListPreference>(Key.LOG_LEVEL)!!
         val mtu = findPreference<MTUPreference>(Key.MTU)!!
-        globalCustomConfig = findPreference(Key.GLOBAL_CUSTOM_CONFIG)!!
-        globalCustomConfig.useConfigStore(Key.GLOBAL_CUSTOM_CONFIG)
 
         logLevel.dialogLayoutResource = R.layout.layout_loglevel_help
         logLevel.setOnPreferenceChangeListener { _, _ ->
@@ -306,7 +310,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
         httpProxyBypass.onPreferenceChangeListener = reloadListener
         dnsHosts.onPreferenceChangeListener = reloadListener
         strictRoute.onPreferenceChangeListener = reloadListener
-        showDirectSpeed.onPreferenceChangeListener = reloadListener
         trafficSniffing.onPreferenceChangeListener = reloadListener
         bypassLan.onPreferenceChangeListener = reloadListener
         bypassLanInCore.onPreferenceChangeListener = reloadListener
@@ -379,9 +382,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataS
 
         if (::isProxyApps.isInitialized) {
             isProxyApps.isChecked = DataStore.proxyApps
-        }
-        if (::globalCustomConfig.isInitialized) {
-            globalCustomConfig.notifyChanged()
         }
     }
 

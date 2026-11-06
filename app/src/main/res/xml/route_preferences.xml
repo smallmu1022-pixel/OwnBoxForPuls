@@ -153,10 +153,5 @@
             app:title="@string/rr_advanced"
             app:summary="@string/rr_limits"
             app:selectable="false" />
-        <moe.matsuri.nb4a.ui.EditConfigPreference
-            app:icon="@drawable/ic_baseline_layers_24"
-            app:key="serverConfig"
-            app:title="@string/custom_config"
-            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>

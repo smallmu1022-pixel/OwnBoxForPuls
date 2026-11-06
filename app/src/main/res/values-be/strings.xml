@@ -54,8 +54,6 @@
     <string name="allow_insecure_sum">Адключыць праверку сертыфікатаў. Калі ўключана, гэтая канфігурацыя такая ж бяспечная, як і адкрыты тэкст</string>
     <string name="allow_insecure">Дазволіць небяспечна</string>
     <string name="security_settings">Налады бяспекі</string>
-    <string name="show_direct_speed_sum">У апавяшчэнні таксама паказвайце хуткасць руху без проксі</string>
-    <string name="show_direct_speed">Паказаць прамую хуткасць</string>
     <string name="show_stop_sum">Калі вы не хочаце выкарыстоўваць кнопку панэлі апавяшчэнняў у якасці пераключальніка злучэння</string>
     <string name="show_stop">Паказаць кнопку прыпынку</string>
     <string name="cag_misc">Розныя налады</string>

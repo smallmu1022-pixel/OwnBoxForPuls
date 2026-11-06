@@ -212,17 +212,12 @@ class MainActivity : ThemedActivity(),
         }
 
         binding.fab.setOnClickListener {
-            if (DataStore.hapticFeedback) it.performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY)
             if (DataStore.serviceState.canStop) SagerNet.stopService() else connect.launch(
                 null
             )
         }
-        binding.stats.setOnClickListener {
-            if (DataStore.hapticFeedback) it.performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY)
-            if (DataStore.serviceState.connected) binding.stats.testConnection()
-        }
-        binding.stats.setOnLongClickListener {
-            if (DataStore.hapticFeedback) it.performHapticFeedback(android.view.HapticFeedbackConstants.LONG_PRESS)
+        // OneBox V1.0.1: 底栏已删除，FAB 长按接管流量图表入口（原为底栏长按）。
+        binding.fab.setOnLongClickListener {
             startActivity(Intent(this, TrafficChartActivity::class.java))
             true
         }
@@ -283,7 +278,6 @@ class MainActivity : ThemedActivity(),
         }
 
         checkClipboardOnResume()
-        binding.stats.refreshDisplay()
         refreshNavMenu(DataStore.enableClashAPI)
     }
 
@@ -725,45 +719,23 @@ class MainActivity : ThemedActivity(),
         syncMainControls(fragment, showWhenConnected = false, animate = true)
     }
 
+    // OneBox V1.0.1: 底栏已删除，FAB 常驻显示（它是主界面唯一的连接/断开入口）。
     private fun syncMainControls(
         fragment: Any? = currentMainFragment
             ?: supportFragmentManager.findFragmentById(R.id.fragment_holder),
         showWhenConnected: Boolean,
         animate: Boolean,
     ) {
-        val showControls = fragment is ConfigurationFragment || DataStore.showBottomBar
-        binding.stats.useExternalScrollDriver = fragment is ConfigurationFragment
-        binding.stats.syncMainControls(
-            showControls,
-            DataStore.serviceState,
-            showWhenConnected,
-            animate,
-        )
         binding.fab.animate().cancel()
-        if (showControls) {
-            binding.fab.translationY = 0f
-            binding.fab.translationX = 0f
-            binding.fab.show()
-        } else {
-            binding.fab.hideProgress()
-            binding.fabProgress.hide()
-            binding.fabProgress.visibility = View.INVISIBLE
-            if (animate && binding.fab.isLaidOut) {
-                binding.fab.hide()
-            } else {
-                binding.fab.visibility = View.INVISIBLE
-            }
-        }
+        binding.fab.translationY = 0f
+        binding.fab.translationX = 0f
+        binding.fab.show()
     }
 
     private fun refreshConfigurationProfileState() {
         val fragment = currentMainFragment
             ?: supportFragmentManager.findFragmentById(R.id.fragment_holder)
         (fragment as? ConfigurationFragment)?.refreshProfileState()
-    }
-
-    fun driveBottomBar(scrollDy: Int) {
-        binding.stats.onListScrolled(scrollDy)
     }
 
     fun displayFragmentWithId(@IdRes id: Int): Boolean {
@@ -798,7 +770,6 @@ class MainActivity : ThemedActivity(),
         io.nekohasekai.sagernet.widget.OneBoxWidgetProvider.updateWidgets(this)
 
         binding.fab.changeState(state, DataStore.serviceState, animate)
-        binding.stats.changeState(state)
         syncMainControls(
             showWhenConnected = state == BaseService.State.Connected,
             animate = animateControls,
@@ -840,8 +811,8 @@ class MainActivity : ThemedActivity(),
 
     // may NOT called when app is in background
     // ONLY do UI update here, write DB in bg process
+    // OneBox V1.0.1: 底栏已删除，App 内速度显示随之去掉；速度只在通知栏（下载速度）与流量图表页显示。
     override fun cbSpeedUpdate(stats: SpeedDisplayData) {
-        binding.stats.updateSpeed(stats.txRateProxy, stats.rxRateProxy)
     }
 
     override suspend fun cbTrafficUpdate(data: TrafficDataBatch) {
@@ -857,7 +828,6 @@ class MainActivity : ThemedActivity(),
             ProfileManager.postUpdate(old, true)
             ProfileManager.postUpdate(id, true)
         }
-        binding.stats.refreshLandingIp(forceRefresh = true)
     }
 
     override fun onPreferenceDataStoreChanged(store: PreferenceDataStore, key: String) {
@@ -867,21 +837,6 @@ class MainActivity : ThemedActivity(),
                 Key.SERVICE_MODE -> onBinderDied()
                 Key.PROFILE_ID -> {
                     LandingIpManager.clearCache()
-                    if (DataStore.serviceState.connected && DataStore.showLandingIp) {
-                        binding.stats.refreshLandingIp(forceRefresh = true)
-                    }
-                }
-                Key.SHOW_BOTTOM_BAR -> {
-                    syncMainControls(
-                        showWhenConnected = DataStore.showBottomBar,
-                        animate = true,
-                    )
-                    when (val fragment = currentMainFragment
-                        ?: supportFragmentManager.findFragmentById(R.id.fragment_holder)
-                    ) {
-                        is GroupFragment -> fragment.updateBottomPadding()
-                        is RouteFragment -> fragment.updateBottomPadding()
-                    }
                 }
                 Key.PROXY_APPS, Key.BYPASS_MODE, Key.INDIVIDUAL -> {
                     if (DataStore.serviceState.canStop) {

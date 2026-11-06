@@ -16,14 +16,6 @@
             app:title="@string/card_style"
             app:useSimpleSummaryProvider="true" />
 
-        <SwitchPreference
-            app:defaultValue="true"
-            app:icon="@drawable/ic_baseline_speed_24"
-            app:key="showDirectSpeed"
-            app:summary="@string/show_direct_speed_sum"
-            app:title="@string/show_direct_speed"
-            app:useSimpleSummaryProvider="true" />
-
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
             app:defaultValue="1000"
             app:entries="@array/notification_entry"
@@ -52,12 +44,6 @@
             app:useSimpleSummaryProvider="true" />
 
         <SwitchPreference
-            app:icon="@drawable/ic_baseline_center_focus_weak_24"
-            app:key="alwaysShowAddress"
-            app:summary="@string/always_show_address_sum"
-            app:title="@string/always_show_address" />
-
-        <SwitchPreference
             app:defaultValue="true"
             app:key="confirmProfileDelete"
             app:title="@string/confirm_profile_delete" />
@@ -74,6 +60,16 @@
             android:title="@string/theme"
             app:icon="@drawable/ic_baseline_color_lens_24"
             app:key="appTheme" />
+
+        <moe.matsuri.nb4a.ui.SimpleMenuPreference
+            app:defaultValue="0"
+            app:entries="@array/night_mode"
+            app:entryValues="@array/int_array_4"
+            app:icon="@drawable/ic_baseline_wb_sunny_24"
+            app:key="nightTheme"
+            app:title="@string/night_mode"
+            app:useSimpleSummaryProvider="true" />
+
 <moe.matsuri.nb4a.ui.SimpleMenuPreference
             app:defaultValue=""
             app:entries="@array/language_entries"
@@ -82,22 +78,6 @@
             app:key="appLanguage"
             app:title="@string/language"
             app:useSimpleSummaryProvider="true" />
-
-        <SwitchPreference
-            app:key="showBottomBar"
-            app:title="@string/show_bottom_bar" />
-
-        <SwitchPreference
-            app:defaultValue="true"
-            app:key="hapticFeedback"
-            app:title="@string/haptic_feedback"
-            app:summary="@string/haptic_feedback_summary" />
-
-        <SwitchPreference
-            app:defaultValue="false"
-            app:key="showAllGroupsTab"
-            app:title="@string/show_all_groups_tab"
-            app:summary="@string/show_all_groups_tab_summary" />
 
     </moe.matsuri.nb4a.ui.ExpandablePreferenceCategory>
 
@@ -473,12 +453,6 @@
             app:icon="@drawable/ic_baseline_bug_report_24"
             app:key="logLevel"
             app:title="@string/log_level"
-            app:useSimpleSummaryProvider="true" />
-
-        <moe.matsuri.nb4a.ui.EditConfigPreference
-            app:icon="@drawable/ic_baseline_layers_24"
-            app:key="globalCustomConfig"
-            app:title="@string/custom_config"
             app:useSimpleSummaryProvider="true" />
 
         <Preference

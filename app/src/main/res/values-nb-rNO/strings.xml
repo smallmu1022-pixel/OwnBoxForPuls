@@ -151,8 +151,6 @@
     <string name="connection_test_refused">Tilkobling nektet</string>
     <string name="connection_test_domain_not_found">Domenet ble ikke funnet</string>
     <string name="clear_traffic_statistics">Slett trafikkstatistikk</string>
-    <string name="always_show_address_sum">Vis alltid serveradressen på konfigurasjonskortet</string>
-    <string name="always_show_address">Vis alltid adresse</string>
     <string name="probe_interval">Balanser observasjonsintervall</string>
     <string name="random">Tilfeldig</string>
     <string name="list">Liste</string>
@@ -202,7 +200,6 @@
     <string name="chain_settings">Kjedeinnstillinger</string>
     <string name="balancer_settings">Balanseinnstillinger</string>
     <string name="balancer">Balanser</string>
-    <string name="custom_config">Egendefinert konfigur</string>
     <string name="proxy_chain">Mellomtjenerkjede</string>
     <string name="reboot_required">Kunne ikke starte VPN -tjenesten. Du må kanskje starte enheten på nytt.</string>
     <string name="vpn_permission_denied">Tillatelse nektet å opprette en VPN -tjeneste</string>
@@ -291,8 +288,6 @@
     <string name="allow_insecure_sum">Deaktiver sertifikatkontroll. Når den er aktivert, er denne konfigurasjonen like sikker som ren tekst</string>
     <string name="allow_insecure">Tillat usikker</string>
     <string name="security_settings">Sikkerhetsinnstillinger</string>
-    <string name="show_direct_speed_sum">Vis også trafikkhastigheten uten proxy i varselet</string>
-    <string name="show_direct_speed">Vis direkte hastighet</string>
     <string name="show_stop_sum">Hvis du ikke vil bruke Quick Tile som bryter</string>
     <string name="show_stop">Vis stoppknapp</string>
     <string name="cag_misc">Diverse innstillinger</string>

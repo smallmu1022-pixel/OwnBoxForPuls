@@ -163,8 +163,7 @@ object Theme {
 
     fun isWhiteTheme(context: Context = app): Boolean = !usingNightMode(context) && DataStore.appTheme == WHITE
     fun isLightGrayTheme(context: Context = app): Boolean = !usingNightMode(context) && DataStore.appTheme == LIGHT_GRAY
-    @Suppress("UNUSED_PARAMETER")
-    fun isBlackTheme(context: Context = app): Boolean = false
+    fun isBlackTheme(context: Context = app): Boolean = usingNightMode(context) || DataStore.appTheme == BLACK
 
     fun getPrimaryColor(context: Context): Int {
         if (isWhiteTheme(context)) {
@@ -172,6 +171,9 @@ object Theme {
         }
         if (isLightGrayTheme(context)) {
             return Color.parseColor("#1F2937")
+        }
+        if (usingNightMode(context) || isBlackTheme(context)) {
+            return Color.WHITE
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && DataStore.useSystemTheme) {
             val wallpaperColor = getSystemWallpaperColor(context)
@@ -184,23 +186,41 @@ object Theme {
 
     var currentNightMode = -1
 
-    // OneBox V1.0.0: 固定浅色模式，不再跟随系统夜间模式。
+    // OneBox V1.0.1: 恢复跟随系统夜间模式（默认 0 = 跟随系统）。
     fun getNightMode(): Int {
-        return AppCompatDelegate.MODE_NIGHT_NO
+        if (currentNightMode == -1) {
+            currentNightMode = DataStore.nightTheme
+        }
+        return getNightMode(currentNightMode)
     }
 
-    @Suppress("UNUSED_PARAMETER")
     fun getNightMode(mode: Int): Int {
-        return AppCompatDelegate.MODE_NIGHT_NO
+        return when (mode) {
+            0 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            1 -> AppCompatDelegate.MODE_NIGHT_YES
+            2 -> AppCompatDelegate.MODE_NIGHT_NO
+            else -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+        }
     }
 
-    @Suppress("UNUSED_PARAMETER")
     fun usingNightMode(context: Context = app): Boolean {
-        return false
+        return when (DataStore.nightTheme) {
+            1 -> true
+            2 -> false
+            else -> isSystemNight(context)
+        }
     }
 
     fun applyNightTheme() {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        if (DataStore.nightTheme == 0) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        } else if (DataStore.nightTheme == 1 || DataStore.appTheme == BLACK) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else if (DataStore.nightTheme == 2) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
     }
 
 }

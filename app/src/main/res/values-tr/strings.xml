@@ -23,8 +23,6 @@
     <string name="allow_insecure_sum">Sertifika doğrulamasını devre dışı bırakır, Etkinleştirildikten sonra yapılandırma düz metin olarak korunur</string>
     <string name="allow_insecure">Güvenliksiz Bağlantıyı Etkinleştir</string>
     <string name="security_settings">Güvenlik Ayarları</string>
-    <string name="show_direct_speed_sum">Vekil sunucu olmadan oluşan veri trafiği hızını da göster</string>
-    <string name="show_direct_speed">Direkt Hızı Göster</string>
     <string name="show_stop_sum">Hızlı Ayarlar kısayolunu anahtar olarak kullanmak istemiyorsanız kullanın</string>
     <string name="show_stop">Durdur Butonunu Göster</string>
     <string name="cag_misc">Diğer Ayarlar</string>
@@ -144,7 +142,6 @@
     <string name="hysteria_connection_receive_window">QUIC Bağlantı Alım Penceresi</string>
     <string name="hysteria_stream_receive_window">QUIC Akış Alım Penceresi</string>
     <string name="force_resolve_sum">Güncelleme yaparken bütün alan adlarının IP adreslerini çöz. Mümkünse sunucu ve SNI otomatik olarak eklenir</string>
-    <string name="always_show_address_sum">Yapılandırma kartının üzerinde her zaman sunucu adresini göster</string>
     <string name="probe_interval">Dengeleyici gözlem aralığı</string>
     <string name="add_profile_methods_manual_settings">Elle Ayar Ekle</string>
     <string name="profile_config">Profil yapılandırması</string>
@@ -156,7 +153,6 @@
     <string name="chain_settings">Zincir Ayarları</string>
     <string name="proxy_chain">Vekil Sunucu Zinciri</string>
     <string name="plugin_configure">Yapılandır…</string>
-    <string name="custom_config">Kişisel Yapılandırma</string>
     <string name="route_for">%s için kural</string>
     <string name="app_no_launcher">Bu uygulama herhangi bir arayüze sahip değil.</string>
     <string name="copy_failed">Kopyalama başarısız oldu.</string>
@@ -232,7 +228,6 @@
     <string name="connection_test_clear_results">Test sonuçlarını temizle</string>
     <string name="connection_test">Bağlantı testi</string>
     <string name="clear_traffic_statistics">Trafik istatistiklerini temizle</string>
-    <string name="always_show_address">Her Zaman Adresi Göster</string>
     <string name="unavailable">Kullanılamıyor</string>
     <string name="standard">Standart</string>
     <string name="api_port">API Portu</string>

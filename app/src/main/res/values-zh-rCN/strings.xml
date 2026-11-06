@@ -211,7 +211,6 @@
     <string name="kcp_mtu">mKCP MTU</string>
     <string name="kcp_tti">mKCP TTI</string>
     <string name="kcp_cwnd_multiplier">拥塞窗口倍数</string>
-    <string name="show_bottom_bar">显示底栏</string>
     <string name="utls_fingerprint">uTLS 指纹</string>
     <string name="grpc_service_name">gRPC 服务名称</string>
     <string name="alpn">应用层协议协商</string>
@@ -224,8 +223,6 @@
     <string name="ss_cat">Shadowsocks 设置</string>
     <string name="insecure">不安全</string>
     <string name="deprecated">已废弃</string>
-    <string name="show_direct_speed">显示直连的速度</string>
-    <string name="show_direct_speed_sum">在通知中也显示不经过代理的流量速度</string>
     <string name="select_profile">选择配置</string>
     <string name="proxy_chain">链式代理</string>
     <string name="chain_settings">链设置</string>
@@ -269,10 +266,10 @@
     <string name="document">文档</string>
     <string name="early_data_header_name">前置数据标头</string>
     <string name="config_settings">配置设置</string>
-    <string name="custom_config">自定义配置</string>
     <string name="language">语言</string>
     <string name="enable">启用</string>
     <string name="auto">自动</string>
+    <string name="night_mode">夜间模式</string>
     <string name="follow_system">跟随系统</string>
     <string name="security_settings">TLS 安全设置</string>
     <string name="allow_insecure">允许不安全的连接</string>
@@ -302,8 +299,6 @@
     <string name="probe_interval">负载均衡观测间隔</string>
     <string name="standard">标准</string>
     <string name="unavailable">不可用</string>
-    <string name="always_show_address">始终显示地址</string>
-    <string name="always_show_address_sum">始终在配置卡片上显示服务器地址</string>
     <string name="clear_traffic_statistics">清空流量统计数据</string>
     <string name="connection_test">连接测试</string>
     <string name="connection_test_clear_results">清理测试结果</string>
@@ -502,7 +497,6 @@
     <string name="pinned_certchain_sha256">固定证书链散列</string>
     <string name="menu_dashboard">Sing-box 仪表盘</string>
     <string name="custom_outbound_json">自定义出站 JSON</string>
-    <string name="custom_config_json">自定义配置 JSON</string>
     <string name="is_outbound_only">设置的 JSON 是出站</string>
     <string name="save">保存</string>
     <string name="set_panel_url">设置面板 URL</string>
@@ -931,13 +925,8 @@
     <string name="copy_current_link">复制链接</string>
 
     <!-- Haptic Feedback -->
-    <string name="haptic_feedback">触感反馈</string>
-    <string name="haptic_feedback_summary">点击按钮时产生微微震动反馈</string>
 
     <!-- Show All Groups Tab -->
-    <string name="show_all_groups_tab">显示全部组标签页</string>
-    <string name="show_all_groups_tab_summary">在订阅组标签页最左侧添加"全部"Tab，汇总所有组的节点</string>
-    <string name="group_tab_all">全部</string>
 
     <!-- 策略组多选 -->
     <string name="selected_count">已选择 %d 项</string>

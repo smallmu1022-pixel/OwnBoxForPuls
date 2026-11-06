@@ -70,8 +70,6 @@
     <string name="cag_misc">تنظیمات متفرقه</string>
     <string name="show_stop">نمایش دکمه توقف</string>
     <string name="show_stop_sum">اگر دکمه تغییر وضعیت در نوار اعلان را نمی‌خواهید</string>
-    <string name="show_direct_speed">نمایش سرعت</string>
-    <string name="show_direct_speed_sum">نمایش سرعت اتصال، حتی در هنگام غیرفعال بودن پراکسی</string>
     <string name="security_settings">تنظیمات امنیت TLS</string>
     <string name="allow_insecure">اتصال محافظت نشده</string>
     <string name="allow_insecure_sum">اگر بررسی گواهی‌ها غیرفعال باشد، اتصال بدون رمزنگاری خواهد بود.</string>
@@ -220,7 +218,6 @@
     <string name="action_wireguard" translatable="false">WireGuard</string>
     <string name="action_tuic" translatable="false">TUIC</string>
     <string name="proxy_chain">زنجیره پراکسی</string>
-    <string name="custom_config">پیکربندی اختصاصی</string>
     <string name="balancer">برابرکننده</string>
     <string name="balancer_settings">تنظیمات برابرکننده</string>
     <string name="balancer_type">نوع</string>
@@ -314,8 +311,6 @@
     <string name="v2rayn" translatable="false">V2RayN</string>
     <string name="available" translatable="false">%dms</string>
     <string name="unavailable">در دسترس نیست</string>
-    <string name="always_show_address">نشانی‌ها همواره نمایش داده شود</string>
-    <string name="always_show_address_sum">همیشه نشانی سرور را روی کارت پیکربندی نمایش دهید</string>
     <string name="clear_traffic_statistics">پاک کردن اطلاعات ترافیک</string>
     <string name="connection_test">آزمایش اتصال</string>
     <string name="connection_test_clear_results">پاک کردن نتایج آزمایش</string>
@@ -492,10 +487,8 @@
     <string name="domain_strategy_for_remote">راهبرد دامنه برای ارتباط از راه دور</string>
     <string name="domain_strategy_for_direct">راهبرد دامنه برای ارتباط مستقیم</string>
     <string name="domain_strategy_for_server">راهبرد دامنه برای نشانی‌های سرور</string>
-    <string name="show_bottom_bar">نمایش نوار پایین مانند SagerNet</string>
     <string name="utls_fingerprint">اثر انگشت uTLS</string>
     <string name="custom_outbound_json">خروجی سفارشی JSON</string>
-    <string name="custom_config_json">پراکسی سفارشی JSON</string>
     <string name="is_outbound_only">مجموعه JSON برای خروجی است</string>
     <string name="save">ذخیره</string>
     <string name="set_panel_url">تعیین لینک صفحه</string>

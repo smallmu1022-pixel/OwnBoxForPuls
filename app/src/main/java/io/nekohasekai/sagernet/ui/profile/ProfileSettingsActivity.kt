@@ -175,7 +175,6 @@ abstract class ProfileSettingsActivity<T : AbstractBean>(
         }
         // shared menu item
         menu.findItem(R.id.action_custom_outbound_json)?.isVisible = true
-        menu.findItem(R.id.action_custom_config_json)?.isVisible = true
         return true
     }
 
@@ -248,14 +247,7 @@ abstract class ProfileSettingsActivity<T : AbstractBean>(
             }
         }
 
-        var callbackCustom: ((String) -> Unit)? = null
         var callbackCustomOutbound: ((String) -> Unit)? = null
-
-        val resultCallbackCustom = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { (_, _) ->
-            callbackCustom?.let { it(DataStore.serverCustom) }
-        }
 
         val resultCallbackCustomOutbound = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -299,22 +291,6 @@ abstract class ProfileSettingsActivity<T : AbstractBean>(
                             ConfigEditActivity::class.java
                         ).apply {
                             putExtra("key", Key.SERVER_CUSTOM_OUTBOUND)
-                        })
-                }
-                true
-            }
-
-            R.id.action_custom_config_json -> {
-                activity?.proxyEntity?.apply {
-                    val bean = requireBean()
-                    DataStore.serverCustom = bean.customConfigJson
-                    callbackCustom = { bean.customConfigJson = it }
-                    resultCallbackCustom.launch(
-                        Intent(
-                            requireContext(),
-                            ConfigEditActivity::class.java
-                        ).apply {
-                            putExtra("key", Key.SERVER_CUSTOM)
                         })
                 }
                 true

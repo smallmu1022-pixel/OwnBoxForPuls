@@ -85,9 +85,6 @@
     <string name="cag_misc">Misc Settings</string>
     <string name="show_stop">Show Stop Button</string>
     <string name="show_stop_sum">If you don\'t want to use Quick Tile as the switch</string>
-    <string name="show_direct_speed">Show Direct Speed</string>
-    <string name="show_direct_speed_sum">Show the traffic speed without proxy in the notification as
-        well</string>
     <string name="security_settings">TLS Security Settings</string>
     <string name="allow_insecure">Allow Insecure</string>
     <string name="allow_insecure_sum">Disable certificate checking. When enabled, this configuration
@@ -282,7 +279,6 @@
     <string name="action_tuic" translatable="false">TUIC</string>
     <string name="action_juicity" translatable="false">Juicity</string>
     <string name="proxy_chain">Proxy Chain</string>
-    <string name="custom_config">Custom Config</string>
     <string name="balancer">Strategy Group</string>
     <string name="balancer_settings">Strategy Group Settings</string>
     <string name="balancer_type">Strategy Group Type</string>
@@ -379,6 +375,7 @@
         otherwise you may not be able to connect to the Internet.</string>
     <string name="lines">%d Lines</string>
     <string name="language">Language</string>
+    <string name="night_mode">Night Mode</string>
     <string name="follow_system">Follow System</string>
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>
@@ -394,9 +391,6 @@
     <string name="v2rayn" translatable="false">V2RayN</string>
     <string name="available" translatable="false">%dms</string>
     <string name="unavailable">Unavailable</string>
-    <string name="always_show_address">Always Show Address</string>
-    <string name="always_show_address_sum">Always display the server address on the configuration
-        card</string>
     <string name="clear_traffic_statistics">Clear traffic statistics</string>
     <string name="connection_test">Connection test</string>
     <string name="connection_test_clear_results">Clear test results</string>
@@ -630,10 +624,8 @@
     <string name="domain_strategy_for_remote">Domain strategy for Remote</string>
     <string name="domain_strategy_for_direct">Domain strategy for Direct</string>
     <string name="domain_strategy_for_server">Domain strategy for Server address</string>
-    <string name="show_bottom_bar">Show bottom bar</string>
     <string name="utls_fingerprint">uTLS fingerprint</string>
     <string name="custom_outbound_json">Custom outbound JSON</string>
-    <string name="custom_config_json">Custom config JSON</string>
     <string name="is_outbound_only">The JSON set is outbound</string>
     <string name="save">Save</string>
     <string name="set_panel_url">Set panel URL</string>
@@ -1020,13 +1012,8 @@
     <string name="dashboard_search_rules_hint">Search rule payload or outbound</string>
 
     <!-- Haptic Feedback -->
-    <string name="haptic_feedback">Haptic Feedback</string>
-    <string name="haptic_feedback_summary">Vibrate slightly when tapping buttons</string>
 
     <!-- Show All Groups Tab -->
-    <string name="show_all_groups_tab">Show All Groups Tab</string>
-    <string name="show_all_groups_tab_summary">Add an "All" tab at the leftmost to show nodes from all subscription groups</string>
-    <string name="group_tab_all">All</string>
 
     <!-- Dashboard & Route Rule Advanced -->
     <string name="dashboard_connect_service">Connect the proxy service first, then reload the dashboard.</string>

@@ -90,7 +90,6 @@
     <string name="speed_detail">プロキシ： %1$s↑ %2$s↓
 \nダイレクト： %3$s↑ %4$s↓</string>
     <string name="security_settings">セキュリティ設定</string>
-    <string name="show_direct_speed">ダイレクト接続のスピードを表示</string>
     <string name="show_stop_sum">クィックタイトルを使えなくなりたいの場合</string>
     <string name="show_stop">中止バタンを表示</string>
     <string name="ws_browser_forwarding">ブラウザへ転送</string>
@@ -98,7 +97,6 @@
     <string name="require_http">HTTPでインバウンドを開く</string>
     <string name="inbound_settings">インバウンド設定</string>
     <string name="menu_traffic">トラフィック</string>
-    <string name="show_direct_speed_sum">プロキシなしの通信速度も通知に表示する</string>
     <string name="allow_insecure_sum">証明書のチェックを無効にします。この設定を有効にすると、平文と同等の安全性になります。</string>
     <string name="connection_test_available">成功: HTTPS ハンドシェイクに要した時間は %dms です。</string>
     <string name="cag_misc">その他の設定</string>
@@ -220,7 +218,6 @@
     <string name="add_profile">プロファイルを追加</string>
     <string name="select_profile">プロファイルを選択</string>
     <string name="proxy_chain">プロキシチェーン</string>
-    <string name="custom_config">カスタム設定</string>
     <string name="balancer">バランサー</string>
     <string name="balancer_settings">バランサー設定</string>
     <string name="balancer_type">タイプ</string>
@@ -297,8 +294,6 @@
     <string name="probe_interval">バランサーの観測間隔</string>
     <string name="standard">標準</string>
     <string name="unavailable">利用不可</string>
-    <string name="always_show_address">常にアドレスを表示</string>
-    <string name="always_show_address_sum">設定カードに常にサーバーアドレスを表示</string>
     <string name="clear_traffic_statistics">トラフィック統計をクリア</string>
     <string name="connection_test">接続テスト</string>
     <string name="connection_test_clear_results">テスト結果をクリア</string>
@@ -464,10 +459,8 @@
     <string name="domain_strategy_for_remote">リモートのドメイン戦略</string>
     <string name="domain_strategy_for_direct">ダイレクトのドメイン戦略</string>
     <string name="domain_strategy_for_server">サーバーアドレスのドメイン戦略</string>
-    <string name="show_bottom_bar">SagerNet のようなボトムバーを表示</string>
     <string name="utls_fingerprint">uTLS フィンガープリント</string>
     <string name="custom_outbound_json">カスタムアウトバウンド JSON</string>
-    <string name="custom_config_json">カスタム設定 JSON</string>
     <string name="is_outbound_only">設定した JSON はアウトバウンドです</string>
     <string name="save">保存</string>
     <string name="set_panel_url">パネル URL を設定</string>

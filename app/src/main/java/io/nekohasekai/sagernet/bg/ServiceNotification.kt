@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SYSTEM_EXEMPTED
 import android.os.Build
+import android.text.format.Formatter
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -54,9 +55,11 @@ class ServiceNotification(
     }
 
     private var lastTitle: String? = null
+    private var lastSpeedText: String? = null
 
     // OneBox V1.0.0: 自动动态栏通知（Android 16 实况胶囊 / Live Updates）已移除。
-    // 前台服务通知本身保留，仅显示静态标题，不再按速度刷新通知内容。
+    // OneBox V1.0.1: 前台服务通知本身保留，标题静态；正文在已连接且有下载流量时显示下载速度
+    // （见 postNotificationDownloadSpeed），未连接或无流量时恢复无正文。
     @Suppress("UNUSED_PARAMETER")
     suspend fun postStateUpdate(state: BaseService.State) {
         update()
@@ -67,6 +70,24 @@ class ServiceNotification(
         lastTitle = newTitle
         useBuilder {
             it.setContentTitle(newTitle)
+        }
+        update()
+    }
+
+    /**
+     * OneBox V1.0.1：通知正文显示下载速度（仅下载，不含上传）。
+     * 仅在已连接且有下载流量时显示；未连接或无流量时传入 0，恢复无正文的静态通知。
+     * 由 TrafficLooper 在现有流量轮询节奏下调用，不另起定时器；正文文本不变时不重复刷新通知。
+     * 标题与通知本身不动。
+     */
+    suspend fun postNotificationDownloadSpeed(downloadBytesPerSec: Long) {
+        val text = if (downloadBytesPerSec > 0L) {
+            "↓ " + Formatter.formatFileSize(service as Context, downloadBytesPerSec) + "/s"
+        } else null
+        if (text == lastSpeedText) return
+        lastSpeedText = text
+        useBuilder {
+            it.setContentText(text)
         }
         update()
     }

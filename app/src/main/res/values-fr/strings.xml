@@ -96,7 +96,6 @@
     <string name="ws_browser_forwarding">Transfert de Navigateur</string>
     <string name="group_filter">Filtre</string>
     <string name="clear_profiles">Effacer</string>
-    <string name="always_show_address">Toujours afficher l\'adresse</string>
     <string name="undo">Annuler</string>
     <string name="enable">Activer</string>
     <string name="standard">Standard</string>
@@ -137,7 +136,6 @@
     <string name="connection_test_available">Succès : la négociation HTTPS a pris %dms</string>
     <string name="require_transproxy">Activer Transproxy entrant</string>
     <string name="server_port">Port distant</string>
-    <string name="show_direct_speed">Afficher la vitesse directe</string>
     <string name="username_opt">Nom d\'utilisateur (facultatif)</string>
     <string name="encryption">Cryptage</string>
     <string name="stop">Arrêter</string>
@@ -150,7 +148,6 @@
     <string name="invalid_server">Nom de serveur invalide</string>
     <string name="ws_browser_forwarding_sum">Transférer les WebSockets correspondants via le navigateur.</string>
     <string name="require_http">Activer HTTP Entrant</string>
-    <string name="show_direct_speed_sum">Afficher également la vitesse du trafic sans proxy dans la notification</string>
     <string name="connection_test_available_http">Succès : la négociation HTTP a pris %dms</string>
     <string name="dns_hosts">Réécriture de Domaine</string>
     <string name="password">Mot de passe</string>
@@ -239,7 +236,6 @@
     <string name="route_bypass_ip">Règle IP pour %s</string>
     <string name="config_settings">Préférences de la configuration</string>
     <string name="action_from_link">Depuis la souscription</string>
-    <string name="custom_config">Configuration personnalisée</string>
     <string name="connection_test_refused">Connexion refusée</string>
     <string name="open_app">Ouvrir l\'appli</string>
     <string name="open_settings">Ouvrir les préférences</string>

@@ -2,7 +2,6 @@ package io.nekohasekai.sagernet.database
 
 import android.os.Binder
 import androidx.preference.PreferenceDataStore
-import io.nekohasekai.sagernet.GroupOrder
 import io.nekohasekai.sagernet.GroupType
 import io.nekohasekai.sagernet.IPv6Mode
 import io.nekohasekai.sagernet.Key
@@ -97,15 +96,11 @@ object DataStore : OnPreferenceDataStoreChangeListener {
 
     var appTLSVersion by configurationStore.string(Key.APP_TLS_VERSION)
     var enableClashAPI by configurationStore.boolean(Key.ENABLE_CLASH_API) { true }
-    var showBottomBar by configurationStore.boolean(Key.SHOW_BOTTOM_BAR)
     var confirmProfileDelete by configurationStore.boolean(Key.CONFIRM_PROFILE_DELETE) { true }
     var groupLayoutMode by configurationStore.stringToInt(Key.GROUP_LAYOUT_MODE) { 0 }
     var profileCardStyle by configurationStore.stringToInt(Key.PROFILE_CARD_STYLE) { 0 }
     var showSubscriptionInfoCard by configurationStore.boolean(Key.SHOW_SUBSCRIPTION_INFO_CARD) { true }
     var customThemeColor by configurationStore.int("custom_theme_color") { 0x00E676 }
-    var hapticFeedback by configurationStore.boolean(Key.HAPTIC_FEEDBACK) { true }
-    var showAllGroupsTab by configurationStore.boolean(Key.SHOW_ALL_GROUPS_TAB) { false }
-    var allGroupsOrder by configurationStore.int(Key.ALL_GROUPS_ORDER) { GroupOrder.ORIGIN }
 
     var allowInsecureOnRequest by configurationStore.boolean(Key.ALLOW_INSECURE_ON_REQUEST)
     var networkChangeResetConnections by configurationStore.boolean(Key.NETWORK_CHANGE_RESET_CONNECTIONS) { false }
@@ -116,7 +111,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var isExpert by configurationStore.boolean(Key.APP_EXPERT)
     var appTheme by configurationStore.int(Key.APP_THEME) { Theme.LIGHT_GRAY }
     val useSystemTheme: Boolean get() = false
-    var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME) { 2 }
+    var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME)
     var appLanguage by configurationStore.string(Key.APP_LANGUAGE) { "" }
     var serviceMode by configurationStore.string(Key.SERVICE_MODE) { Key.MODE_VPN }
 
@@ -231,7 +226,6 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var proxyApps by configurationStore.boolean(Key.PROXY_APPS)
     var bypass by configurationStore.boolean(Key.BYPASS_MODE) { true }
     var individual by configurationStore.string(Key.INDIVIDUAL)
-    var showDirectSpeed by configurationStore.boolean(Key.SHOW_DIRECT_SPEED) { true }
     var showLandingIp by configurationStore.boolean(Key.SHOW_LANDING_IP) { true }
     var hideLandingIpAddress by configurationStore.boolean("hide_landing_ip_address") { false }
 
@@ -261,7 +255,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var connectionTestConcurrent by configurationStore.int(Key.CONNECTION_TEST_CONCURRENT) {
         SagerNet.application.getString(R.string.default_connection_test_concurrent).toInt()
     }
-    var connectionTestTimeout by configurationStore.int(Key.CONNECTION_TEST_TIMEOUT) { 3000 }
+    var connectionTestTimeout by configurationStore.int(Key.CONNECTION_TEST_TIMEOUT) { 2000 }
     var speedTestMode by configurationStore.string(Key.SPEED_TEST_MODE) {
         SagerNet.application.getString(R.string.default_speed_test_mode)
     }
@@ -277,7 +271,6 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var simpleDownloadURL by configurationStore.string(Key.SIMPLE_DOWNLOAD_URL) {
         SagerNet.application.getString(R.string.default_simple_download_url)
     }
-    var alwaysShowAddress by configurationStore.boolean(Key.ALWAYS_SHOW_ADDRESS)
 
     var tunImplementation: Int
         get() = TunImplementation.SING_TUN

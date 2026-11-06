@@ -46,8 +46,6 @@
     <string name="allow_insecure_sum">Nonaktifkan pengecekan sertifikat. Saat diaktifkan, konfigurasi ini seaman teks biasa</string>
     <string name="allow_insecure">Izinkan Koneksi Tidak Aman</string>
     <string name="security_settings">Pengaturan Keamanan</string>
-    <string name="show_direct_speed_sum">Tampilkan lalu lintas kecepatan koneksi tanpa proksi di notifikasi</string>
-    <string name="show_direct_speed">Tampilkan Kecepatan Direk</string>
     <string name="show_stop_sum">Jika Anda tidak ingin menggunakan Tombol Ubin sebagai pengalih</string>
     <string name="show_stop">Tampilkan Tombol Henti</string>
     <string name="cag_misc">Pengaturan Lainnya</string>
@@ -162,7 +160,6 @@
     <string name="balancer_type">Jenis</string>
     <string name="balancer_settings">Pengaturan Penyeimbang</string>
     <string name="balancer">Pengimbang</string>
-    <string name="custom_config">Konfigurasi Kustom</string>
     <string name="proxy_chain">Rantai Proksi</string>
     <string name="edit">Sunting</string>
     <string name="reboot_required">Gagal memulai layanan VPN. Anda mungkin perlu me-reboot perangkat Anda.</string>

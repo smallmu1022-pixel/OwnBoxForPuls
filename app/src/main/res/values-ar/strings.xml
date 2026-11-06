@@ -101,8 +101,6 @@
     <string name="allow_insecure_sum">تعطيل فحص الشهادة. عند التمكين ، يكون هذا التكوين آمنًا مثل النص العادي</string>
     <string name="allow_insecure">السماح بعدم الأمان</string>
     <string name="security_settings">اعدادات الامان</string>
-    <string name="show_direct_speed_sum">أظهر سرعة المرور بدون وكيل في الإشعار أيضًا</string>
-    <string name="show_direct_speed">عرض السرعة المباشرة</string>
     <string name="show_stop_sum">إذا كنت لا تريد استخدام \"اللوحة السريعة\" كمفتاح التبديل</string>
     <string name="show_stop">إظهار زر الإيقاف</string>
     <string name="cag_misc">إعدادات متنوعة</string>
@@ -177,7 +175,6 @@
     <string name="balancer_type">اكتب</string>
     <string name="balancer_settings">إعدادات الموازن</string>
     <string name="balancer">موازن</string>
-    <string name="custom_config">التكوين المخصص</string>
     <string name="proxy_chain">سلسلة البروکسی</string>
     <string name="select_profile">حدد ملف التعريف</string>
     <string name="add_profile">إضافة ملف تعريف</string>
@@ -280,8 +277,6 @@
     <string name="connection_test_clear_results">المقاصة نتائج الاختبار</string>
     <string name="connection_test">اختبار الاتصال</string>
     <string name="clear_traffic_statistics">مسح إحصائيات حركة المرور</string>
-    <string name="always_show_address_sum">اعرض دائمًا عنوان الخادم على بطاقة التكوين</string>
-    <string name="always_show_address">اعرض العنوان دائمًا</string>
     <string name="unavailable">غير متوفره</string>
     <string name="standard">معيار</string>
     <string name="probe_interval">الفاصل الزمني لرصد الموازن</string>

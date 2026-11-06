@@ -70,8 +70,6 @@
     <string name="cag_misc">Різні налаштування</string>
     <string name="show_stop">Показати кнопку зупинки</string>
     <string name="show_stop_sum">Якщо ви не хочете використовувати Quick Tile як перемикач</string>
-    <string name="show_direct_speed">Показати пряму швидкість</string>
-    <string name="show_direct_speed_sum">У сповіщенні також покажіть швидкість трафіку без проксі-сервера</string>
     <string name="security_settings">Налаштування безпеки TLS</string>
     <string name="allow_insecure">Дозволити незахищене</string>
     <string name="allow_insecure_sum">Вимкнути перевірку сертифікатів. Якщо ввімкнено, ця конфігурація є такою ж безпечною, як і відкритий текст</string>
@@ -217,7 +215,6 @@
     <string name="action_wireguard" translatable="false">WireGuard</string>
     <string name="action_tuic" translatable="false">TUIC</string>
     <string name="proxy_chain">Ланцюжок проксі</string>
-    <string name="custom_config">Власна конфігурація</string>
     <string name="balancer">Балансувальник</string>
     <string name="balancer_settings">Налаштування балансувальника</string>
     <string name="balancer_type">Тип</string>
@@ -313,8 +310,6 @@
     <string name="v2rayn" translatable="false">V2RayN</string>
     <string name="available" translatable="false">%dмс</string>
     <string name="unavailable">Недоступний</string>
-    <string name="always_show_address">Завжди показувати адресу</string>
-    <string name="always_show_address_sum">Завжди відображати адресу сервера на картці конфігурації</string>
     <string name="clear_traffic_statistics">Очистити статистику трафіку</string>
     <string name="connection_test">Тест з\'єднання</string>
     <string name="connection_test_clear_results">Очистити результати тесту</string>
@@ -475,10 +470,8 @@
     <string name="domain_strategy_for_remote">Стратегія доменів для віддаленого</string>
     <string name="domain_strategy_for_direct">Стратегія доменів для прямого</string>
     <string name="domain_strategy_for_server">Стратегія доменів для адреси сервера</string>
-    <string name="show_bottom_bar">Показувати нижню панель, як у SagerNet</string>
     <string name="utls_fingerprint">Відбиток uTLS</string>
     <string name="custom_outbound_json">Власний JSON вихідного з\'єднання</string>
-    <string name="custom_config_json">Власний JSON конфігурації</string>
     <string name="is_outbound_only">Встановлений JSON є лише вихідним з\'єднанням</string>
     <string name="save">Зберегти</string>
     <string name="set_panel_url">Встановити URL панелі</string>

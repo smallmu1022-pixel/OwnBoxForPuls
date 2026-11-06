@@ -48,7 +48,6 @@ object Key {
     const val MIXED_AUTH_CONFIG = "mixedAuthConfig" // 设置页「配置身份验证」入口，仅 UI 查找用
     const val ALLOW_ACCESS = "allowAccess"
     const val SPEED_INTERVAL = "speedInterval"
-    const val SHOW_DIRECT_SPEED = "showDirectSpeed"
     const val SHOW_LANDING_IP = "showLandingIp"
 
     const val HTTP_PROXY_BYPASS = "httpProxyBypass"
@@ -71,7 +70,6 @@ object Key {
     const val LOG_LEVEL = "logLevel"
     const val LOG_BUF_SIZE = "logBufSize"
     const val MTU = "mtu"
-    const val ALWAYS_SHOW_ADDRESS = "alwaysShowAddress"
 
     const val RULES_GEOSITE_URL = "rulesGeositeUrl"
     const val RULES_GEOIP_URL = "rulesGeoipUrl"
@@ -83,14 +81,10 @@ object Key {
     const val ACQUIRE_WAKE_LOCK = "acquireWakeLock"
     const val HIDE_FROM_RECENT_APPS = "hideFromRecentApps"
     const val PREVIEW_HINT_DISMISSED_VERSION = "previewHintDismissedVersion"
-    const val SHOW_BOTTOM_BAR = "showBottomBar"
     const val CONFIRM_PROFILE_DELETE = "confirmProfileDelete"
     const val GROUP_LAYOUT_MODE = "groupLayoutMode"
     const val PROFILE_CARD_STYLE = "profileCardStyle"
     const val SHOW_SUBSCRIPTION_INFO_CARD = "show_subscription_info_card"
-    const val HAPTIC_FEEDBACK = "hapticFeedback"
-    const val SHOW_ALL_GROUPS_TAB = "showAllGroupsTab"
-    const val ALL_GROUPS_ORDER = "allGroupsOrder"
 
     const val ALLOW_INSECURE_ON_REQUEST = "allowInsecureOnRequest"
 

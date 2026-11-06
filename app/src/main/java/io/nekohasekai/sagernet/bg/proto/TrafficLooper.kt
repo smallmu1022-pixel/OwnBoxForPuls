@@ -188,7 +188,6 @@ class TrafficLooper
 
     private suspend fun loop() {
         val baseDelayMs = DataStore.speedInterval.toLong()
-        val showDirectSpeed = DataStore.showDirectSpeed
         val profileTrafficStatistics = DataStore.profileTrafficStatistics
         if (baseDelayMs == 0L) return
 
@@ -204,6 +203,8 @@ class TrafficLooper
 
             val proxy = data.proxy
             if (proxy == null) {
+                // OneBox V1.0.1: 未建立连接时清除通知里的下载速度，恢复静态通知。
+                data.notification?.postNotificationDownloadSpeed(0L)
                 delay(if (isForegroundUI) baseDelayMs else 3000L)
                 continue
             }
@@ -315,8 +316,8 @@ class TrafficLooper
                     speed = SpeedDisplayData(
                         mainTxRate,
                         mainRxRate,
-                        if (showDirectSpeed) itemBypass.txRate else 0L,
-                        if (showDirectSpeed) itemBypass.rxRate else 0L,
+                        0L,
+                        0L,
                         mainTx,
                         mainRx
                     ),
@@ -352,6 +353,13 @@ class TrafficLooper
                 continue
             }
             currentCoroutineContext().ensureActive()
+
+            // OneBox V1.0.1：通知栏显示下载速度（仅已连接且有下载流量时；复用本流量轮询节奏，不另起定时器）。
+            if (data.state == BaseService.State.Connected) {
+                data.notification?.postNotificationDownloadSpeed(snapshot.speed.rxRateProxy)
+            } else {
+                data.notification?.postNotificationDownloadSpeed(0L)
+            }
 
             // OneBox V1.0.0 节能策略（只拉长间隔，不改核心逻辑）：
             // 通知不再按速度刷新，后台轮询只为前台界面与流量统计服务；

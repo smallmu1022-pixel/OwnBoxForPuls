@@ -31,8 +31,6 @@
 <string name="allow_insecure_sum">Отключить проверку сертификата. При включении эта функция настолько же безопасна как передача пароля в открытом виде</string>
 <string name="alpn">Согласование протокола уровня приложений</string>
 <string name="alter_id">Изменить ID</string>
-<string name="always_show_address">Всегда показывать адрес</string>
-<string name="always_show_address_sum">Всегда отображать адрес сервера на карте конфигурации</string>
 <string name="app_desc">Универсальный набор инструментов прокси для Android, написанный на Kotlin.</string>
 <string name="app_name">OneBox</string>
 <string name="app_name_long">OneBox for Android</string>
@@ -115,8 +113,6 @@
 <string name="copy">Копировать</string>
 <string name="copy_toast_msg">Ссылка скопирована в буфер обмена.</string>
 <string name="create_shortcut">Создать ярлык</string>
-<string name="custom_config">Пользовательская конфигурация</string>
-<string name="custom_config_json">Пользовательская конфигурация JSON</string>
 <string name="custom_outbound_json">Пользовательский исходящий JSON</string>
 <string name="deduplication">Дедупликация</string>
 <string name="deduplication_sum">Удалить повторяющиеся конфигурации при обновлении</string>
@@ -412,9 +408,6 @@
 <string name="share">Поделиться</string>
 <string name="share_qr_nfc">QR-код</string>
 <string name="share_subscription">Поделиться подпиской</string>
-<string name="show_bottom_bar">Показать нижнюю панель, как в SagerNet</string>
-<string name="show_direct_speed">Показать прямую скорость</string>
-<string name="show_direct_speed_sum">Также в уведомлении показывать скорость трафика без прокси</string>
 <string name="show_group_in_notification">Показывать название группы в уведомлении</string>
 <string name="show_system_apps">Показать системные приложения</string>
 <string name="side_sheet_accessibility_pane_title">Боковая панель</string>
