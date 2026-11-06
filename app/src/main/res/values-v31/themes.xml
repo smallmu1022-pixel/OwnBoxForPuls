@@ -19,4 +19,21 @@
         <item name="cardElevatedSurfaceColor">@color/monet_card_elevated</item>
     </style>
 
+    <!-- OneBox 液态玻璃：API 31+ 窗口后方真模糊（对话框 / 底部弹窗）。
+         与 values/themes.xml 同名覆盖，仅多两项模糊属性，其余与基础版一致；
+         低版本自动回落到基础版（半透明填充 + 描边，无模糊）。 -->
+    <style name="ThemeOverlay.SagerNet.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog.SagerNet">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="android:windowBackgroundBlurRadius">@dimen/glass_blur_radius</item>
+        <item name="android:windowBlurBehindEnabled">true</item>
+        <item name="android:windowBlurBehindRadius">@dimen/glass_blur_radius</item>
+    </style>
+
+    <style name="ThemeOverlay.SagerNet.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.SagerNet.BottomSheet</item>
+        <item name="android:windowBackgroundBlurRadius">@dimen/glass_blur_radius</item>
+        <item name="android:windowBlurBehindEnabled">true</item>
+        <item name="android:windowBlurBehindRadius">@dimen/glass_blur_radius</item>
+    </style>
+
 </resources>

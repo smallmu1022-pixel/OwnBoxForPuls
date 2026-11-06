@@ -38,6 +38,7 @@ import androidx.preference.PreferenceDataStore
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -2324,6 +2325,16 @@ class ConfigurationFragment @JvmOverloads constructor(
             GroupManager.addListener(adapter!!)
             configurationListView.adapter = adapter
             configurationListView.setItemViewCacheSize(20)
+            // 列表动效微调：禁用默认的“变更闪烁”动画并缩短各阶段时长，
+            // 节点测速刷新与上下滑动更顺滑（不改动数据源与排序逻辑）。
+            (configurationListView.itemAnimator as? SimpleItemAnimator)
+                ?.supportsChangeAnimations = false
+            configurationListView.itemAnimator?.apply {
+                addDuration = 160
+                removeDuration = 160
+                moveDuration = 200
+                changeDuration = 160
+            }
             configurationListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {

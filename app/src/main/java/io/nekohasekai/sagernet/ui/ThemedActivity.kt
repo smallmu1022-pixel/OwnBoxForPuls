@@ -21,6 +21,7 @@ import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.ktx.getColorAttr
 import io.nekohasekai.sagernet.utils.Theme
+import io.nekohasekai.sagernet.widget.GlassEffect
 
 abstract class ThemedActivity : AppCompatActivity {
     constructor() : super()
@@ -50,6 +51,11 @@ abstract class ThemedActivity : AppCompatActivity {
         }
 
         super.onCreate(savedInstanceState)
+
+        // 液态玻璃：对话框式 Activity 在 API 31+ 上模糊后方内容。
+        if (isDialog) {
+            GlassEffect.applyWindowBlur(window)
+        }
 
         uiMode = resources.configuration.uiMode
 

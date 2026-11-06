@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Activity 关闭退出：淡出 + 轻微下滑 16dp，200ms 加速 -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator">
+    <alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0"
+        android:duration="200" />
+    <translate
+        android:fromYDelta="0dp"
+        android:toYDelta="16dp"
+        android:duration="200" />
+</set>

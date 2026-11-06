@@ -307,6 +307,15 @@
     <!-- Material Design 3 全局色彩与层级系统 -->
     <color name="md3_background">#F4F5F7</color>
     <color name="md3_surface">#FFFFFF</color>
+
+    <!-- OneBox 液态玻璃：半透明磨砂表面（浅色模式为高透明度白，深色模式见 values-night） -->
+    <color name="glass_surface">#E0FFFFFF</color>
+    <color name="glass_fill_top">#F2FFFFFF</color>
+    <color name="glass_fill_bottom">#D9FFFFFF</color>
+    <color name="glass_fill_strong_top">#F7FFFFFF</color>
+    <color name="glass_fill_strong_bottom">#EDFFFFFF</color>
+    <color name="glass_stroke">#66FFFFFF</color>
+    <color name="glass_highlight">#B3FFFFFF</color>
     <color name="md3_text_primary">#1C1B1F</color>
     <color name="md3_text_secondary">#49454F</color>
     <color name="md3_top_app_bar">#FAFAFA</color>

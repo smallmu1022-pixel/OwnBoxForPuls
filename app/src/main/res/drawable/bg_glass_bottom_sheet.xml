@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OneBox 液态玻璃底部弹窗：顶部大圆角，强填充保证内容可读。 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 半透明渐变填充 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners
+                android:topLeftRadius="@dimen/glass_dialog_corner_radius"
+                android:topRightRadius="@dimen/glass_dialog_corner_radius"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="0dp" />
+            <gradient
+                android:angle="135"
+                android:startColor="@color/glass_fill_strong_top"
+                android:endColor="@color/glass_fill_strong_bottom"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 顶部高光 -->
+    <item
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="1dp">
+        <shape android:shape="rectangle">
+            <corners
+                android:topLeftRadius="27dp"
+                android:topRightRadius="27dp"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="0dp" />
+            <gradient
+                android:angle="270"
+                android:startColor="@color/glass_highlight"
+                android:endColor="#00FFFFFF"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 折射边缘描边 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners
+                android:topLeftRadius="@dimen/glass_dialog_corner_radius"
+                android:topRightRadius="@dimen/glass_dialog_corner_radius"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="0dp" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/glass_stroke" />
+        </shape>
+    </item>
+</layer-list>

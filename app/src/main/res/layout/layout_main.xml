@@ -206,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?attr/colorSurface"
+        android:background="@drawable/bg_glass_drawer"
         android:orientation="vertical">
 
         <TextView
@@ -317,7 +317,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?attr/colorSurface"
+        android:background="@drawable/bg_glass_drawer"
         android:orientation="vertical">
 
         <TextView

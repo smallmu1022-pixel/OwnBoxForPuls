@@ -21,6 +21,7 @@ import io.nekohasekai.sagernet.database.SagerDatabase
 import io.nekohasekai.sagernet.databinding.ActivityNodeSelectDialogBinding
 import io.nekohasekai.sagernet.ktx.onMainDispatcher
 import io.nekohasekai.sagernet.ktx.runOnDefaultDispatcher
+import io.nekohasekai.sagernet.widget.GlassEffect
 import io.nekohasekai.sagernet.widget.OneBoxWidgetProvider
 
 class NodeSelectDialogActivity : AppCompatActivity() {
@@ -35,6 +36,9 @@ class NodeSelectDialogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNodeSelectDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 液态玻璃：节点选择弹窗在 API 31+ 上模糊后方主界面。
+        GlassEffect.applyWindowBlur(window)
 
         binding.dialogBackdrop.setOnClickListener { finishWithFade() }
         binding.dialogCard.setOnClickListener { /* prevent dismissal on clicking card */ }
