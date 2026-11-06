@@ -158,9 +158,6 @@ class StatsBar @JvmOverloads constructor(
                 onIpDetailClicked()
             }
             val onCardLongClick = View.OnLongClickListener { v ->
-                if (DataStore.hapticFeedback) {
-                    v.performHapticFeedback(android.view.HapticFeedbackConstants.LONG_PRESS)
-                }
                 val cached = LandingIpManager.getCachedInfo()
                 val activity = context as? Activity
                 if (activity != null) {
