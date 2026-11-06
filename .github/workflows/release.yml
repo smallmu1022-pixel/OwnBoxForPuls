@@ -169,7 +169,7 @@ jobs:
       - name: Sync Release Notes
         run: |
           if [ -f CHANGELOG.md ]; then
-            awk '/^# OneBox for Android v/{if(found) exit; found=1} found' CHANGELOG.md > RELEASE_NOTES.md
+            awk '/^# (OneBox|OwnBox) for Android v/{if(found) exit; found=1} found' CHANGELOG.md > RELEASE_NOTES.md
           fi
           cat RELEASE_NOTES.md
       - name: Publish to GitHub Releases
