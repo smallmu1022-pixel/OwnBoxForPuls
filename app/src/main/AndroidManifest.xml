@@ -495,7 +495,7 @@
         </receiver>
 
         <receiver
-            android:name="io.nekohasekai.sagernet.widget.OwnBoxWidgetProvider"
+            android:name="io.nekohasekai.sagernet.widget.OneBoxWidgetProvider"
             android:exported="true"
             android:label="@string/widget_name">
             <intent-filter>
@@ -503,11 +503,11 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/ownbox_widget_info" />
+                android:resource="@xml/onebox_widget_info" />
         </receiver>
 
         <receiver
-            android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget1x1"
+            android:name="io.nekohasekai.sagernet.widget.OneBoxWidget1x1"
             android:exported="true"
             android:label="OneBox 1×1 (水滴微球)">
             <intent-filter>
@@ -515,11 +515,11 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/ownbox_widget_1x1_info" />
+                android:resource="@xml/onebox_widget_1x1_info" />
         </receiver>
 
         <receiver
-            android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget2x2"
+            android:name="io.nekohasekai.sagernet.widget.OneBoxWidget2x2"
             android:exported="true"
             android:label="OneBox 2×2 (紧凑状态)">
             <intent-filter>
@@ -527,11 +527,11 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/ownbox_widget_2x2_info" />
+                android:resource="@xml/onebox_widget_2x2_info" />
         </receiver>
 
         <receiver
-            android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget4x1"
+            android:name="io.nekohasekai.sagernet.widget.OneBoxWidget4x1"
             android:exported="true"
             android:label="OneBox 4×1 (胶囊操作栏)">
             <intent-filter>
@@ -539,11 +539,11 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/ownbox_widget_4x1_info" />
+                android:resource="@xml/onebox_widget_4x1_info" />
         </receiver>
 
         <receiver
-            android:name="io.nekohasekai.sagernet.widget.OwnBoxWidget4x2"
+            android:name="io.nekohasekai.sagernet.widget.OneBoxWidget4x2"
             android:exported="true"
             android:label="OneBox 4×2 (全景仪表板)">
             <intent-filter>
@@ -551,7 +551,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/ownbox_widget_4x2_info" />
+                android:resource="@xml/onebox_widget_4x2_info" />
         </receiver>
 
         <service
@@ -573,7 +573,7 @@
             android:exported="false"
             android:launchMode="singleInstance"
             android:taskAffinity=""
-            android:theme="@style/Theme.OwnBox.Dialog" />
+            android:theme="@style/Theme.OneBox.Dialog" />
 </application>
 
 </manifest>

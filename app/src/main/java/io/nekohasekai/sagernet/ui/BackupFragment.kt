@@ -382,9 +382,9 @@ class BackupFragment : NamedFragment(R.layout.layout_backup) {
                     Logs.d("WebDAV restore - Directory listing: $responseBody")
                     
                     val patterns = listOf(
-                        """<D:href>[^<]*?(?:OwnBox|ownbox|OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)</D:href>""".toRegex(RegexOption.IGNORE_CASE),
-                        """<d:href>[^<]*?(?:OwnBox|ownbox|OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)</d:href>""".toRegex(RegexOption.IGNORE_CASE),
-                        """<href>[^<]*?(?:OwnBox|ownbox|OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)</href>""".toRegex(RegexOption.IGNORE_CASE)
+                        """<D:href>[^<]*?(?:OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)</D:href>""".toRegex(RegexOption.IGNORE_CASE),
+                        """<d:href>[^<]*?(?:OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)</d:href>""".toRegex(RegexOption.IGNORE_CASE),
+                        """<href>[^<]*?(?:OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)</href>""".toRegex(RegexOption.IGNORE_CASE)
                     )
                     
                     val backupFiles = mutableListOf<String>()
@@ -394,7 +394,7 @@ class BackupFragment : NamedFragment(R.layout.layout_backup) {
                         matches.forEach { match ->
                             val href = match.value
                             Logs.d("WebDAV restore - Found backup file with pattern ${pattern.pattern}: $href")
-                            val fileName = """(?:OwnBox|ownbox|OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)""".toRegex(RegexOption.IGNORE_CASE)
+                            val fileName = """(?:OneBox|onebox|throne)_backup_[^<]*?\d{8}_\d{6}\.(json|zip)""".toRegex(RegexOption.IGNORE_CASE)
                                 .find(href)?.value
                             if (fileName != null) {
                                 backupFiles.add(fileName)

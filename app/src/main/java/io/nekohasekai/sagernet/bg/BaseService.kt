@@ -150,7 +150,7 @@ class BaseService {
             state = s
             DataStore.serviceState = s
             binder.stateChanged(s, msg)
-            runCatching { io.nekohasekai.sagernet.widget.OwnBoxWidgetProvider.updateWidgets(SagerNet.application) }
+            runCatching { io.nekohasekai.sagernet.widget.OneBoxWidgetProvider.updateWidgets(SagerNet.application) }
             if (s == State.Stopping || s == State.Stopped || s == State.Idle) {
                 if (s == State.Stopped || s == State.Idle) {
                     NotificationManagerCompat.from(SagerNet.application).cancel(ServiceNotification.notificationId)
