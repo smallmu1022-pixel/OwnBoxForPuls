@@ -203,7 +203,7 @@
 
     <LinearLayout
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@drawable/bg_glass_drawer"
@@ -314,7 +314,7 @@
 
     <LinearLayout
         android:id="@+id/nav_view_black"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@drawable/bg_glass_drawer"

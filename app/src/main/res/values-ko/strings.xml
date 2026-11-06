@@ -278,6 +278,7 @@
     <string name="language">언어</string>
     <string name="follow_system">시스템 설정 따르기</string>
     <string name="liquid_glass">Liquid Glass</string>
+    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
     <string name="enable">활성화</string>
     <string name="disable">비활성화</string>
     <string name="auto">자동</string>

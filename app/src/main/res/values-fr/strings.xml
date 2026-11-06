@@ -16,6 +16,7 @@
     <string name="license">Licence</string>
     <string name="follow_system">Selon le système</string>
     <string name="liquid_glass">Liquid Glass</string>
+    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
     <string name="lines">%d lignes</string>
     <string name="random">Aléatoire</string>
     <string name="list">Liste</string>

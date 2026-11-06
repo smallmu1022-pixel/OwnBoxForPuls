@@ -290,6 +290,7 @@
     <string name="enable">مكن</string>
     <string name="follow_system">اتبع النظام</string>
     <string name="liquid_glass">Liquid Glass</string>
+    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
     <string name="lines">%d سطور</string>
     <string name="route_warn">تأكد من قراءة الوثائق قبل إضافة القواعد المخصصة، وإلا فقد لا تتمكن من الاتصال بالإنترنت.</string>
     <string name="license">الرخصة</string>

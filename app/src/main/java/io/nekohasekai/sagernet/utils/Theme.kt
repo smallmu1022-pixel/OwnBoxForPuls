@@ -39,6 +39,7 @@ object Theme {
     const val VERDANT_MINT = 22
     const val WHITE = 23
     const val LIGHT_GRAY = 24
+    const val GLASS = 25
     const val CUSTOM = 99
 
     private fun defaultTheme() = LIGHT_GRAY
@@ -90,8 +91,8 @@ object Theme {
     }
 
     fun getTheme(context: Context = app): Int {
-        // 液态玻璃模式：固定浅色玻璃主题，不跟随系统深浅变化，也不跟随 appTheme。
-        if (DataStore.nightTheme == NIGHT_MODE_GLASS) {
+        // OneBox V1.0.5：液态玻璃是主题颜色（appTheme），固定浅色玻璃，不跟随系统深浅变化。
+        if (DataStore.appTheme == GLASS) {
             return R.style.Theme_SagerNet_Glass
         }
         if (usingNightMode(context)) {
@@ -111,8 +112,8 @@ object Theme {
     }
 
     fun getDialogTheme(context: Context = app): Int {
-        // 液态玻璃模式：固定浅色玻璃对话框主题，不跟随系统深浅变化，也不跟随 appTheme。
-        if (DataStore.nightTheme == NIGHT_MODE_GLASS) {
+        // OneBox V1.0.5：液态玻璃是主题颜色（appTheme），固定浅色玻璃对话框，不跟随系统深浅变化。
+        if (DataStore.appTheme == GLASS) {
             return R.style.Theme_SagerNet_Dialog_Glass
         }
         if (usingNightMode(context)) {
@@ -136,8 +137,9 @@ object Theme {
             BLACK -> R.style.Theme_SagerNet_Black
             WHITE -> R.style.Theme_SagerNet_White
             LIGHT_GRAY -> R.style.Theme_SagerNet_LightGray
+            GLASS -> R.style.Theme_SagerNet_Glass
             else -> {
-                if (DataStore.appTheme !in setOf(BLACK, WHITE, LIGHT_GRAY)) {
+                if (DataStore.appTheme !in setOf(BLACK, WHITE, LIGHT_GRAY, GLASS)) {
                     DataStore.appTheme = LIGHT_GRAY
                 }
                 R.style.Theme_SagerNet_LightGray
@@ -150,8 +152,9 @@ object Theme {
             BLACK -> R.style.Theme_SagerNet_Dialog_Black
             WHITE -> R.style.Theme_SagerNet_Dialog_White
             LIGHT_GRAY -> R.style.Theme_SagerNet_Dialog_LightGray
+            GLASS -> R.style.Theme_SagerNet_Dialog_Glass
             else -> {
-                if (DataStore.appTheme !in setOf(BLACK, WHITE, LIGHT_GRAY)) {
+                if (DataStore.appTheme !in setOf(BLACK, WHITE, LIGHT_GRAY, GLASS)) {
                     DataStore.appTheme = LIGHT_GRAY
                 }
                 R.style.Theme_SagerNet_Dialog_LightGray
@@ -194,10 +197,8 @@ object Theme {
 
     var currentNightMode = -1
 
-    // OneBox V1.0.3：液态玻璃模式（4），固定浅色玻璃，不跟随系统深浅变化。
-    const val NIGHT_MODE_GLASS = 4
-
-    fun isGlassMode(): Boolean = DataStore.nightTheme == NIGHT_MODE_GLASS
+    // OneBox V1.0.5：液态玻璃是主题颜色（appTheme = GLASS），不再是夜间模式。
+    fun isGlassMode(): Boolean = DataStore.appTheme == GLASS
 
     // OneBox V1.0.1: 恢复跟随系统夜间模式（默认 0 = 跟随系统）。
     fun getNightMode(): Int {
@@ -212,22 +213,23 @@ object Theme {
             0 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             1 -> AppCompatDelegate.MODE_NIGHT_YES
             2 -> AppCompatDelegate.MODE_NIGHT_NO
-            NIGHT_MODE_GLASS -> AppCompatDelegate.MODE_NIGHT_NO
             else -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
         }
     }
 
     fun usingNightMode(context: Context = app): Boolean {
+        // 液态玻璃主题颜色固定为浅色玻璃，永不按夜间模式处理。
+        if (DataStore.appTheme == GLASS) return false
         return when (DataStore.nightTheme) {
             1 -> true
             2 -> false
-            NIGHT_MODE_GLASS -> false
             else -> isSystemNight(context)
         }
     }
 
     fun applyNightTheme() {
-        if (DataStore.nightTheme == NIGHT_MODE_GLASS) {
+        // 液态玻璃主题颜色固定为浅色，不跟随系统深浅变化。
+        if (DataStore.appTheme == GLASS) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         } else if (DataStore.nightTheme == 0) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)

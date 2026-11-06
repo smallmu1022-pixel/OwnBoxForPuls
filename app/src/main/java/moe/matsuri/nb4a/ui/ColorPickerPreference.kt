@@ -116,7 +116,7 @@ class ColorPickerPreference @JvmOverloads constructor(
             addView(rootLayout)
         }
 
-        val currentThemeId = if (DataStore.appTheme !in setOf(Theme.BLACK, Theme.WHITE, Theme.LIGHT_GRAY)) {
+        val currentThemeId = if (DataStore.appTheme !in setOf(Theme.BLACK, Theme.WHITE, Theme.LIGHT_GRAY, Theme.GLASS)) {
             Theme.LIGHT_GRAY
         } else {
             DataStore.appTheme
@@ -146,7 +146,8 @@ class ColorPickerPreference @JvmOverloads constructor(
         val baseThemes = listOf(
             PresetTheme(Theme.BLACK, "纯黑 (AMOLED Black)", Color.BLACK, "纯黑底色 #000000 · 极致省电高对比"),
             PresetTheme(Theme.WHITE, "纯白 (Pure White)", Color.WHITE, "纯白底色 #FFFFFF · 极简黑白高反差"),
-            PresetTheme(Theme.LIGHT_GRAY, "浅灰 (Light Gray)", Color.parseColor("#F5F5F7"), "柔灰底色 #F5F5F7 · 优雅层次悬浮感")
+            PresetTheme(Theme.LIGHT_GRAY, "浅灰 (Light Gray)", Color.parseColor("#F5F5F7"), "柔灰底色 #F5F5F7 · 优雅层次悬浮感"),
+            PresetTheme(Theme.GLASS, context.getString(R.string.liquid_glass), Color.parseColor("#CFE0EC"), context.getString(R.string.liquid_glass_summary))
         )
 
         for (base in baseThemes) {

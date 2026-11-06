@@ -273,6 +273,7 @@
     <string name="lines">%d líneas</string> 
     <string name="follow_system">Seguir sistema</string> 
     <string name="liquid_glass">Liquid Glass</string>
+    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
     <string name="enable">Permitir</string> 
     <string name="disable">Desactivar</string> 
     <string name="auto">Automático</string> 

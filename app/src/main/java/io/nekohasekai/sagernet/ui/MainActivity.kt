@@ -149,8 +149,9 @@ class MainActivity : ThemedActivity(),
             drawerMenuScroll = drawerRoot.findViewById(R.id.drawer_menu_scroll_black)
             binding.drawerLayout.removeView(binding.navView)
         }
+        // OneBox V1.0.5：抽屉改窄（上限 320dp -> 260dp），让主界面多露出来。
         val drawerWidth = minOf(
-            (320 * resources.displayMetrics.density).toInt(),
+            (260 * resources.displayMetrics.density).toInt(),
             resources.displayMetrics.widthPixels - (56 * resources.displayMetrics.density).toInt(),
         )
         drawerRoot.layoutParams = drawerRoot.layoutParams.apply { width = drawerWidth }
@@ -161,7 +162,8 @@ class MainActivity : ThemedActivity(),
             private var blurred = false
 
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                if (slideOffset >= 0.5f && !blurred) {
+                // OneBox V1.0.5：后方模糊只在液态玻璃主题下生效，黑/白/浅灰不做玻璃模糊。
+                if (slideOffset >= 0.5f && !blurred && Theme.isGlassMode()) {
                     blurred = true
                     GlassEffect.applyBackdropBlur(binding.coordinator)
                 } else if (slideOffset <= 0.2f && blurred) {
