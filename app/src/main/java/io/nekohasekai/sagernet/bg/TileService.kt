@@ -7,7 +7,6 @@ import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.SagerNet
 import io.nekohasekai.sagernet.aidl.ISagerNetService
 import io.nekohasekai.sagernet.database.SagerDatabase
-import io.nekohasekai.sagernet.utils.CustomIconManager
 import android.service.quicksettings.TileService as BaseTileService
 
 @RequiresApi(24)
@@ -15,16 +14,8 @@ class TileService : BaseTileService(), SagerConnection.Callback {
     private val defaultIcon by lazy { Icon.createWithResource(this, R.drawable.ic_throne_tile) }
     private var tapPending = false
 
-    private fun getTileIcon(): Icon {
-        val customTileBitmap = if (CustomIconManager.isTileApplied(this)) {
-            CustomIconManager.loadTileAlphaBitmap(this)
-        } else null
-        return if (customTileBitmap != null) {
-            Icon.createWithBitmap(customTileBitmap)
-        } else {
-            defaultIcon
-        }
-    }
+    // OneBox V1.0.0: 自定义图标功能已移除，磁贴始终使用默认图标。
+    private fun getTileIcon(): Icon = defaultIcon
 
     private val connection = SagerConnection(SagerConnection.CONNECTION_ID_TILE)
     override fun stateChanged(state: BaseService.State, profileName: String?, msg: String?) =

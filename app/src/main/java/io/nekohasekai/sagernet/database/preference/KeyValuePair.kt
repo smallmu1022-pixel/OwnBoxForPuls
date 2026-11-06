@@ -63,10 +63,6 @@ class KeyValuePair() : Parcelable {
     val float: Float?
         get() = if (valueType == TYPE_FLOAT) ByteBuffer.wrap(value).float else null
 
-    @Suppress("DEPRECATION")
-    @Deprecated("Use long.", ReplaceWith("long"))
-    val int: Int?
-        get() = if (valueType == TYPE_INT) ByteBuffer.wrap(value).int else null
     val long: Long?
         get() = when (valueType) {
             @Suppress("DEPRECATION") TYPE_INT,
@@ -103,14 +99,6 @@ class KeyValuePair() : Parcelable {
     fun put(value: Float): KeyValuePair {
         valueType = TYPE_FLOAT
         this.value = ByteBuffer.allocate(4).putFloat(value).array()
-        return this
-    }
-
-    @Suppress("DEPRECATION")
-    @Deprecated("Use long.")
-    fun put(value: Int): KeyValuePair {
-        valueType = TYPE_INT
-        this.value = ByteBuffer.allocate(4).putInt(value).array()
         return this
     }
 

@@ -20,7 +20,7 @@ class SubscriptionIncrementalUpdateTest {
             forceResolve = true
             deduplication = true
             updateWhenConnectedOnly = false
-            customUserAgent = "OwnBox/3.1.4"
+            customUserAgent = "OneBox/1.0.0"
             autoUpdate = true
             autoUpdateDelay = 720
             lastUpdated = 12345678

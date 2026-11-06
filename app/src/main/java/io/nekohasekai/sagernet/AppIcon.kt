@@ -18,11 +18,6 @@ enum class AppIcon(
         R.string.app_icon_light_mode,
         R.mipmap.ic_launcher_light,
     ),
-    DARK_MODE(
-        "io.nekohasekai.sagernet.launcher.DarkMode",
-        R.string.app_icon_dark_mode,
-        R.mipmap.ic_launcher_dark,
-    ),
     OLD_NEKOBOX_PLUS(
         "io.nekohasekai.sagernet.launcher.OldNekoBoxPlus",
         R.string.app_icon_old_nekobox_plus,
@@ -32,11 +27,6 @@ enum class AppIcon(
         "io.nekohasekai.sagernet.launcher.NekoBox",
         R.string.app_icon_nekobox,
         R.mipmap.ic_launcher_nekobox,
-    ),
-    MIDNIGHT(
-        "io.nekohasekai.sagernet.launcher.Midnight",
-        R.string.app_icon_midnight,
-        R.mipmap.ic_launcher_midnight,
     ),
     HEAVENS(
         "io.nekohasekai.sagernet.launcher.Heavens",

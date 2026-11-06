@@ -14,7 +14,7 @@ internal object AppIconStatePolicy {
     fun current(states: Map<AppIcon, Int>): AppIcon {
         return AppIcon.values().drop(1).firstOrNull {
             states[it] == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-        } ?: AppIcon.NEKOBOX_PLUS
+        } ?: AppIcon.LIGHT_MODE
     }
 
     fun desired(selected: AppIcon): Map<AppIcon, Int> = AppIcon.values().associateWith {
@@ -26,7 +26,7 @@ internal object AppIconStatePolicy {
     }
 
     fun selectionForDevice(selected: AppIcon, isTelevision: Boolean): AppIcon =
-        if (isTelevision) AppIcon.NEKOBOX_PLUS else selected
+        if (isTelevision) AppIcon.LIGHT_MODE else selected
 
     fun previewUiMode(appUiMode: Int, systemUiMode: Int): Int {
         return (appUiMode and Configuration.UI_MODE_NIGHT_MASK.inv()) or
@@ -44,20 +44,20 @@ object AppIconManager {
             AppIconStatePolicy.current(states)
         } catch (e: Throwable) {
             Logs.w(e)
-            AppIcon.NEKOBOX_PLUS
+            AppIcon.LIGHT_MODE
         }
     }
 
     fun init(context: Context) {
         try {
             val current = current(context)
-            if (current == AppIcon.NEKOBOX_PLUS) {
+            if (current == AppIcon.LIGHT_MODE) {
                 val packageManager = context.packageManager
-                val state = packageManager.getComponentEnabledSetting(AppIcon.NEKOBOX_PLUS.componentName(context))
+                val state = packageManager.getComponentEnabledSetting(AppIcon.LIGHT_MODE.componentName(context))
                 if (state != PackageManager.COMPONENT_ENABLED_STATE_ENABLED &&
                     state != PackageManager.COMPONENT_ENABLED_STATE_DEFAULT) {
                     packageManager.setComponentEnabledSetting(
-                        AppIcon.NEKOBOX_PLUS.componentName(context),
+                        AppIcon.LIGHT_MODE.componentName(context),
                         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                         PackageManager.DONT_KILL_APP,
                     )

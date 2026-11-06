@@ -163,12 +163,10 @@ object Theme {
 
     fun isWhiteTheme(context: Context = app): Boolean = !usingNightMode(context) && DataStore.appTheme == WHITE
     fun isLightGrayTheme(context: Context = app): Boolean = !usingNightMode(context) && DataStore.appTheme == LIGHT_GRAY
-    fun isBlackTheme(context: Context = app): Boolean = usingNightMode(context) || DataStore.appTheme == BLACK
+    @Suppress("UNUSED_PARAMETER")
+    fun isBlackTheme(context: Context = app): Boolean = false
 
     fun getPrimaryColor(context: Context): Int {
-        if (usingNightMode(context) || isBlackTheme(context)) {
-            return Color.WHITE
-        }
         if (isWhiteTheme(context)) {
             return Color.parseColor("#212121")
         }
@@ -185,40 +183,24 @@ object Theme {
     }
 
     var currentNightMode = -1
+
+    // OneBox V1.0.0: 固定浅色模式，不再跟随系统夜间模式。
     fun getNightMode(): Int {
-        if (currentNightMode == -1) {
-            currentNightMode = DataStore.nightTheme
-        }
-        return getNightMode(currentNightMode)
+        return AppCompatDelegate.MODE_NIGHT_NO
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun getNightMode(mode: Int): Int {
-        return when (mode) {
-            0 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-            1 -> AppCompatDelegate.MODE_NIGHT_YES
-            2 -> AppCompatDelegate.MODE_NIGHT_NO
-            else -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
-        }
+        return AppCompatDelegate.MODE_NIGHT_NO
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun usingNightMode(context: Context = app): Boolean {
-        return when (DataStore.nightTheme) {
-            1 -> true
-            2 -> false
-            else -> isSystemNight(context)
-        }
+        return false
     }
 
     fun applyNightTheme() {
-        if (DataStore.nightTheme == 0) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        } else if (DataStore.nightTheme == 1 || DataStore.appTheme == BLACK) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else if (DataStore.nightTheme == 2) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        }
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
 }

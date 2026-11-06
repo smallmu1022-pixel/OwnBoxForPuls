@@ -2,29 +2,22 @@ package io.nekohasekai.sagernet.bg
 
 import android.app.PendingIntent
 import android.app.Service
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SYSTEM_EXEMPTED
 import android.os.Build
-import android.text.format.Formatter
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import io.nekohasekai.sagernet.Action
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.SagerNet
-import io.nekohasekai.sagernet.aidl.SpeedDisplayData
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.database.ProxyEntity
 import io.nekohasekai.sagernet.database.SagerDatabase
 import io.nekohasekai.sagernet.ktx.app
-import io.nekohasekai.sagernet.ktx.getColorAttr
 import io.nekohasekai.sagernet.ktx.runOnMainDispatcher
 import io.nekohasekai.sagernet.ui.SwitchActivity
-import io.nekohasekai.sagernet.utils.LandingIpManager
-import io.nekohasekai.sagernet.utils.RegionExtractor
 import io.nekohasekai.sagernet.utils.Theme
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -42,7 +35,7 @@ import kotlinx.coroutines.sync.withLock
 class ServiceNotification(
     private val service: BaseService.Interface, title: String,
     channel: String, visible: Boolean = false,
-) : BroadcastReceiver() {
+) {
     companion object {
         const val notificationId = 1
         val flags =
@@ -60,117 +53,12 @@ class ServiceNotification(
         }
     }
 
-    var listenPostSpeed = true
-
     private var lastTitle: String? = null
-    private var lastText: String? = null
-    private var lastBigText: String? = null
-    private var lastRegion: String? = null
-    private var lastDirectSpeed: String? = null
 
-    private fun applyLiveUpdateCapsule(
-        builder: NotificationCompat.Builder,
-        state: BaseService.State,
-        region: String? = null,
-        directSpeed: String? = null,
-    ) {
-        // 取消绿色/黄色强调色，移除展开卡片彩色大圆盘，与收起态统一为通透原生 Logo
-        builder.color = NotificationCompat.COLOR_DEFAULT
-
-        val resolvedRegion = if (!region.isNullOrBlank()) {
-            region
-        } else {
-            val cachedGeo = LandingIpManager.getCachedInfo()?.country
-            val profile = service.data.proxy?.profile
-            val leafNode = if (profile != null) ActiveOutboundTracker.getActiveLeafNodeDisplay(profile) else null
-            val nodeName = leafNode ?: profile?.displayName() ?: service.data.proxy?.displayProfileName
-            RegionExtractor.extractRegion(nodeName, cachedGeo).ifBlank { "已连接" }
-        }
-
-        val displayChipText = if (state == BaseService.State.Connected) {
-            resolvedRegion
-        } else if (state == BaseService.State.Connecting) {
-            "连接中"
-        } else {
-            "未连接"
-        }
-
-        // 谷歌原生 Android 16 实况岛 / Rich Ongoing Notifications (Live Updates) 规范
-        // 收起状态：挖孔屏旁展示原生纯净 Logo 与地区汉字（如“日本”）
-        builder.extras.apply {
-            putBoolean("android.requestPromotedOngoing", true)
-            putCharSequence("android.shortCriticalText", displayChipText)
-            putString("capsule_text", displayChipText)
-            remove("capsule_color")
-            putString("live_activity_status", if (state == BaseService.State.Connected) "active" else "pending")
-        }
-
-        // 彻底清空 subText，避免系统在标题右侧强行并排追加网速文本
-        builder.setSubText(null)
-    }
-
+    // OneBox V1.0.0: 自动动态栏通知（Android 16 实况胶囊 / Live Updates）已移除。
+    // 前台服务通知本身保留，仅显示静态标题，不再按速度刷新通知内容。
+    @Suppress("UNUSED_PARAMETER")
     suspend fun postStateUpdate(state: BaseService.State) {
-        useBuilder {
-            applyLiveUpdateCapsule(it, state, lastRegion, lastDirectSpeed)
-        }
-        update()
-    }
-
-    suspend fun postNotificationSpeedUpdate(stats: SpeedDisplayData) {
-        val ctx = service as Context
-        val currentProfile = service.data.proxy?.profile
-
-        val proxySpeed = "↑${Formatter.formatFileSize(ctx, stats.txRateProxy)}/s ↓${Formatter.formatFileSize(ctx, stats.rxRateProxy)}/s"
-        val directSpeed = "↑${Formatter.formatFileSize(ctx, stats.txRateDirect)}/s ↓${Formatter.formatFileSize(ctx, stats.rxRateDirect)}/s"
-
-        val showGroup = DataStore.showGroupInNotification
-        val group = if (currentProfile != null) {
-            runCatching { SagerDatabase.groupDao.getById(currentProfile.groupId) }.getOrNull()
-        } else null
-
-        val leafNode = if (currentProfile != null) {
-            ActiveOutboundTracker.getActiveLeafNodeDisplay(currentProfile)
-        } else null
-        val strategyName = if (currentProfile != null) {
-            ActiveOutboundTracker.getStrategyDisplayName(currentProfile)
-        } else ""
-
-        val texts = ActiveOutboundTracker.buildNotificationTexts(
-            profile = currentProfile,
-            leafNode = leafNode,
-            strategyName = strategyName,
-            groupName = group?.displayName(),
-            showGroup = showGroup,
-            showDirectSpeed = showDirectSpeed,
-            proxySpeed = proxySpeed,
-            directSpeed = directSpeed,
-        )
-
-        val cachedGeo = LandingIpManager.getCachedInfo()?.country
-        val nodeName = leafNode ?: currentProfile?.displayName() ?: service.data.proxy?.displayProfileName
-        val currentRegion = RegionExtractor.extractRegion(nodeName, cachedGeo).ifBlank { "已连接" }
-
-        val isChanged = (texts.title != lastTitle) ||
-                        (texts.collapsedText != lastText) ||
-                        (texts.bigText != lastBigText) ||
-                        (currentRegion != lastRegion) ||
-                        (directSpeed != lastDirectSpeed)
-        if (!isChanged) return
-
-        lastTitle = texts.title
-        lastText = texts.collapsedText
-        lastBigText = texts.bigText
-        lastRegion = currentRegion
-        lastDirectSpeed = directSpeed
-
-        useBuilder {
-            if (texts.title.isNotBlank()) {
-                it.setContentTitle(texts.title)
-            }
-            it.setStyle(NotificationCompat.BigTextStyle().bigText(texts.bigText))
-            it.setContentText(texts.collapsedText)
-            applyLiveUpdateCapsule(it, service.data.state, currentRegion, directSpeed)
-        }
         update()
     }
 
@@ -191,8 +79,6 @@ class ServiceNotification(
         }
         update()
     }
-
-    private val showDirectSpeed get() = DataStore.showDirectSpeed
 
     private val builder = NotificationCompat.Builder(service as Context, channel)
         .setWhen(0)
@@ -219,12 +105,6 @@ class ServiceNotification(
 
         Theme.apply(app)
         Theme.apply(service)
-        applyLiveUpdateCapsule(builder, service.data.state)
-
-        service.registerReceiver(this, IntentFilter().apply {
-            addAction(Intent.ACTION_SCREEN_ON)
-            addAction(Intent.ACTION_SCREEN_OFF)
-        })
 
         runOnMainDispatcher {
             updateActions()
@@ -261,13 +141,6 @@ class ServiceNotification(
         }
     }
 
-    override fun onReceive(context: Context, intent: Intent) {
-        if (service.data.state == BaseService.State.Connected) {
-            listenPostSpeed = intent.action == Intent.ACTION_SCREEN_ON
-        }
-    }
-
-
     private suspend fun show() =
         useBuilder {
             try {
@@ -294,7 +167,6 @@ class ServiceNotification(
     }
 
     fun destroy() {
-        listenPostSpeed = false
         val s = service as? Service
         if (s != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -306,9 +178,5 @@ class ServiceNotification(
             NotificationManagerCompat.from(s).cancel(notificationId)
         }
         SagerNet.notification.cancel(notificationId)
-        try {
-            (service as Context).unregisterReceiver(this)
-        } catch (_: Throwable) {
-        }
     }
 }

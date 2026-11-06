@@ -8,7 +8,7 @@ import android.content.Intent
 class OwnBoxWidgetProvider : AppWidgetProvider() {
 
     companion object {
-        const val ACTION_TOGGLE = "com.ownbox.app.widget.ACTION_TOGGLE"
+        const val ACTION_TOGGLE = "com.onebox.app.widget.ACTION_TOGGLE"
 
         fun updateWidgets(context: Context) {
             OwnBoxWidgetHelper.updateAllWidgets(context)
