@@ -1294,7 +1294,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                     val rxBytes = sample.downloadBitsPerSecond / 8
                     val txBytes = sample.uploadBitsPerSecond / 8
                     runOnMainDispatcher {
-                        (activity as? MainActivity)?.binding?.stats?.updateSpeed(txBytes, rxBytes)
                         try {
                             (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                                 io.nekohasekai.sagernet.aidl.SpeedDisplayData(
@@ -1365,7 +1364,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
             } finally {
                 runOnMainDispatcher {
-                    (activity as? MainActivity)?.binding?.stats?.updateSpeed(0, 0)
                     try {
                         (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                             io.nekohasekai.sagernet.aidl.SpeedDisplayData(0, 0, 0, 0, 0, 0)
@@ -1447,7 +1445,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                     val rxBytes = sample.downloadBitsPerSecond / 8
                     val txBytes = sample.uploadBitsPerSecond / 8
                     runOnMainDispatcher {
-                        (activity as? MainActivity)?.binding?.stats?.updateSpeed(txBytes, rxBytes)
                         try {
                             (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                                 io.nekohasekai.sagernet.aidl.SpeedDisplayData(
@@ -1522,7 +1519,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
             } finally {
                 runOnMainDispatcher {
-                    (activity as? MainActivity)?.binding?.stats?.updateSpeed(0, 0)
                     try {
                         (activity as? MainActivity)?.connection?.service?.postNotificationSpeed(
                             io.nekohasekai.sagernet.aidl.SpeedDisplayData(0, 0, 0, 0, 0, 0)
