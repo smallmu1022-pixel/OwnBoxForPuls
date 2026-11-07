@@ -15,7 +15,7 @@
 * **延迟数字改回绿色**：节点卡片延迟文字恢复绿色
 * **延迟手动重测**：底栏右下角 HTTPS 握手延迟点整块区域直接重测；刷新按钮已隐藏
 * **节点选中底色**：改回与未选中一致的底色（浅色白底/深色黑底），左侧细色条改为亮绿色标识选中
-* **仓库改名 OneBox**：仓库由 OwnBoxForPuls 改名 OneBox，关于页检查更新地址同步更新
+* **仓库改名 OneBoxForAndroid**：仓库由 OwnBoxForPuls 改名 OneBoxForAndroid，关于页检查更新地址同步更新
 
 # OneBox for Android v1.0.6 正式版
 
