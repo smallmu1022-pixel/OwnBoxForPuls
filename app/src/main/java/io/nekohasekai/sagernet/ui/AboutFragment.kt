@@ -121,7 +121,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                 .subText(SagerNet.appVersionNameForDisplay)
                                 .setOnClickAction {
                                     requireContext().launchCustomTab(
-                                        "https://github.com/smallmu1022-pixel/OwnBoxForPuls/releases"
+                                        "https://github.com/smallmu1022-pixel/OneBox/releases"
                                     )
                                 }
                                 .build())
@@ -214,7 +214,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                 .text(R.string.github)
                                 .setOnClickAction {
                                     requireContext().launchCustomTab(
-                                        "https://github.com/smallmu1022-pixel/OwnBoxForPuls"
+                                        "https://github.com/smallmu1022-pixel/OneBox"
                                     )
                                 }
                                 .build())
@@ -311,9 +311,9 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
 
                     // 1. 首先尝试 GitHub Releases API
                     val apiUrl = if (isPreview) {
-                        "https://api.github.com/repos/smallmu1022-pixel/OwnBoxForPuls/releases"
+                        "https://api.github.com/repos/smallmu1022-pixel/OneBox/releases"
                     } else {
-                        "https://api.github.com/repos/smallmu1022-pixel/OwnBoxForPuls/releases/latest"
+                        "https://api.github.com/repos/smallmu1022-pixel/OneBox/releases/latest"
                     }
                     try {
                         val response = client.newRequest().apply {
@@ -341,9 +341,9 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                     // 2. 若 API 受到 403 限流或网络异常，无缝降级到静态 properties 源 (全球高速 CDN 托管，无 API 速率限制)
                     if (releaseName.isNullOrBlank() || releaseUrl.isNullOrBlank()) {
                         val staticUrls = listOf(
-                            "https://cdn.jsdelivr.net/gh/smallmu1022-pixel/OwnBoxForPuls@main/nb4a.properties",
-                            "https://fastly.jsdelivr.net/gh/smallmu1022-pixel/OwnBoxForPuls@main/nb4a.properties",
-                            "https://raw.githubusercontent.com/smallmu1022-pixel/OwnBoxForPuls/main/nb4a.properties"
+                            "https://cdn.jsdelivr.net/gh/smallmu1022-pixel/OneBox@onebox-v1.0.0/nb4a.properties",
+                            "https://fastly.jsdelivr.net/gh/smallmu1022-pixel/OneBox@onebox-v1.0.0/nb4a.properties",
+                            "https://raw.githubusercontent.com/smallmu1022-pixel/OneBox/onebox-v1.0.0/nb4a.properties"
                         )
                         var propsContent: String? = null
                         for (staticUrl in staticUrls) {
@@ -372,7 +372,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                             }
                             if (targetVer.isNotBlank()) {
                                 releaseName = "v$targetVer"
-                                releaseUrl = "https://github.com/smallmu1022-pixel/OwnBoxForPuls/releases/tag/v$targetVer"
+                                releaseUrl = "https://github.com/smallmu1022-pixel/OneBox/releases/tag/v$targetVer"
                             }
                         }
                     }
