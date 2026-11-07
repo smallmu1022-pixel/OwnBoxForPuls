@@ -157,6 +157,10 @@ class StatsBar @JvmOverloads constructor(
             statusTitleText.setOnClickListener {
                 retestLatencyInPlace()
             }
+            // 点击整个延迟区域（标题+数值及周围空白）手动重测握手延迟
+            findViewById<View>(R.id.status_area)?.setOnClickListener {
+                retestLatencyInPlace()
+            }
             txText = findViewById(R.id.tx)
             rxText = findViewById(R.id.rx)
             btnIpDetail = findViewById(R.id.btn_ip_detail)
@@ -474,7 +478,7 @@ class StatsBar @JvmOverloads constructor(
         runOnUi {
             updateThemeColors()
             if (currentState == BaseService.State.Connected) {
-                btnIpDetail?.visibility = View.VISIBLE
+                btnIpDetail?.visibility = View.GONE
                 updateStatusViews()
                 if (DataStore.showLandingIp && LandingIpManager.getCachedInfo() == null) {
                     refreshLandingIp(forceRefresh = false)
@@ -491,7 +495,7 @@ class StatsBar @JvmOverloads constructor(
             currentState = state
             updateHideOnScroll()
             if (state == BaseService.State.Connected) {
-                btnIpDetail?.visibility = View.VISIBLE
+                btnIpDetail?.visibility = View.GONE
                 updateStatusViews()
                 if (DataStore.showLandingIp) {
                     refreshLandingIp(forceRefresh = false)
@@ -511,19 +515,19 @@ class StatsBar @JvmOverloads constructor(
         runOnUi {
             if (currentState != BaseService.State.Connected) return@runOnUi
             if (!DataStore.showLandingIp) {
-                btnIpDetail?.visibility = View.VISIBLE
+                btnIpDetail?.visibility = View.GONE
                 updateStatusViews()
                 return@runOnUi
             }
             val currentProfile = DataStore.selectedProxy
             val cached = LandingIpManager.getCachedInfo()
             if (!forceRefresh && cached != null && LandingIpManager.cachedProfileId == currentProfile) {
-                btnIpDetail?.visibility = View.VISIBLE
+                btnIpDetail?.visibility = View.GONE
                 updateStatusViews()
                 return@runOnUi
             }
 
-            btnIpDetail?.visibility = View.VISIBLE
+            btnIpDetail?.visibility = View.GONE
             if (forceRefresh || cached == null) {
                 statusIpText.text = context.getString(R.string.landing_ip_querying)
                 statusIpText.visibility = View.VISIBLE
@@ -542,17 +546,17 @@ class StatsBar @JvmOverloads constructor(
                 }
                 if (currentState != BaseService.State.Connected) return@launch
                 if (!DataStore.showLandingIp) {
-                    btnIpDetail?.visibility = View.VISIBLE
+                    btnIpDetail?.visibility = View.GONE
                     updateStatusViews()
                     return@launch
                 }
 
                 result.onSuccess { info ->
-                    btnIpDetail?.visibility = View.VISIBLE
+                    btnIpDetail?.visibility = View.GONE
                     updateStatusViews()
                 }.onFailure { err ->
                     Logs.w(err)
-                    btnIpDetail?.visibility = View.VISIBLE
+                    btnIpDetail?.visibility = View.GONE
                     updateStatusViews()
                 }
                 if (lastMeasuredLatency <= 0) {

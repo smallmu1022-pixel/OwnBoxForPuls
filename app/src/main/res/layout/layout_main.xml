@@ -113,11 +113,13 @@
                         android:layout_width="48dp"
                         android:layout_height="1dp" />
 
-                    <!-- 右肩：status 延迟与重测刷新按钮（规整靠右对齐，上下两行排版防大字体截断） -->
+                    <!-- 右肩：status 延迟（点整块区域重测，刷新按钮已隐藏） -->
                     <LinearLayout
+                        android:id="@+id/status_area"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
                         android:gravity="center_vertical|end"
                         android:orientation="horizontal">
 
