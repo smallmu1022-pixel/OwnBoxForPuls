@@ -353,8 +353,6 @@
     <string name="deduplication">Deduplication</string>
     <string name="ignore_battery_optimizations">Ignore battery optimizations</string>
     <string name="ignore_battery_optimizations_sum">Remove some restrictions</string>
-    <string name="xiaomi_autostart">Autostart &amp; battery (Xiaomi / Redmi)</string>
-    <string name="xiaomi_autostart_sum">On Xiaomi / Redmi phones, allow autostart and set battery to Unrestricted in system settings, otherwise MIUI may kill the service in the background.</string>
     <!-- plugin -->
     <string name="plugin">Plugin</string>
     <string name="plugin_configure">Configure…</string>

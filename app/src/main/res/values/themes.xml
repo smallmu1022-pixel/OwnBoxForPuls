@@ -276,6 +276,14 @@
         <item name="actionMenuTextColor">?android:attr/textColorPrimary</item>
     </style>
 
+    <!-- OneBox V1.0.6：顶栏瘦身（移植自上游 v26.11.2）——标题 16sp 加粗、无字体内边距，
+         配合收窄的 contentInset，顶栏更紧凑；高度仍为 ?attr/actionBarSize，不动，避免图标裁切。 -->
+    <style name="TextAppearance.SagerNet.Toolbar.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="ThemeOverlay.SagerNet.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Surface">
         <item name="colorControlNormal">?android:attr/textColorPrimary</item>
         <item name="actionMenuTextColor">?android:attr/textColorPrimary</item>

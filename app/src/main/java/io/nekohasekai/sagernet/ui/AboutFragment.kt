@@ -204,24 +204,6 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                                             }
                                             .build())
                                 }
-                                // OneBox V1.0.0: 小米 / 红米机型需在系统设置中手动开启自启与电池无限制，
-                                // 否则 MIUI 可能在后台清理代理服务。仅用 AOSP 通用设置页跳转，不调用任何厂商私有接口。
-                                if (Build.MANUFACTURER.equals("Xiaomi", ignoreCase = true)) {
-                                    addItem(
-                                        MaterialAboutActionItem.Builder()
-                                            .icon(R.drawable.ic_baseline_running_with_errors_24)
-                                            .text(R.string.xiaomi_autostart)
-                                            .subText(R.string.xiaomi_autostart_sum)
-                                            .setOnClickAction {
-                                                startActivity(
-                                                    Intent(
-                                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                                        "package:${app.packageName}".toUri()
-                                                    )
-                                                )
-                                            }
-                                            .build())
-                                }
                             }
                         }
                         .build())

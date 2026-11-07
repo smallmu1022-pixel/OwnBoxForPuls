@@ -89,6 +89,23 @@
         </menu>
     </item>
 
+    <!-- OneBox V1.0.6：顶栏瘦身（移植自上游 v26.11.2）——URL 测试与速度测试从溢出菜单移到顶栏。
+         URL 测试用地球图标（@drawable/baseline_public_24）：上游用闪电 bolt 图标，但我们顶栏
+         已有 TCP Ping 闪电图标（V1.0.1，必须保留），两个闪电并排会混淆，改用 globe 区分语义。
+         速度测试用 @drawable/ic_baseline_speed_24，与上游 v26.11.2 相同。两者点击逻辑不变
+         （ConfigurationFragment 按 id 处理），图标由 tintMenuIcons 按主题着色。 -->
+    <item
+        android:id="@+id/action_connection_url_test"
+        android:icon="@drawable/baseline_public_24"
+        android:title="@string/connection_test_url_test"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_speed_test_group"
+        android:icon="@drawable/ic_baseline_speed_24"
+        android:title="@string/speed_test_group"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/action_misc"
         android:icon="@drawable/ic_baseline_more_vert_24"
@@ -122,12 +139,6 @@
                     android:title="@string/remove_duplicate" />
             </group>
             <group android:id="@+id/group_actions_test">
-                <item
-                    android:id="@+id/action_connection_url_test"
-                    android:title="@string/connection_test_url_test" />
-                <item
-                    android:id="@+id/action_speed_test_group"
-                    android:title="@string/speed_test_group" />
                 <item
                     android:id="@+id/action_connection_test_clear_results"
                     android:title="@string/connection_test_clear_results" />
