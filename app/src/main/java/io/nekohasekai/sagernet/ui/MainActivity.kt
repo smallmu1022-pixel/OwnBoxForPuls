@@ -648,7 +648,7 @@ class MainActivity : ThemedActivity(),
             }
             val rowParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                dp(40),
+                dp(52),
             ).apply {
                 marginStart = dp(13)
                 marginEnd = dp(13)
