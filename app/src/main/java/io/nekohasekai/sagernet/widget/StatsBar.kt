@@ -150,6 +150,13 @@ class StatsBar @JvmOverloads constructor(
             statusIpText.setOnClickListener {
                 onIpDetailClicked()
             }
+            // 点击延迟文字/标题手动重测握手延迟（testConnection 内部已 guard 连接态与节流）
+            statusText.setOnClickListener {
+                retestLatencyInPlace()
+            }
+            statusTitleText.setOnClickListener {
+                retestLatencyInPlace()
+            }
             txText = findViewById(R.id.tx)
             rxText = findViewById(R.id.rx)
             btnIpDetail = findViewById(R.id.btn_ip_detail)
@@ -467,7 +474,7 @@ class StatsBar @JvmOverloads constructor(
         runOnUi {
             updateThemeColors()
             if (currentState == BaseService.State.Connected) {
-                btnIpDetail?.visibility = if (DataStore.showLandingIp) View.VISIBLE else View.GONE
+                btnIpDetail?.visibility = View.VISIBLE
                 updateStatusViews()
                 if (DataStore.showLandingIp && LandingIpManager.getCachedInfo() == null) {
                     refreshLandingIp(forceRefresh = false)
@@ -484,7 +491,7 @@ class StatsBar @JvmOverloads constructor(
             currentState = state
             updateHideOnScroll()
             if (state == BaseService.State.Connected) {
-                btnIpDetail?.visibility = if (DataStore.showLandingIp) View.VISIBLE else View.GONE
+                btnIpDetail?.visibility = View.VISIBLE
                 updateStatusViews()
                 if (DataStore.showLandingIp) {
                     refreshLandingIp(forceRefresh = false)
@@ -504,7 +511,7 @@ class StatsBar @JvmOverloads constructor(
         runOnUi {
             if (currentState != BaseService.State.Connected) return@runOnUi
             if (!DataStore.showLandingIp) {
-                btnIpDetail?.visibility = View.GONE
+                btnIpDetail?.visibility = View.VISIBLE
                 updateStatusViews()
                 return@runOnUi
             }
@@ -535,7 +542,7 @@ class StatsBar @JvmOverloads constructor(
                 }
                 if (currentState != BaseService.State.Connected) return@launch
                 if (!DataStore.showLandingIp) {
-                    btnIpDetail?.visibility = View.GONE
+                    btnIpDetail?.visibility = View.VISIBLE
                     updateStatusViews()
                     return@launch
                 }
