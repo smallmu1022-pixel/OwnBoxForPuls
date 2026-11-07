@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_connection_tcp_ping"
-        android:icon="@drawable/ic_baseline_flash_on_24"
+        android:icon="@drawable/ic_outline_flash_on_24"
         android:title="@string/connection_test_tcp_ping"
         app:showAsAction="always" />
 

@@ -3252,8 +3252,13 @@ class ConfigurationFragment @JvmOverloads constructor(
 
             private fun applySelected(selected: Boolean) {
                 val ctx = card.context
-                val surface = ctx.getColorAttr(R.attr.colorSurface)
-                card.setCardBackgroundColor(surface)
+                // 极简线条风：卡片扁平化——平时透明底，选中时才上淡色 tint
+                if (selected) {
+                    val primary = ctx.getColorAttr(R.attr.selectedColorPrimary)
+                    card.setCardBackgroundColor(ColorUtils.setAlphaComponent(primary, 20))
+                } else {
+                    card.setCardBackgroundColor(Color.TRANSPARENT)
+                }
                 if (DataStore.profileCardStyle == 1) {
                     val primary = ctx.getColorAttr(R.attr.colorPrimary)
                     selectedIndicator.isVisible = false
@@ -3267,8 +3272,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 } else {
                     selectedIndicator.isVisible = selected
                     card.strokeWidth = 0
-                    card.cardElevation =
-                        ctx.resources.getDimension(R.dimen.profile_card_elevation_classic)
+                    card.cardElevation = 0f
                 }
             }
 
@@ -3307,7 +3311,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 when (proxyEntity.status) {
                     1 -> appendPart(
                         getString(R.string.available, proxyEntity.ping),
-                        requireContext().getColour(R.color.material_green_500),
+                        requireContext().getColorAttr(android.R.attr.textColorPrimary),
                     )
 
                     2 -> appendPart(
