@@ -639,7 +639,7 @@ class MainActivity : ThemedActivity(),
             val row = LinearLayout(this).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = Gravity.CENTER_VERTICAL
-                setPadding(dp(13), 0, dp(12), 0)
+                setPadding(0, 0, dp(12), 0)
                 isClickable = true
                 isFocusable = true
                 tag = item.itemId
@@ -648,13 +648,22 @@ class MainActivity : ThemedActivity(),
             }
             val rowParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                dp(50),
+                dp(40),
             ).apply {
                 marginStart = dp(13)
                 marginEnd = dp(13)
                 bottomMargin = dp(2)
             }
             row.background = drawerRowBackground(selected = item.isChecked)
+
+            // 左侧 2dp 选中指示条（与节点卡片同一套做法）；未选中时透明占位，不移位
+            val bar = View(this).apply {
+                setBackgroundColor(
+                    if (item.isChecked) getColorAttr(R.attr.selectedColorPrimary)
+                    else Color.TRANSPARENT
+                )
+            }
+            row.addView(bar, LinearLayout.LayoutParams(dp(2), ViewGroup.LayoutParams.MATCH_PARENT))
 
             val icon = ImageView(this).apply {
                 scaleType = ImageView.ScaleType.CENTER_INSIDE
@@ -663,7 +672,9 @@ class MainActivity : ThemedActivity(),
                 iconDrawable?.setTint(getColorAttr(R.attr.colorOnSurfaceVariant))
                 setImageDrawable(iconDrawable)
             }
-            row.addView(icon, LinearLayout.LayoutParams(dp(24), dp(24)))
+            row.addView(icon, LinearLayout.LayoutParams(dp(24), dp(24)).apply {
+                marginStart = dp(11)
+            })
 
             val title = TextView(this).apply {
                 text = item.title
@@ -675,7 +686,7 @@ class MainActivity : ThemedActivity(),
                 ellipsize = android.text.TextUtils.TruncateAt.END
             }
             row.addView(title, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f).apply {
-                marginStart = dp(20)
+                marginStart = dp(12)
             })
             row.setOnClickListener { onNavigationItemSelected(item) }
             drawerMenuItems.addView(row, rowParams)
@@ -690,16 +701,24 @@ class MainActivity : ThemedActivity(),
             val selected = itemId == selectedId
             row.isSelected = selected
             row.background = drawerRowBackground(selected)
-            (row.getChildAt(0) as? ImageView)?.drawable?.setTint(
+            (row.getChildAt(0) as? View)?.setBackgroundColor(
+                if (selected) getColorAttr(R.attr.selectedColorPrimary) else Color.TRANSPARENT
+            )
+            (row.getChildAt(1) as? ImageView)?.drawable?.setTint(
                 getColorAttr(if (selected) R.attr.colorOnSurface else R.attr.colorOnSurfaceVariant)
             )
         }
     }
 
     private fun drawerRowBackground(selected: Boolean): RippleDrawable {
+        // 整体简约线条风：选中时淡色底（与节点卡片同一套 8% 主色 tint），无圆角；指示条由行内 bar View 画
         val fill = GradientDrawable().apply {
-            cornerRadius = dp(16).toFloat()
-            setColor(if (selected) getColorAttr(R.attr.colorSurfaceVariant) else Color.TRANSPARENT)
+            cornerRadius = 0f
+            setColor(
+                if (selected) ColorUtils.setAlphaComponent(
+                    getColorAttr(R.attr.selectedColorPrimary), 20
+                ) else Color.TRANSPARENT
+            )
         }
         val ripple = ColorUtils.setAlphaComponent(getColorAttr(R.attr.colorOnSurface), 20)
         return RippleDrawable(ColorStateList.valueOf(ripple), fill, null)

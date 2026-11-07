@@ -206,13 +206,13 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/bg_glass_drawer"
+        android:background="?attr/colorSurface"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/drawer_brand"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="48dp"
             android:gravity="center_vertical"
             android:paddingStart="22dp"
             android:paddingEnd="22dp"
@@ -248,8 +248,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="12dp" />
+                    android:paddingTop="4dp"
+                    android:paddingBottom="8dp" />
             </ScrollView>
 
             <View
@@ -274,7 +274,7 @@
         <LinearLayout
             android:id="@+id/drawer_quick_actions"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="56dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="18dp"
@@ -284,11 +284,11 @@
                 android:id="@+id/drawer_settings_button"
                 style="@style/Widget.SagerNet.DrawerSettingsButton"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_height="44dp"
                 android:minWidth="132dp"
                 android:contentDescription="@string/settings"
                 android:text="@string/settings"
-                app:icon="@drawable/ic_action_settings"
+                app:icon="@drawable/ic_outline_settings_24"
                 app:iconGravity="textStart"
                 app:iconPadding="8dp" />
 
@@ -299,8 +299,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/drawer_about_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="@drawable/bg_drawer_about_button"
                 android:contentDescription="@string/menu_about"
                 android:padding="0dp"
@@ -317,13 +317,13 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/bg_glass_drawer"
+        android:background="?attr/colorSurface"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/drawer_brand_black"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="48dp"
             android:gravity="center_vertical"
             android:paddingStart="22dp"
             android:paddingEnd="22dp"
@@ -359,8 +359,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="12dp" />
+                    android:paddingTop="4dp"
+                    android:paddingBottom="8dp" />
             </ScrollView>
 
             <View
@@ -385,7 +385,7 @@
         <LinearLayout
             android:id="@+id/drawer_quick_actions_black"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="56dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="18dp"
@@ -395,11 +395,11 @@
                 android:id="@+id/drawer_settings_button_black"
                 style="@style/Widget.SagerNet.DrawerSettingsButton"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_height="44dp"
                 android:minWidth="132dp"
                 android:contentDescription="@string/settings"
                 android:text="@string/settings"
-                app:icon="@drawable/ic_action_settings"
+                app:icon="@drawable/ic_outline_settings_24"
                 app:iconGravity="textStart"
                 app:iconPadding="8dp" />
 
@@ -410,8 +410,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/drawer_about_button_black"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="@drawable/bg_drawer_about_button"
                 android:contentDescription="@string/menu_about"
                 android:padding="0dp"

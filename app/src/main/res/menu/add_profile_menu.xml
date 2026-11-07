@@ -124,11 +124,11 @@
             <group android:id="@+id/group_actions_test">
                 <item
                     android:id="@+id/action_connection_url_test"
-                    android:icon="@drawable/baseline_public_24"
+                    android:icon="@drawable/ic_outline_public_24"
                     android:title="@string/connection_test_url_test" />
                 <item
                     android:id="@+id/action_speed_test_group"
-                    android:icon="@drawable/ic_baseline_speed_24"
+                    android:icon="@drawable/ic_outline_speed_24"
                     android:title="@string/speed_test_group" />
                 <item
                     android:id="@+id/action_connection_test_clear_results"

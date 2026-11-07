@@ -3252,12 +3252,12 @@ class ConfigurationFragment @JvmOverloads constructor(
 
             private fun applySelected(selected: Boolean) {
                 val ctx = card.context
-                // 极简线条风：卡片扁平化——平时透明底，选中时才上淡色 tint
+                // 整体简约线条风：卡片白底（surface 色），选中时上淡色 tint
                 if (selected) {
                     val primary = ctx.getColorAttr(R.attr.selectedColorPrimary)
                     card.setCardBackgroundColor(ColorUtils.setAlphaComponent(primary, 20))
                 } else {
-                    card.setCardBackgroundColor(Color.TRANSPARENT)
+                    card.setCardBackgroundColor(ctx.getColorAttr(R.attr.colorSurface))
                 }
                 if (DataStore.profileCardStyle == 1) {
                     val primary = ctx.getColorAttr(R.attr.colorPrimary)
@@ -3272,7 +3272,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 } else {
                     selectedIndicator.isVisible = selected
                     card.strokeWidth = 0
-                    card.cardElevation = 0f
+                    card.cardElevation = ctx.resources.displayMetrics.density // 1dp
                 }
             }
 

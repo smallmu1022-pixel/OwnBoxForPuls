@@ -2,6 +2,7 @@ package moe.matsuri.nb4a.ui
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.AttributeSet
@@ -11,7 +12,6 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceViewHolder
 import io.nekohasekai.sagernet.R
-import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.ktx.getColorAttr
 import io.nekohasekai.sagernet.utils.Theme
 import com.google.android.material.card.MaterialCardView
@@ -130,17 +130,11 @@ class ExpandablePreferenceCategory @JvmOverloads constructor(
 
         val card = holder.itemView as? MaterialCardView
         if (card != null) {
-            val ctx = card.context
-            val surface = ctx.getColorAttr(R.attr.colorSurface)
-            card.setCardBackgroundColor(surface)
-            if (DataStore.profileCardStyle == 1) {
-                card.cardElevation = 0f
-                card.strokeWidth = ctx.resources.getDimensionPixelSize(R.dimen.card_stroke_width)
-                card.strokeColor = ctx.getColor(R.color.card_stroke)
-            } else {
-                card.cardElevation = ctx.resources.getDimension(R.dimen.profile_card_elevation_classic)
-                card.strokeWidth = 0
-            }
+            // 整体简约线条风：分类去卡片化——透明底、无阴影、无描边、无圆角
+            card.setCardBackgroundColor(Color.TRANSPARENT)
+            card.cardElevation = 0f
+            card.strokeWidth = 0
+            card.cardCornerRadius = 0f
         }
 
         val textPrimary = context.getColorAttr(android.R.attr.textColorPrimary)
@@ -154,8 +148,8 @@ class ExpandablePreferenceCategory @JvmOverloads constructor(
             val arrowColor = if (isExpanded) primaryColor else textSecondary
             arrow.imageTintList = ColorStateList.valueOf(arrowColor)
             arrow.setImageResource(
-                if (isExpanded) R.drawable.ic_baseline_keyboard_arrow_up_24
-                else R.drawable.ic_baseline_keyboard_arrow_down_24
+                if (isExpanded) R.drawable.ic_outline_expand_less_24
+                else R.drawable.ic_outline_expand_more_24
             )
         }
 

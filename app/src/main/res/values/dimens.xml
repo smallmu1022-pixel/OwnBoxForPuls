@@ -13,7 +13,7 @@
     <dimen name="profile_card_elevation_classic">2dp</dimen>
 
     <dimen name="input_corner_radius">16dp</dimen>
-    <dimen name="popup_corner_radius">16dp</dimen>
+    <dimen name="popup_corner_radius">12dp</dimen>
     <dimen name="dialog_corner_radius">24dp</dimen>
 
     <dimen name="glass_card_corner_radius">24dp</dimen>
