@@ -271,9 +271,7 @@
     <string name="license">Licencia</string> 
     <string name="route_warn">Asegúrese de haber leído la documentación antes de agregar reglas personalizadas; de lo contrario, es posible que no pueda conectarse a Internet.</string> 
     <string name="lines">%d líneas</string> 
-    <string name="follow_system">Seguir sistema</string> 
-    <string name="liquid_glass">Liquid Glass</string>
-    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
+    <string name="follow_system">Seguir sistema</string>
     <string name="enable">Permitir</string> 
     <string name="disable">Desactivar</string> 
     <string name="auto">Automático</string> 

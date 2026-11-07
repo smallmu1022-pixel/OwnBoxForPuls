@@ -6,7 +6,7 @@
     <color name="md3_background">#121212</color>
     <color name="md3_surface">#1E1E1E</color>
 
-    <!-- OneBox V1.0.5：黑/白/浅灰去玻璃化——这些颜色现为不透明（普通主题用），液态玻璃主题用 glass_liquid_* -->
+    <!-- OneBox V1.0.5：黑/白/浅灰去玻璃化——这些颜色现为不透明（普通主题用） -->
     <color name="glass_surface">#FF000000</color>
     <color name="glass_fill_top">#FF000000</color>
     <color name="glass_fill_bottom">#FF000000</color>

@@ -16,10 +16,8 @@
     <dimen name="popup_corner_radius">16dp</dimen>
     <dimen name="dialog_corner_radius">24dp</dimen>
 
-    <!-- OneBox 液态玻璃 -->
     <dimen name="glass_card_corner_radius">24dp</dimen>
     <dimen name="glass_dialog_corner_radius">28dp</dimen>
-    <dimen name="glass_blur_radius">24dp</dimen>
     <dimen name="dialog_background_inset">24dp</dimen>
 
     <dimen name="nav_item_corner_radius">18dp</dimen>

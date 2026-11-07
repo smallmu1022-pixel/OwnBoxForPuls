@@ -308,7 +308,7 @@
     <color name="md3_background">#F4F5F7</color>
     <color name="md3_surface">#FFFFFF</color>
 
-    <!-- OneBox V1.0.5：黑/白/浅灰去玻璃化——这些颜色现为不透明（普通主题用），液态玻璃主题用下面的 glass_liquid_* -->
+    <!-- OneBox V1.0.5：黑/白/浅灰去玻璃化——这些颜色现为不透明（普通主题用） -->
     <color name="glass_surface">#FFFFFFFF</color>
     <color name="glass_fill_top">#FFFFFFFF</color>
     <color name="glass_fill_bottom">#FFFFFFFF</color>
@@ -316,14 +316,6 @@
     <color name="glass_fill_strong_bottom">#FFFFFFFF</color>
     <color name="glass_stroke">#00000000</color>
     <color name="glass_highlight">#00000000</color>
-    <!-- OneBox 液态玻璃模式：比默认玻璃更透明的半透明配色，仅液态玻璃主题使用 -->
-    <color name="glass_liquid_surface">#B3FFFFFF</color>
-    <color name="glass_liquid_fill_top">#CCFFFFFF</color>
-    <color name="glass_liquid_fill_bottom">#A6FFFFFF</color>
-    <color name="glass_liquid_fill_strong_top">#D9FFFFFF</color>
-    <color name="glass_liquid_fill_strong_bottom">#C2FFFFFF</color>
-    <color name="glass_liquid_stroke">#80FFFFFF</color>
-    <color name="glass_liquid_highlight">#CCFFFFFF</color>
     <color name="md3_text_primary">#1C1B1F</color>
     <color name="md3_text_secondary">#49454F</color>
     <color name="md3_top_app_bar">#FAFAFA</color>

@@ -297,8 +297,6 @@
  در غیر این صورت ممکن است نتوانید به اینترنت وصل شوید.</string>
     <string name="lines">%d خط</string>
     <string name="follow_system">مانند سیستم</string>
-    <string name="liquid_glass">Liquid Glass</string>
-    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
     <string name="enable">فعال</string>
     <string name="disable">غیرفعال</string>
     <string name="auto">خودکار</string>

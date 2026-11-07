@@ -112,13 +112,16 @@ class SagerNet : Application(),
         }
 
         if (isMainProcess) {
-            // OneBox V1.0.5：把旧的夜间模式液态玻璃（nightTheme=4）迁移到主题颜色，
-            // 保住用户已选的玻璃外观（appTheme=液态玻璃，nightTheme 回到跟随系统）。
+            // OneBox V1.0.6：液态玻璃已移除——把已选液态玻璃的用户迁回默认浅灰。
+            // 旧值：appTheme == 25（已删除的液态玻璃主题值）、nightTheme == 4（V1.0.3 的玻璃夜间模式）。
+            if (DataStore.appTheme == 25) {
+                DataStore.appTheme = Theme.LIGHT_GRAY
+            }
             if (DataStore.nightTheme == 4) {
-                DataStore.appTheme = Theme.GLASS
+                DataStore.appTheme = Theme.LIGHT_GRAY
                 DataStore.nightTheme = 0
             }
-            if (DataStore.appTheme !in setOf(Theme.BLACK, Theme.WHITE, Theme.LIGHT_GRAY, Theme.GLASS)) {
+            if (DataStore.appTheme !in setOf(Theme.BLACK, Theme.WHITE, Theme.LIGHT_GRAY)) {
                 DataStore.appTheme = Theme.LIGHT_GRAY
             }
             Theme.apply(this)

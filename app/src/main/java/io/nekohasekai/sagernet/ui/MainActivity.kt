@@ -33,7 +33,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.preference.PreferenceDataStore
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -58,7 +57,6 @@ import io.nekohasekai.sagernet.database.preference.OnPreferenceDataStoreChangeLi
 import io.nekohasekai.sagernet.databinding.LayoutMainBinding
 import io.nekohasekai.sagernet.utils.Theme
 import io.nekohasekai.sagernet.utils.LandingIpManager
-import io.nekohasekai.sagernet.widget.GlassEffect
 import io.nekohasekai.sagernet.fmt.AbstractBean
 import io.nekohasekai.sagernet.fmt.KryoConverters
 import io.nekohasekai.sagernet.fmt.PluginEntry
@@ -156,33 +154,6 @@ class MainActivity : ThemedActivity(),
         )
         drawerRoot.layoutParams = drawerRoot.layoutParams.apply { width = drawerWidth }
         navigation.setNavigationItemSelectedListener(this)
-        // 液态玻璃：抽屉打开时轻微模糊后方主界面，关闭即恢复（仅 API 31+ 生效）。
-        // 用滑动阈值开关而非逐帧切换，避免低端机反复挂接 RenderEffect 造成卡顿。
-        binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
-            private var blurred = false
-
-            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                // OneBox V1.0.5：后方模糊只在液态玻璃主题下生效，黑/白/浅灰不做玻璃模糊。
-                if (slideOffset >= 0.5f && !blurred && Theme.isGlassMode()) {
-                    blurred = true
-                    GlassEffect.applyBackdropBlur(binding.coordinator)
-                } else if (slideOffset <= 0.2f && blurred) {
-                    blurred = false
-                    GlassEffect.clearBackdropBlur(binding.coordinator)
-                }
-            }
-
-            override fun onDrawerOpened(drawerView: View) = Unit
-
-            override fun onDrawerClosed(drawerView: View) {
-                if (blurred) {
-                    blurred = false
-                    GlassEffect.clearBackdropBlur(binding.coordinator)
-                }
-            }
-
-            override fun onDrawerStateChanged(newState: Int) = Unit
-        })
         rebuildDrawerItems()
         drawerSettingsButton.setOnClickListener {
             if (isCurrentFragment(R.id.nav_settings)) {

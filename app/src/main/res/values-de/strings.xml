@@ -30,8 +30,6 @@
     <string name="auto">Automatisch</string>
     <string name="api_port">API-Port</string>
     <string name="follow_system">System folgen</string>
-    <string name="liquid_glass">Liquid Glass</string>
-    <string name="liquid_glass_summary">Semi-transparent glass · fixed, does not follow system</string>
     <string name="enable">Aktivieren</string>
     <string name="disable">Deaktivieren</string>
     <string name="enable_log">Aktiviere Protokoll</string>

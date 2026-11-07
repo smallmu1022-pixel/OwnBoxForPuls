@@ -270,8 +270,6 @@
     <string name="route_warn">請在新增客製化規則前閱讀文件，否則您可能會無法連線至網際網路。</string>
     <string name="lines">%d 行</string>
     <string name="follow_system">跟隨系統</string>
-    <string name="liquid_glass">液態玻璃</string>
-    <string name="liquid_glass_summary">半透明玻璃質感 · 不跟隨系統</string>
     <string name="enable">啟用</string>
     <string name="disable">停用</string>
     <string name="auto">自動</string>

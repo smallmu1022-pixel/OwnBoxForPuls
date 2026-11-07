@@ -42,7 +42,7 @@
         <!-- 立体卡片提升表面色，默认遵循 MD3 规范使用标准表面色 -->
         <item name="cardElevatedSurfaceColor">@color/md3_surface</item>
 
-        <!-- OneBox 液态玻璃：玻璃面颜色走主题属性；普通主题用 glass_*（深浅随系统自动切换），液态玻璃主题用更透明的 glass_liquid_* -->
+        <!-- 玻璃面的颜色走主题属性（各主题指向各自的 glass_* 颜色，现为不透明） -->
         <item name="glassSurface">@color/glass_surface</item>
         <item name="glassFillTop">@color/glass_fill_top</item>
         <item name="glassFillBottom">@color/glass_fill_bottom</item>
@@ -142,7 +142,7 @@
         <!-- 立体卡片提升表面色，默认遵循 MD3 规范使用标准表面色 -->
         <item name="cardElevatedSurfaceColor">@color/md3_surface</item>
 
-        <!-- OneBox 液态玻璃：玻璃面颜色走主题属性；普通主题用 glass_*（深浅随系统自动切换），液态玻璃主题用更透明的 glass_liquid_* -->
+        <!-- 玻璃面的颜色走主题属性（各主题指向各自的 glass_* 颜色，现为不透明） -->
         <item name="glassSurface">@color/glass_surface</item>
         <item name="glassFillTop">@color/glass_fill_top</item>
         <item name="glassFillBottom">@color/glass_fill_bottom</item>
@@ -277,7 +277,7 @@
     </style>
 
     <!-- OneBox V1.0.6：顶栏瘦身（移植自上游 v26.11.2）——标题 16sp 加粗、无字体内边距，
-         配合收窄的 contentInset，顶栏更紧凑；高度仍为 ?attr/actionBarSize，不动，避免图标裁切。 -->
+         配合收窄的 contentInset，顶栏更紧凑；高度已压到 48dp（V1.0.6 返工），图标 24dp 不裁切。 -->
     <style name="TextAppearance.SagerNet.Toolbar.Title" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
@@ -864,16 +864,6 @@
         <item name="appBarLayoutStyle">@style/Widget.SagerNet.AppBarLayout.LightGray</item>
     </style>
 
-    <!-- OneBox 液态玻璃模式：固定浅色玻璃，不跟随系统深浅变化；玻璃面用更透明的半透明配色 -->
-    <style name="Theme.SagerNet.Glass" parent="Theme.SagerNet.LightGray">
-        <item name="glassSurface">@color/glass_liquid_surface</item>
-        <item name="glassFillTop">@color/glass_liquid_fill_top</item>
-        <item name="glassFillBottom">@color/glass_liquid_fill_bottom</item>
-        <item name="glassFillStrongTop">@color/glass_liquid_fill_strong_top</item>
-        <item name="glassFillStrongBottom">@color/glass_liquid_fill_strong_bottom</item>
-        <item name="glassStroke">@color/glass_liquid_stroke</item>
-        <item name="glassHighlight">@color/glass_liquid_highlight</item>
-    </style>
     <style name="Theme.SagerNet.Dialog.Black" parent="Theme.SagerNet.Dialog">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/color_black_theme_primary_dark</item>
@@ -930,17 +920,6 @@
         <item name="android:textColorSecondary">@color/color_light_gray_text_secondary</item>
         <item name="fabColorBackground">@color/color_light_gray_primary</item>
         <item name="selectedColorPrimary">@color/color_light_gray_primary</item>
-    </style>
-
-    <!-- OneBox 液态玻璃模式（对话框）：固定浅色玻璃，不跟随系统深浅变化；玻璃面用更透明的半透明配色 -->
-    <style name="Theme.SagerNet.Dialog.Glass" parent="Theme.SagerNet.Dialog.LightGray">
-        <item name="glassSurface">@color/glass_liquid_surface</item>
-        <item name="glassFillTop">@color/glass_liquid_fill_top</item>
-        <item name="glassFillBottom">@color/glass_liquid_fill_bottom</item>
-        <item name="glassFillStrongTop">@color/glass_liquid_fill_strong_top</item>
-        <item name="glassFillStrongBottom">@color/glass_liquid_fill_strong_bottom</item>
-        <item name="glassStroke">@color/glass_liquid_stroke</item>
-        <item name="glassHighlight">@color/glass_liquid_highlight</item>
     </style>
 
     <style name="Theme.SagerNet.Monet" parent="Theme.SagerNet" />
