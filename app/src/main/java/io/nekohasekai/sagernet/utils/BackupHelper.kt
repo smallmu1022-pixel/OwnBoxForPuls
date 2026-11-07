@@ -2,7 +2,6 @@ package io.nekohasekai.sagernet.utils
 
 import android.os.Parcel
 import android.os.Parcelable
-import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.database.SagerDatabase
 import io.nekohasekai.sagernet.database.preference.PublicDatabase
 import io.nekohasekai.sagernet.ktx.Logs

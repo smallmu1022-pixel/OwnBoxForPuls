@@ -2,8 +2,6 @@ package moe.matsuri.nb4a.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.Drawable
-import androidx.appcompat.content.res.AppCompatResources
 import io.nekohasekai.sagernet.SagerNet
 import io.nekohasekai.sagernet.ktx.Logs
 import java.io.File
@@ -38,12 +36,6 @@ fun File.recreate(dir: Boolean) {
 }
 
 // Context utils
-
-@SuppressLint("DiscouragedApi")
-fun Context.getDrawableByName(name: String?): Drawable? {
-    val resourceId: Int = resources.getIdentifier(name, "drawable", packageName)
-    return AppCompatResources.getDrawable(this, resourceId)
-}
 
 // Traffic display
 

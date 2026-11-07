@@ -1,14 +1,12 @@
 package io.nekohasekai.sagernet.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import androidx.core.app.ActivityCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.preference.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,11 +21,8 @@ import io.nekohasekai.sagernet.ktx.*
 import io.nekohasekai.sagernet.utils.AppLocale
 import io.nekohasekai.sagernet.utils.Theme
 import moe.matsuri.nb4a.ui.*
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
 import java.io.File
-import libcore.Libcore
 
 class SettingsPreferenceFragment : PreferenceFragmentCompat(), OnPreferenceDataStoreChangeListener {
 

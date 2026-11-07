@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.utils.ServiceCategory
-import io.nekohasekai.sagernet.utils.ServiceDiagnosticsManager
 import io.nekohasekai.sagernet.utils.ServiceStatusItem
 import io.nekohasekai.sagernet.utils.ServiceTestState
 import io.nekohasekai.sagernet.utils.Theme

@@ -9,8 +9,6 @@ import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
 import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
 import android.text.util.Linkify
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +37,6 @@ import moe.matsuri.nb4a.plugin.Plugins
 import androidx.core.net.toUri
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.nekohasekai.sagernet.SagerNet
-import io.nekohasekai.sagernet.database.DataStore
 import moe.matsuri.nb4a.utils.Util
 import org.json.JSONArray
 import org.json.JSONObject

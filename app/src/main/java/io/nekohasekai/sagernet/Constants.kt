@@ -11,7 +11,6 @@ object Key {
 
     const val APP_EXPERT = "isExpert"
     const val APP_THEME = "appTheme"
-    const val USE_SYSTEM_THEME = "useSystemTheme"
     const val NIGHT_THEME = "nightTheme"
     const val APP_LANGUAGE = "appLanguage"
     const val SERVICE_MODE = "serviceMode"
@@ -203,18 +202,10 @@ object Key {
     const val FRAGMENT_LENGTH = "fragmentLength"
     const val FRAGMENT_INTERVAL = "fragmentInterval"
 
-    const val WEBDAV_SERVER = "webdavServer"
-    const val WEBDAV_USERNAME = "webdavUsername"
-    const val WEBDAV_PASSWORD = "webdavPassword"
-    const val WEBDAV_PATH = "webdavPath"
-
     const val GLOBAL_MODE = "globalMode"
 }
 
 object TunImplementation {
-    const val GVISOR = 0
-    const val SYSTEM = 1
-    const val MIXED = 2
     const val SING_TUN = 3
 }
 

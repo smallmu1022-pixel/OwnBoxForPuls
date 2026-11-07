@@ -5,7 +5,6 @@
     <string name="logcat">Esporta informazioni di debug</string>
     <string name="version_x">Versione (%s)</string>
     <string name="app_version">Versione</string>
-    <string name="oss_licenses">Licenze open source</string>
     <string name="github">Codice sorgente</string>
     <string name="project">Progetto</string>
     <string name="app_desc">La toolchain proxy universale per Android, scritta in Kotlin.</string>
@@ -15,7 +14,6 @@
     <string name="backup_import_throne_desktop_summary">Importa profili, route e impostazioni da un file .thrbackup di Throne desktop. Le icone personalizzate vengono ignorate. I dati esistenti delle categorie selezionate verranno sovrascritti.</string>
     <string name="connection_test_url">URL test latenza</string>
     <string name="connection_test_url_test">Test URL di questo gruppo</string>
-    <string name="speed_test_settings">Speed test</string>
     <string name="speed_test_mode">Speed test mode</string>
     <string name="speed_test_mode_download_upload">Download + upload</string>
     <string name="speed_test_mode_download">Download only</string>

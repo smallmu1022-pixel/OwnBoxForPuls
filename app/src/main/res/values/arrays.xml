@@ -322,17 +322,9 @@
         -->
     </string-array>
 
-    <string-array name="route_protocol_entry">
-        <item>TCP and UDP</item>
-        <item>TCP</item>
-        <item>UDP</item>
-    </string-array>
+    
 
-    <string-array name="route_protocol_value">
-        <item />
-        <item>tcp</item>
-        <item>udp</item>
-    </string-array>
+    
 
     <string-array name="outbound_entry">
         <item>@string/route_proxy</item>
@@ -463,16 +455,9 @@
         <item>10000</item>
     </string-array>
 
-    <string-array name="domain_strategy">
-        <item>AsIs</item>
-        <item>IPIfNonMatch</item>
-        <item>IPOnDemand</item>
-    </string-array>
+    
 
-    <string-array name="transproxy_mode">
-        <item>REDIRECT</item>
-        <item>TPROXY</item>
-    </string-array>
+    
 
     <string-array name="mieru_protocol">
         <item>TCP</item>
@@ -520,15 +505,11 @@
         <item>@string/menu_group</item>
     </string-array>
 
-    <string-array name="balancer_strategy_entry">
-        <item>@string/random</item>
-        <item>@string/leastPing</item>
-    </string-array>
+    
     <string-array name="balancer_strategy_value">
         <item />
         <item>leastPing</item>
     </string-array>
-
 
     <string-array name="group_types">
         <item>@string/group_basic</item>
@@ -551,10 +532,7 @@
         <item>gecko</item>
     </string-array>
 
-    <string-array name="tuic_version">
-        <item>5</item>
-        <item>4</item>
-    </string-array>
+    
 
     <string-array name="socks_versions">
         <item>SOCKS4</item>
@@ -562,10 +540,7 @@
         <item>SOCKS5</item>
     </string-array>
 
-    <string-array name="simple_obfs">
-        <item>http</item>
-        <item>tls</item>
-    </string-array>
+    
 
     <string-array name="group_orders">
         <item>@string/group_order_origin</item>
@@ -612,13 +587,7 @@
         <item>9000</item>
     </string-array>
 
-    <string-array name="mux_select_init" />
-
-    <string-array name="mux_type">
-        <item>h2mux</item>
-        <item>smux</item>
-        <item>yamux</item>
-    </string-array>
+    
 
     <string-array name="mux_mode">
         <item>@string/mux_mode_max_streams</item>
@@ -633,10 +602,7 @@
         <item>ipv6_only</item>
     </string-array>
 
-    <string-array name="exe_prefer_provider">
-        <item>Matsuri</item>
-        <item>SagerNet</item>
-    </string-array>
+    
 
     <string-array name="app_tls_version">
         <item>1.2</item>
@@ -786,7 +752,6 @@
         <item>s</item>
     </string-array>
 
-    <string-array name="empty_array">
-    </string-array>
+    
 
 </resources>

@@ -50,7 +50,6 @@ import io.nekohasekai.sagernet.bg.SagerConnection
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.database.GroupManager
 import io.nekohasekai.sagernet.database.ProfileManager
-import libcore.Libcore
 import io.nekohasekai.sagernet.database.ProxyGroup
 import io.nekohasekai.sagernet.database.SubscriptionBean
 import io.nekohasekai.sagernet.database.preference.OnPreferenceDataStoreChangeListener
@@ -66,7 +65,6 @@ import io.nekohasekai.sagernet.ktx.deduplicateProxies
 import io.nekohasekai.sagernet.ktx.getColorAttr
 import io.nekohasekai.sagernet.ktx.alert
 import io.nekohasekai.sagernet.ktx.deduplicateProxies
-import io.nekohasekai.sagernet.ktx.isPlay
 import io.nekohasekai.sagernet.ktx.deduplicateProxies
 import io.nekohasekai.sagernet.ktx.isPreview
 import io.nekohasekai.sagernet.ktx.deduplicateProxies

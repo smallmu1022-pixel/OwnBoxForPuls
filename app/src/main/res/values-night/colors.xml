@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="fab_color_progress">@color/material_light_white</color>
     <color name="preference_simple_menu_background">#303030</color>
     <!-- Material Design 3 全局色彩与层级系统 (夜间模式) -->
     <color name="md3_background">#121212</color>
@@ -16,7 +15,6 @@
     <color name="glass_highlight">#00000000</color>
     <color name="md3_text_primary">#E6E1E5</color>
     <color name="md3_text_secondary">#CAC4D0</color>
-    <color name="md3_top_app_bar">#1E1E1E</color>
     <color name="nav_icon_unselected">#CAC4D0</color>
 
     <!-- 卡片默认细边框：约 12% 白 -->
@@ -49,10 +47,7 @@
     <color name="card_elevated_red">@color/md3_surface</color>
     <color name="card_elevated_teal">@color/md3_surface</color>
     <color name="card_elevated_yellow">@color/md3_surface</color>
-    <color name="card_elevated_black">@color/md3_surface</color>
     <color name="card_elevated_verdant_mint">@color/md3_surface</color>
 
     <!-- 纯黑主题在深色模式下的颜色映射 -->
-    <color name="color_ng_black_accent">#FFFFFF</color>
-    <color name="color_ng_black_primary">#2C2C2E</color>
 </resources>

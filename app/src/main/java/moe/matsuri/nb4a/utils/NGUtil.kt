@@ -175,10 +175,6 @@ object NGUtil {
         return regV6.matches(addr)
     }
 
-    private fun isCoreDNSAddress(s: String): Boolean {
-        return s.startsWith("https") || s.startsWith("tcp") || s.startsWith("quic")
-    }
-
     fun openUri(context: Context, uriString: String) {
         val uri = Uri.parse(uriString)
         context.startActivity(Intent(Intent.ACTION_VIEW, uri))

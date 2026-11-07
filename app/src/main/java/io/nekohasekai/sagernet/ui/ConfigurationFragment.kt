@@ -41,10 +41,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.text.SimpleDateFormat
@@ -58,7 +56,6 @@ import io.nekohasekai.sagernet.SagerNet
 import io.nekohasekai.sagernet.SpeedTestDirection
 import io.nekohasekai.sagernet.SpeedTestOutcome
 import io.nekohasekai.sagernet.aidl.TrafficData
-import io.nekohasekai.sagernet.bg.ActiveOutboundTracker
 import io.nekohasekai.sagernet.bg.BaseService
 import io.nekohasekai.sagernet.bg.proto.AndroidSpeedTestSession
 import io.nekohasekai.sagernet.bg.proto.SpeedTestQueueRunner
@@ -128,9 +125,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
 import moe.matsuri.nb4a.Protocols
 import moe.matsuri.nb4a.Protocols.getProtocolColor
@@ -170,7 +165,6 @@ class ConfigurationFragment @JvmOverloads constructor(
     lateinit var tabLayout: TabLayout
     lateinit var groupPager: ViewPager2
 
-
     val multiSelectedIds = java.util.Collections.synchronizedSet(LinkedHashSet<Long>()).apply {
         if (initialSelectedIds != null) {
             addAll(initialSelectedIds.toList())
@@ -200,7 +194,6 @@ class ConfigurationFragment @JvmOverloads constructor(
 
     @Volatile
     private var selectedProxySnapshot = selectedItem?.id ?: 0L
-
 
     @Volatile
     private var currentProfileSnapshot = 0L
@@ -398,7 +391,6 @@ class ConfigurationFragment @JvmOverloads constructor(
         toolbar.menu.findItem(R.id.action_connection_test_clear_results)?.setTitle(R.string.connection_test_clear_results)
         toolbar.menu.findItem(R.id.action_connection_test_delete_unavailable)?.setTitle(R.string.connection_test_delete_unavailable)
     }
-
 
     @SuppressLint("DetachAndAttachSameFragment")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -1937,7 +1929,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                     }
                 }
 
-
                 val runFunc = if (now) activity?.let { it::runOnUiThread } else groupPager::post
                 if (runFunc != null) {
                     val reloadAdapter = this@GroupPagerAdapter
@@ -2509,7 +2500,6 @@ class ConfigurationFragment @JvmOverloads constructor(
             card.isVisible = true
         }
 
-
         private fun setupBottomBarScrollDriver() {
             val mainActivity = activity as? MainActivity ?: return
             configurationListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -2539,7 +2529,6 @@ class ConfigurationFragment @JvmOverloads constructor(
             }
         }
 
-
         private var activeNodePopupMenu: PopupMenu? = null
 
         override fun onDestroyView() {
@@ -2561,7 +2550,6 @@ class ConfigurationFragment @JvmOverloads constructor(
             if (!::undoManager.isInitialized) return
             undoManager.flush()
         }
-
 
         inner class ConfigurationAdapter : RecyclerView.Adapter<ConfigurationHolder>(),
             ProfileManager.Listener,
@@ -3065,7 +3053,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                     }
                 }
 
-
                 val newProfileMap = newProfiles.associateBy { it.id }
                 val newProfileIds = newProfiles.map { it.id }.distinct()
 
@@ -3205,8 +3192,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                 view.setOnLongClickListener(null)
             }
 
-
-
             private fun selectProfile(proxyEntity: ProxyEntity) {
                 val pf = parentFragment as? ConfigurationFragment ?: return
                 runOnDefaultDispatcher {
@@ -3263,34 +3248,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                 } else {
                     removeAction()
                 }
-            }
-
-            private fun showDoubleColumnMenu(anchor: View, proxyEntity: ProxyEntity) {
-                val popup = PopupMenu(requireContext(), anchor)
-                popup.menuInflater.inflate(R.menu.double_column_item_menu, popup.menu)
-                if (select) popup.menu.removeItem(R.id.action_delete)
-                popup.setOnMenuItemClickListener { menuItem ->
-                    when (menuItem.itemId) {
-                        R.id.action_edit -> {
-                            anchor.context.startActivity(
-                                proxyEntity.settingIntent(
-                                    anchor.context, proxyGroup.type == GroupType.SUBSCRIPTION
-                                )
-                            )
-                            true
-                        }
-                        R.id.action_share -> {
-                            showNodeCascadingMenu(anchor, proxyEntity)
-                            true
-                        }
-                        R.id.action_delete -> {
-                            removeProfile(proxyEntity)
-                            true
-                        }
-                        else -> false
-                    }
-                }
-                popup.show()
             }
 
             private fun applySelected(selected: Boolean) {
@@ -3634,7 +3591,5 @@ class ConfigurationFragment @JvmOverloads constructor(
         val list = if (DataStore.isGroupDisabled(groupId)) emptyList() else SagerDatabase.proxyDao.getByGroup(groupId)
         return Pair(list, group?.displayName() ?: "group_$groupId")
     }
-
-
 
 }

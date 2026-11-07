@@ -16,7 +16,6 @@ import com.jakewharton.processphoenix.ProcessPhoenix
 import io.nekohasekai.sagernet.BuildConfig
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.SagerNet
-import io.nekohasekai.sagernet.bg.Executable
 import io.nekohasekai.sagernet.database.*
 import io.nekohasekai.sagernet.database.preference.KeyValuePair
 import io.nekohasekai.sagernet.database.preference.PublicDatabase
@@ -24,7 +23,6 @@ import io.nekohasekai.sagernet.databinding.LayoutBackupBinding
 import io.nekohasekai.sagernet.databinding.LayoutImportBinding
 import io.nekohasekai.sagernet.databinding.LayoutProgressBinding
 import io.nekohasekai.sagernet.ktx.*
-import kotlinx.coroutines.delay
 import moe.matsuri.nb4a.utils.Util
 import org.json.JSONArray
 import org.json.JSONObject
@@ -44,9 +42,7 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 import java.io.BufferedInputStream
 import java.util.zip.ZipInputStream
-import java.util.concurrent.TimeUnit
 import java.util.zip.Deflater
-import java.io.BufferedOutputStream
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 class BackupFragment : NamedFragment(R.layout.layout_backup) {

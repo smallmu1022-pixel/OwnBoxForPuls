@@ -6,13 +6,11 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.ProxyInfo
 import android.os.Build
 import android.os.ParcelFileDescriptor
 import android.os.PowerManager
 import io.nekohasekai.sagernet.*
 import io.nekohasekai.sagernet.database.DataStore
-import io.nekohasekai.sagernet.fmt.LOCALHOST
 import io.nekohasekai.sagernet.fmt.hysteria.HysteriaBean
 import io.nekohasekai.sagernet.ktx.*
 import io.nekohasekai.sagernet.ui.VpnRequestActivity

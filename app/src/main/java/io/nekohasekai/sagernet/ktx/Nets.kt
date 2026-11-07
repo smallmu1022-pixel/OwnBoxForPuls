@@ -2,7 +2,6 @@
 
 package io.nekohasekai.sagernet.ktx
 
-import io.nekohasekai.sagernet.BuildConfig
 import io.nekohasekai.sagernet.fmt.AbstractBean
 import libcore.HTTPClient
 import moe.matsuri.nb4a.utils.NGUtil

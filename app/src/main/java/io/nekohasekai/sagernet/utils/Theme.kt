@@ -6,7 +6,6 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.graphics.ColorUtils
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.ktx.app
@@ -40,8 +39,6 @@ object Theme {
     const val WHITE = 23
     const val LIGHT_GRAY = 24
     const val CUSTOM = 99
-
-    private fun defaultTheme() = LIGHT_GRAY
 
     fun getClosestThemeForColor(color: Int): Int {
         val hsv = FloatArray(3)

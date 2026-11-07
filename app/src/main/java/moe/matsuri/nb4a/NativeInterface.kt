@@ -1,7 +1,6 @@
 package moe.matsuri.nb4a
 
 import android.content.Context
-import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.wifi.WifiManager
@@ -12,7 +11,6 @@ import android.os.SystemClock
 import androidx.annotation.RequiresApi
 import io.nekohasekai.sagernet.SagerNet
 import io.nekohasekai.sagernet.bg.ActiveOutboundTracker
-import io.nekohasekai.sagernet.bg.ServiceNotification
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.database.ProfileManager
 import io.nekohasekai.sagernet.database.ProxyEntity

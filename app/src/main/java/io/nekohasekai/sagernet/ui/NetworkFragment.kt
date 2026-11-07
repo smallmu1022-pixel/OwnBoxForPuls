@@ -13,7 +13,6 @@ import io.nekohasekai.sagernet.utils.BackupHelper
 import moe.matsuri.nb4a.utils.SendLog
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.json.JSONObject
 import java.net.InetAddress
 import java.util.concurrent.TimeUnit
 

@@ -1,28 +1,20 @@
 package io.nekohasekai.sagernet.ui
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.text.InputType
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceDataStore
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.ktx.onMainDispatcher
 import io.nekohasekai.sagernet.ktx.runOnDefaultDispatcher
-import io.nekohasekai.sagernet.ktx.snackbar
-import kotlinx.coroutines.launch
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.net.URL
 import com.google.android.material.snackbar.Snackbar
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
 import java.util.concurrent.TimeUnit
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 

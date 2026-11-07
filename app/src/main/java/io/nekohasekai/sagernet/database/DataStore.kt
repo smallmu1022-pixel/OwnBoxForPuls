@@ -101,7 +101,6 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var groupLayoutMode by configurationStore.stringToInt(Key.GROUP_LAYOUT_MODE) { 0 }
     var profileCardStyle by configurationStore.stringToInt(Key.PROFILE_CARD_STYLE) { 0 }
     var showSubscriptionInfoCard by configurationStore.boolean(Key.SHOW_SUBSCRIPTION_INFO_CARD) { true }
-    var customThemeColor by configurationStore.int("custom_theme_color") { 0x00E676 }
 
     var allowInsecureOnRequest by configurationStore.boolean(Key.ALLOW_INSECURE_ON_REQUEST)
     var networkChangeResetConnections by configurationStore.boolean(Key.NETWORK_CHANGE_RESET_CONNECTIONS) { false }
@@ -170,9 +169,6 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     val mixedInboundNeedsAuth: Boolean
         get() = serviceMode == Key.MODE_VPN && !mixedInboundDisabled && mixedUsername.isNotBlank()
 
-    val mixedInboundUser: String get() = if (mixedInboundAuthed) mixedUsername else ""
-    val mixedInboundPass: String get() = if (mixedInboundAuthed) mixedPassword else ""
-
     var defaultSubscriptionUserAgent: String
         get() {
             val stored = configurationStore.getString(Key.DEFAULT_SUBSCRIPTION_USER_AGENT, "")
@@ -211,7 +207,6 @@ object DataStore : OnPreferenceDataStoreChangeListener {
             mixedPort = mixedPort
         }
     }
-
 
     private fun getLocalPort(key: String, default: Int): Int {
         return parsePort(configurationStore.getString(key), default + userIndex)

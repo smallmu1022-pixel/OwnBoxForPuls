@@ -30,7 +30,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -250,12 +249,6 @@ class StatsBar @JvmOverloads constructor(
         super.setOnClickListener(l)
     }
 
-    private fun setStatus(text: CharSequence) {
-        initViews()
-        statusText.text = text
-        TooltipCompat.setTooltipText(this, text)
-    }
-
     private fun updateHideOnScroll() {
         hideOnScroll =
             !useExternalScrollDriver && allowShow && currentState == BaseService.State.Connected
@@ -416,12 +409,6 @@ class StatsBar @JvmOverloads constructor(
         isTestingRealLatency = false
         activeLatencyJob?.cancel()
         activeLatencyJob = null
-    }
-
-    private fun formatStatus(latency: Int = lastMeasuredLatency): String {
-        val isHttps = DataStore.connectionTestURL.startsWith("https://")
-        val handshakeType = if (isHttps) "HTTPS" else "HTTP"
-        return if (latency > 0) "$handshakeType 握手 ${latency}ms" else app.getString(R.string.vpn_connected)
     }
 
     private fun updateStatusViews(latency: Int = lastMeasuredLatency, customStatus: CharSequence? = null) {

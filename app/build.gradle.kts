@@ -57,8 +57,6 @@ tasks.matching { it.name == "preBuild" }.configureEach {
 
 dependencies {
 
-    implementation(fileTree("libs"))
-
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.recyclerview:recyclerview:1.3.0")
@@ -66,9 +64,6 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.5.6")
     implementation("androidx.browser:browser:1.5.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.work:work-runtime-ktx:2.8.1")

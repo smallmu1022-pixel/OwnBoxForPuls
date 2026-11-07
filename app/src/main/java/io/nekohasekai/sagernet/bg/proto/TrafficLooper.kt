@@ -14,7 +14,6 @@ import io.nekohasekai.sagernet.fmt.TAG_PROXY
 import io.nekohasekai.sagernet.ktx.Logs
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
-import libcore.Libcore
 
 class TrafficLooper
     (

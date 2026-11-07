@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.AppBarLayout
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.ktx.getColorAttr
-import io.nekohasekai.sagernet.utils.Theme
 
 open class ToolbarFragment : Fragment {
 

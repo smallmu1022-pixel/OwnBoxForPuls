@@ -1,14 +1,14 @@
 <resources>
     <dimen name="qrcode_size">264dp</dimen>
     <dimen name="main_list_padding_bottom">88dp</dimen>
-    <dimen name="bottom_sheet_padding">8dp</dimen>
+    
 
     <dimen name="card_corner_radius">20dp</dimen>
     <dimen name="card_elevation">1dp</dimen>
     <dimen name="card_stroke_width">1dp</dimen>
     <dimen name="card_stroke_width_selected">1.5dp</dimen>
-    <dimen name="profile_card_corner_radius">18dp</dimen>
-    <dimen name="chip_corner_radius">12dp</dimen>
+    
+    
     <dimen name="profile_card_selected_bar_width">5dp</dimen>
     <dimen name="profile_card_elevation_classic">2dp</dimen>
 
