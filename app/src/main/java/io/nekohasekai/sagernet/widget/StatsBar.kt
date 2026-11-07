@@ -19,7 +19,9 @@ import androidx.lifecycle.whenStarted
 import com.google.android.material.bottomappbar.BottomAppBar
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.bg.BaseService
+import io.nekohasekai.sagernet.bg.proto.TcpPing
 import io.nekohasekai.sagernet.database.DataStore
+import io.nekohasekai.sagernet.database.ProfileManager
 import io.nekohasekai.sagernet.ktx.*
 import android.app.Activity
 import io.nekohasekai.sagernet.ui.MainActivity
@@ -150,14 +152,14 @@ class StatsBar @JvmOverloads constructor(
             statusIpText.setOnClickListener {
                 onIpDetailClicked()
             }
-            // 点击延迟文字/标题手动重测握手延迟（testConnection 内部已 guard 连接态与节流）
+            // 点击延迟文字/标题手动重测 TCP Ping 延迟（testConnection 内部已 guard 连接态与节流）
             statusText.setOnClickListener {
                 retestLatencyInPlace()
             }
             statusTitleText.setOnClickListener {
                 retestLatencyInPlace()
             }
-            // 点击整个延迟区域（标题+数值及周围空白）手动重测握手延迟
+            // 点击整个延迟区域（标题+数值及周围空白）手动重测 TCP Ping 延迟
             findViewById<View>(R.id.status_area)?.setOnClickListener {
                 retestLatencyInPlace()
             }
@@ -411,12 +413,14 @@ class StatsBar @JvmOverloads constructor(
 
     private var lastMeasuredLatency: Int = -1
     private var lastMeasureTime: Long = 0L
+    private var lastLatencyIsTcpPing = true
     private var isTestingRealLatency = false
     private var activeLatencyJob: Job? = null
 
     private fun resetLatencyState() {
         lastMeasuredLatency = -1
         lastMeasureTime = 0L
+        lastLatencyIsTcpPing = true
         isTestingRealLatency = false
         activeLatencyJob?.cancel()
         activeLatencyJob = null
@@ -444,10 +448,15 @@ class StatsBar @JvmOverloads constructor(
                     statusTitleText.visibility = View.GONE
                     statusText.text = customStatus
                 } else {
-                    val isHttps = DataStore.connectionTestURL.startsWith("https://", ignoreCase = true)
-                    val handshakeType = if (isHttps) "HTTPS" else "HTTP"
                     if (latency > 0) {
-                        statusTitleText.text = "$handshakeType 握手延迟"
+                        // 底栏延迟默认是 TCP Ping；UDP-only 协议（Hysteria/TUIC/WireGuard）没有
+                        // TCP 端口可连，实际测的是 HTTPS 握手，标题按实测方式显示
+                        statusTitleText.text = if (lastLatencyIsTcpPing) {
+                            "TCP Ping"
+                        } else {
+                            val isHttps = DataStore.connectionTestURL.startsWith("https://", ignoreCase = true)
+                            "${if (isHttps) "HTTPS" else "HTTP"} 握手延迟"
+                        }
                         statusTitleText.visibility = View.VISIBLE
                         statusText.text = "${latency}ms"
                     } else {
@@ -615,13 +624,26 @@ class StatsBar @JvmOverloads constructor(
             val scope = activity.lifecycleScope
             activeLatencyJob = scope.launch(Dispatchers.IO) {
                 try {
-                    val elapsed = activity.urlTest()
+                    // 底栏延迟改用 TCP Ping：直连当前节点服务器端口测握手，不走隧道里的 HTTPS，
+                    // 更快更稳，连接后第一次自动测试不再因隧道未热而超时。UDP-only 协议
+                    //（Hysteria/TUIC/WireGuard）没有 TCP 端口可连，TcpPing 内部自动回落 URL 测试
+                    val profile = ProfileManager.getProfile(DataStore.selectedProxy)
+                    val (elapsed, isTcpPing) = if (profile != null) {
+                        val bean = profile.requireBean()
+                        val udpOnly = bean is io.nekohasekai.sagernet.fmt.hysteria.HysteriaBean ||
+                                bean is io.nekohasekai.sagernet.fmt.tuic.TuicBean ||
+                                bean is io.nekohasekai.sagernet.fmt.wireguard.WireGuardBean
+                        TcpPing().doTest(profile) to !udpOnly
+                    } else {
+                        activity.urlTest() to false
+                    }
                     withContext(Dispatchers.Main) {
                         isTestingRealLatency = false
                         if (currentState != BaseService.State.Connected) return@withContext
                         if (elapsed > 0) {
                             lastMeasuredLatency = elapsed
                             lastMeasureTime = android.os.SystemClock.elapsedRealtime()
+                            lastLatencyIsTcpPing = isTcpPing
                             updateStatusViews(elapsed)
                         } else if (lastMeasuredLatency <= 0) {
                             updateStatusViews(customStatus = app.getText(R.string.connection_test_fail))
