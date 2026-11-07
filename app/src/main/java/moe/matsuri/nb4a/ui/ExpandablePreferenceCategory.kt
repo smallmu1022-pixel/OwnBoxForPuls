@@ -134,7 +134,7 @@ class ExpandablePreferenceCategory @JvmOverloads constructor(
             card.setCardBackgroundColor(Color.TRANSPARENT)
             card.cardElevation = 0f
             card.strokeWidth = 0
-            card.cardCornerRadius = 0f
+            card.radius = 0f
         }
 
         val textPrimary = context.getColorAttr(android.R.attr.textColorPrimary)
