@@ -38,8 +38,8 @@
                     android:gravity="center_vertical"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:paddingTop="14dp"
-                    android:paddingBottom="14dp">
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <TextView
                         android:id="@+id/profile_name"
@@ -164,7 +164,7 @@
                 android:baselineAligned="true"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:paddingBottom="14dp">
+                android:paddingBottom="4dp">
 
                 <TextView
                     android:id="@+id/profile_type"

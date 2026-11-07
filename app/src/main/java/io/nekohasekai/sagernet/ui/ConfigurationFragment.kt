@@ -3311,7 +3311,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 when (proxyEntity.status) {
                     1 -> appendPart(
                         getString(R.string.available, proxyEntity.ping),
-                        requireContext().getColorAttr(android.R.attr.textColorPrimary),
+                        requireContext().getColour(R.color.material_green_500),
                     )
 
                     2 -> appendPart(
