@@ -589,6 +589,12 @@
 
     
 
+    <string-array name="mux_type">
+        <item>h2mux</item>
+        <item>smux</item>
+        <item>yamux</item>
+    </string-array>
+
     <string-array name="mux_mode">
         <item>@string/mux_mode_max_streams</item>
         <item>@string/mux_mode_connections</item>
