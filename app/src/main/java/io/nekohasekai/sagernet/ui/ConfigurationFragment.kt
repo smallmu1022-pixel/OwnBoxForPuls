@@ -3252,13 +3252,22 @@ class ConfigurationFragment @JvmOverloads constructor(
 
             private fun applySelected(selected: Boolean) {
                 val ctx = card.context
-                // 整体简约线条风：卡片白底（surface 色），选中时上淡色 tint
+                // 整体简约线条风：卡片白底（surface 色），选中时整卡铺满浅灰
+                // （selectedColorPrimary 约 1/3 透明度叠在 surface 上；浅灰主题下约得 #B4B5B7，
+                // 深色主题下 primary 是白色，同样得到同等深浅的灰）
                 if (selected) {
                     val primary = ctx.getColorAttr(R.attr.selectedColorPrimary)
-                    card.setCardBackgroundColor(ColorUtils.setAlphaComponent(primary, 20))
+                    card.setCardBackgroundColor(ColorUtils.setAlphaComponent(primary, 85))
                 } else {
                     card.setCardBackgroundColor(ctx.getColorAttr(R.attr.colorSurface))
                 }
+                updateProfileTypeChip(selected)
+                trafficText.setTextColor(
+                    ctx.getColorAttr(
+                        if (selected) android.R.attr.textColorPrimary
+                        else android.R.attr.textColorSecondary
+                    )
+                )
                 if (DataStore.profileCardStyle == 1) {
                     val primary = ctx.getColorAttr(R.attr.colorPrimary)
                     selectedIndicator.isVisible = false
@@ -3273,6 +3282,25 @@ class ConfigurationFragment @JvmOverloads constructor(
                     selectedIndicator.isVisible = selected
                     card.strokeWidth = 0
                     card.cardElevation = ctx.resources.displayMetrics.density // 1dp
+                }
+            }
+
+            // 协议标签底色：选中时用半透明白底（灰底上看得清），未选中恢复协议色 12% 淡底
+            private fun updateProfileTypeChip(selected: Boolean) {
+                if (!::entity.isInitialized) return
+                val protocolColor = requireContext().getProtocolColor(entity.type)
+                profileType.background = android.graphics.drawable.GradientDrawable().apply {
+                    cornerRadius = dp2px(6).toFloat()
+                    setColor(
+                        if (selected) ColorUtils.setAlphaComponent(
+                            Color.WHITE,
+                            (255 * 0.55).toInt()
+                        )
+                        else ColorUtils.setAlphaComponent(
+                            protocolColor,
+                            (255 * 0.12).toInt()
+                        )
+                    )
                 }
             }
 
@@ -3297,6 +3325,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 proxyEntity: ProxyEntity,
                 showTraffic: Boolean,
                 speedTestText: String?,
+                selected: Boolean,
             ) {
                 val text = SpannableStringBuilder()
                 fun appendPart(value: CharSequence?, color: Int) {
@@ -3307,7 +3336,11 @@ class ConfigurationFragment @JvmOverloads constructor(
                     text.setSpan(ForegroundColorSpan(color), start, text.length, SPAN_EXCLUSIVE_EXCLUSIVE)
                 }
 
-                val secondary = requireContext().getColorAttr(android.R.attr.textColorSecondary)
+                // 选中时卡片底是浅灰，次要文字（流量/测速）用主文字色才看得清；延迟绿、错误红分支不动
+                val secondary = requireContext().getColorAttr(
+                    if (selected) android.R.attr.textColorPrimary
+                    else android.R.attr.textColorSecondary
+                )
                 when (proxyEntity.status) {
                     1 -> appendPart(
                         getString(R.string.available, proxyEntity.ping),
@@ -3346,11 +3379,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 profileName.text = bean.displayName()
                 profileType.text = proxyEntity.displayType()
                 val protocolColor = requireContext().getProtocolColor(proxyEntity.type)
-                val chipBg = android.graphics.drawable.GradientDrawable().apply {
-                    cornerRadius = dp2px(6).toFloat()
-                    setColor(ColorUtils.setAlphaComponent(protocolColor, (255 * 0.12).toInt()))
-                }
-                profileType.background = chipBg
+                // 协议标签底色由 bind() 末尾的 applySelected() 经 updateProfileTypeChip() 设置
                 profileType.setTextColor(protocolColor)
 
                 val rx = proxyEntity.rx
@@ -3392,14 +3421,14 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
                 lastSelfHasMiddleRow = !trafficRowEmpty
 
-                bindTestResult(proxyEntity, showTraffic, speedTestText)
+                val selected = pf.isSelectedProfile(proxyEntity.id)
+                bindTestResult(proxyEntity, showTraffic, speedTestText, selected)
 
                 editButton.isGone = true
                 shareLayout.isGone = true
                 removeButton.isGone = true
                 doubleColumnMenuButton.isVisible = !select
 
-                val selected = pf.isSelectedProfile(proxyEntity.id)
                 val started =
                     selected && DataStore.serviceState.started && pf.isCurrentProfile(proxyEntity.id)
                 editButton.isEnabled = !started
@@ -3439,8 +3468,14 @@ class ConfigurationFragment @JvmOverloads constructor(
                 if (proxyEntity.status <= 0 && speedTestResultText(proxyEntity) == null) {
                     if (profileStatus.text?.toString() != traffic) {
                         profileStatus.text = traffic
+                        // 实时流量刷新也要跟选中态走，否则 bindTestResult 设好的主文字色会被刷回次要色
                         profileStatus.setTextColor(
-                            requireContext().getColorAttr(android.R.attr.textColorSecondary)
+                            requireContext().getColorAttr(
+                                if ((parentFragment as? ConfigurationFragment)
+                                        ?.isSelectedProfile(entity.id) == true
+                                ) android.R.attr.textColorPrimary
+                                else android.R.attr.textColorSecondary
+                            )
                         )
                     }
                 } else if (trafficText.text?.toString() != traffic) {
